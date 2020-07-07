@@ -11,7 +11,7 @@ import MobileCoreServices
 import Foundation
 
 
-func uploadPost() -> Void {
+func uploadPost(draft:Bool) -> Void {
     
     let user = "publisher"
     let psw = "XbIb 8kS6 31Xw 2szM xVmd 58JK"
@@ -61,11 +61,15 @@ func uploadPost() -> Void {
     request.setValue("Basic " + token!, forHTTPHeaderField: "Authorization")
     
     //print(String(data: decodedToken, encoding: .utf8)!)
-
+    var status = "publish"
+    if draft {
+        status = "draft"
+    }
+        
     // Set HTTP Request Body
     let json: [String: Any] = ["title": "CACA",
     "content": html_content,
-    "status": "draft",
+    "status": status,
     "comment_status" : "open"]
     
     let jsonData = try? JSONSerialization.data(withJSONObject: json)
@@ -104,22 +108,80 @@ struct ContentView: View {
     
     @State var show = false
     
+    @State var published:Bool = false
+    @State var draft:Bool = true
+    
+    func toggle_post_options() {
+       if published {
+           draft = true
+           published = false
+       }
+       else {
+           draft = false
+           published = true
+       }
+   }
+    
     var body: some View {
         
-        VStack {
-            Button(action: {
-                self.show.toggle()
-            }) {
-                Text("Seleccionar arxiu")
-            }
-            .sheet(isPresented: $show) {
-                DocumentPicker()
-            }
-            Button(action:{
-                print("començo a carregar")
-                uploadPost()}) {
-                Text("carregar post")
-            }
+        NavigationView {
+            List() {
+                Section {
+                    VStack(alignment: .leading) {
+                        Button(action: {
+                            self.show.toggle()
+                        }) {
+                            Text("Seleccionar arxiu html")
+                        }
+                        .sheet(isPresented: self.$show) {
+                            DocumentPicker()
+                        }
+                    }
+                }
+                Section {
+                    Text("Estat Wordpress").font(.subheadline).foregroundColor(.gray)
+                    HStack {
+                        Button(action: toggle_post_options) {
+                            if draft {
+                                Image(systemName: "checkmark.circle")
+                            }
+                            else {
+                                Image(systemName: "circle")
+                            }
+                            
+                        }
+                        Text("Esborrany")
+                    }
+                }
+                    
+                Section {
+                    HStack {
+                        Button(action: toggle_post_options) {
+                            if published {
+                                Image(systemName: "checkmark.circle")
+                            }
+                            else {
+                                Image(systemName: "circle")
+                            }
+                            
+                        }
+                        Text("Publicació")
+                    }
+                        
+
+                }
+                Section {
+                    VStack(alignment: .leading) {
+                        Button(action:{
+                            print("començo a carregar")
+                            uploadPost(draft: self.draft)}) {
+                                Text("carregar post")
+                        }
+                    }
+
+                }
+                
+            }.navigationBarTitle("Carregar Post HTML")
         }
     }
 }
