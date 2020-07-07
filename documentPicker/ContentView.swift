@@ -103,7 +103,6 @@ func uploadPost(draft:Bool) -> Void {
 
 
 
-
 struct ContentView: View {
     
     @State var show = false
@@ -152,9 +151,6 @@ struct ContentView: View {
                         }
                         Text("Esborrany")
                     }
-                }
-                    
-                Section {
                     HStack {
                         Button(action: toggle_post_options) {
                             if published {
@@ -168,20 +164,38 @@ struct ContentView: View {
                         Text("Publicació")
                     }
                         
-
+                    
                 }
+                    
                 Section {
-                    VStack(alignment: .leading) {
-                        Button(action:{
-                            print("començo a carregar")
-                            uploadPost(draft: self.draft)}) {
-                                Text("carregar post")
-                        }
-                    }
+                    Button(action: {
+                        uploadPost(draft: self.draft)
+                    }) {
+                        HStack(alignment: .center) {
+                            Spacer()
+                            if draft {
+                                Image(systemName: "bookmark")
+                                Text("Pujar Esborrany")
+                            }
+                            else {
+                                Image(systemName: "text.bubble")
+                                Text("Publicar Entrada").accentColor(.red)
+                            }
+                            Spacer()
+                            
+                            
+                        }.padding(10.0)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10.0)
+                                .stroke(lineWidth: 2.0)
+                        )
 
+                    }
+                    
                 }
+
                 
-            }.navigationBarTitle("Carregar Post HTML")
+            }.listStyle(GroupedListStyle()).navigationBarTitle("Carregar Post HTML")
         }
     }
 }
