@@ -126,16 +126,22 @@ struct ContentView: View {
         NavigationView {
             List() {
                 Section {
-                    VStack(alignment: .leading) {
-                        Button(action: {
-                            self.show.toggle()
-                        }) {
-                            Text("Seleccionar arxiu html")
+
+                    
+                    Button(action: {
+                        self.show.toggle()
+                    }) {
+                        HStack {
+                            Image(systemName: "rectangle.and.paperclip")
+                            Text("Seleccionar arxiu html...")
                         }
-                        .sheet(isPresented: self.$show) {
-                            DocumentPicker()
-                        }
+
                     }
+                    .sheet(isPresented: self.$show) {
+                        DocumentPicker()
+                    }
+                        
+
                 }
                 Section {
                     Text("Estat Wordpress").font(.subheadline).foregroundColor(.gray)
