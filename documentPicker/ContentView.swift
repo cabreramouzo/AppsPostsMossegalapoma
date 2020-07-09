@@ -11,95 +11,7 @@ import MobileCoreServices
 import Foundation
 
 
-func uploadPost(draft:Bool) -> Void {
-    
-    let user = "publisher"
-    let psw = "XbIb 8kS6 31Xw 2szM xVmd 58JK"
-    let credentials = user + ":" + psw
 
-    let token = credentials.data(using: String.Encoding.utf8)?.base64EncodedString()
-    //Data is a byte buffer
-    let decodedToken = Data(base64Encoded: token!)!
-    
-    //read html file
-    let file = "" //this is the file. we will write to and read from it
-    var html_content = ""
-    if let filepath = Bundle.main.path(forResource: "programa_tipic_nomes_body.html", ofType: "html") {
-        do {
-            let contents = try String(contentsOfFile: filepath)
-            print(contents)
-            html_content = contents
-            
-        } catch {
-            // contents could not be loaded
-        }
-    } else {
-        // example.txt not found!
-        print("No existe")
-    }
-    html_content = "<strong>Amb la col·laboració de la <a href=\"https://www.upc.edu/ca\">Universitat Politècnica de Catalunya</a>.</strong>"
-
-
-    let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-
-    //let fileURL = dir!.appendingPathComponent(file)
-
-    //reading
-
-    //let html_content = try! String(contentsOf: fileURL, encoding: .utf8)
-
-    let url_srcdest = URL(string: "http://192.168.1.128/wp-json/wp/v2/posts")
-    guard let requestUrl = url_srcdest else { fatalError() }
-    
-    
-    // Prepare URL Request Object
-    var request = URLRequest(url: requestUrl)
-    request.httpMethod = "POST"
-    
-    // Set HTTP Request Header
-    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-    request.setValue("Basic " + token!, forHTTPHeaderField: "Authorization")
-    
-    //print(String(data: decodedToken, encoding: .utf8)!)
-    var status = "publish"
-    if draft {
-        status = "draft"
-    }
-        
-    // Set HTTP Request Body
-    let json: [String: Any] = ["title": "CACA",
-    "content": html_content,
-    "status": status,
-    "comment_status" : "open"]
-    
-    let jsonData = try? JSONSerialization.data(withJSONObject: json)
-    //request.httpBody = postString.data(using: String.Encoding.utf8);
-    request.httpBody = jsonData
-    
-    
-    
-    
-    // Perform HTTP Request
-    let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            
-            // Check for Error
-            if let error = error {
-                print("Error took place \(error)")
-                return
-            }
-     
-            // Convert HTTP Response Data to a String
-            if let data = data, let dataString = String(data: data, encoding: .utf8) {
-                print("Response data string:\n \(dataString)")
-                              
-            }
-            if let httpResponse = response as? HTTPURLResponse {
-                print("statusCode: \(httpResponse.statusCode)")
-            }
-                    
-    }
-    task.resume()
-}
 
 
 
@@ -109,6 +21,10 @@ struct ContentView: View {
     
     @State var published:Bool = false
     @State var draft:Bool = true
+    
+    @State var alert:Bool = false
+    
+    @State var doc_url:String = ""
     
     func toggle_post_options() {
        if published {
@@ -127,7 +43,6 @@ struct ContentView: View {
             List() {
                 Section {
 
-                    
                     Button(action: {
                         self.show.toggle()
                     }) {
@@ -138,7 +53,7 @@ struct ContentView: View {
 
                     }
                     .sheet(isPresented: self.$show) {
-                        DocumentPicker()
+                        doc_url = DocumentPicker()
                     }
                         
 
@@ -175,7 +90,7 @@ struct ContentView: View {
                     
                 Section {
                     Button(action: {
-                        uploadPost(draft: self.draft)
+                        self.alert = uploadPost(draft: self.draft)
                     }) {
                         HStack(alignment: .center) {
                             Spacer()
@@ -196,6 +111,8 @@ struct ContentView: View {
                                 .stroke(lineWidth: 2.0)
                         )
 
+                    }.alert(isPresented: $alert) {
+                        Alert(title: Text("Carrgat correctament"), message: Text("S'ha carregat"), dismissButton: .default(Text("OK")))
                     }
                     
                 }
@@ -204,6 +121,11 @@ struct ContentView: View {
             }.listStyle(GroupedListStyle()).navigationBarTitle("Carregar Post HTML")
         }
     }
+    
+    func loadStringFromDocument(url:String) {
+        
+        
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
@@ -211,11 +133,16 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+
+
 //from https://www.youtube.com/watch?v=q8y_eRVfpMA
 struct DocumentPicker : UIViewControllerRepresentable {
-    func makeCoordinator() -> Coordinator {
+    
+    func makeCoordinator() ->DocumentPicker.Coordinator {
         return DocumentPicker.Coordinator(parent1: self)
     }
+    
     
     
     func makeUIViewController(context: UIViewControllerRepresentableContext<DocumentPicker>) -> UIDocumentPickerViewController {
@@ -239,7 +166,9 @@ struct DocumentPicker : UIViewControllerRepresentable {
         }
         
         func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
-             print(urls)
+            let path = urls.first!.absoluteString
+            
+            
         }
     }
 }
