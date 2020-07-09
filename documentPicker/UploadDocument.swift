@@ -9,27 +9,40 @@
 import Foundation
 
 
-func extractStringFromHTMLDocument(htmlDocURL:URL) -> String {
+func extractStringFromHTMLDocument(htmlDocURL:String) -> String {
     
-    let path = htmlDocURL.absoluteString
+    let path = htmlDocURL
     var fileContent: String = ""
     let fm = FileManager.default
-    do {
-        if fm.fileExists(atPath: path) && fm.isReadableFile(atPath: path) {
-            
-            fileContent = try String(contentsOfFile: path, encoding: .utf8)
-            
+    var baseURL = NSURL(fileURLWithPath: "file:///private/var/mobile/Library/Mobile%20Documents/com~apple~CloudDocs/Porno%20Mossegalapoma/programa_tipic_nomes_body.html")
+    //var url = NSURL(URLWithString:"programa_tipic_nomes_body.html", relativeTo: baseURL)
+    print(baseURL.absoluteString ?? "joder")
+    if baseURL.startAccessingSecurityScopedResource() {
         
+        do {
+            if fm.fileExists(atPath: path) && fm.isReadableFile(atPath: path) {
+                
+                fileContent = try String(contentsOfFile: path, encoding: .utf8)
+                
+            
+            }
+            fileContent = try String(contentsOfFile: path, encoding: .utf8)
         }
+        catch {
+            print("no funca")
+        }
+        
     }
-    catch {
-        print("no funca")
+    else {
+        print("No access")
     }
+    baseURL.stopAccessingSecurityScopedResource()
+    
     return fileContent
     
 }
 
-func uploadPost(draft:Bool, documentURL:URL) -> Bool {
+func uploadPost(draft:Bool, documentURL:String) -> Bool {
     
     let user = "publisher"
     let psw = "XbIb 8kS6 31Xw 2szM xVmd 58JK"
@@ -42,6 +55,8 @@ func uploadPost(draft:Bool, documentURL:URL) -> Bool {
     //read html file
     
     let html_content:String = extractStringFromHTMLDocument(htmlDocURL: documentURL)
+    print("HHHHHHHTTTTTTTTMMMMMLLLLLLL")
+    print(html_content)
 
     let url_srcdest = URL(string: "http://192.168.1.128/wp-json/wp/v2/posts")
     guard let requestUrl = url_srcdest else { fatalError() }
@@ -62,7 +77,7 @@ func uploadPost(draft:Bool, documentURL:URL) -> Bool {
     }
         
     // Set HTTP Request Body
-    let json: [String: Any] = ["title": "CACA",
+    let json: [String: Any] = ["title": "coco",
     "content": html_content,
     "status": status,
     "comment_status" : "open"]

@@ -10,11 +10,6 @@ import SwiftUI
 import MobileCoreServices
 import Foundation
 
-
-
-
-
-
 struct ContentView: View {
     
     @State var show = false
@@ -25,6 +20,10 @@ struct ContentView: View {
     @State var alert:Bool = false
     
     @State var doc_url:String = ""
+    
+    @State var doc: FileWrapper?
+    @State var showDocumentPicker = false
+    @State var inputURL: String?
     
     func toggle_post_options() {
        if published {
@@ -41,10 +40,11 @@ struct ContentView: View {
         
         NavigationView {
             List() {
+                
                 Section {
 
                     Button(action: {
-                        self.show.toggle()
+                        self.showDocumentPicker = true
                     }) {
                         HStack {
                             Image(systemName: "rectangle.and.paperclip")
@@ -52,8 +52,8 @@ struct ContentView: View {
                         }
 
                     }
-                    .sheet(isPresented: self.$show) {
-                        doc_url = DocumentPicker()
+                    .sheet(isPresented: self.$showDocumentPicker, onDismiss: loadDocumentUrl) {
+                        DocumentPicker2(doc_url: self.$inputURL)
                     }
                         
 
@@ -90,7 +90,11 @@ struct ContentView: View {
                     
                 Section {
                     Button(action: {
-                        self.alert = uploadPost(draft: self.draft)
+                        print(self.doc_url)
+                        print("FILE URL:")
+                        print(self.doc_url)
+                        let is_ok = uploadPost(draft: self.draft, documentURL: self.doc_url)
+                        //self.alert = uploadPost(draft: self.draft, documentURL: someurl)
                     }) {
                         HStack(alignment: .center) {
                             Spacer()
@@ -121,10 +125,9 @@ struct ContentView: View {
             }.listStyle(GroupedListStyle()).navigationBarTitle("Carregar Post HTML")
         }
     }
-    
-    func loadStringFromDocument(url:String) {
-        
-        
+    func loadDocumentUrl() {
+        guard let inputURL = inputURL else { return }
+        doc_url = String(inputURL)
     }
 }
 
@@ -134,7 +137,7 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-
+/*
 
 //from https://www.youtube.com/watch?v=q8y_eRVfpMA
 struct DocumentPicker : UIViewControllerRepresentable {
@@ -172,3 +175,4 @@ struct DocumentPicker : UIViewControllerRepresentable {
         }
     }
 }
+*/
