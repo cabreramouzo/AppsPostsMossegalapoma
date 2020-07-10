@@ -18,11 +18,16 @@ struct ContentView: View {
     @State var draft:Bool = true
     
     @State var alert:Bool = false
+    @State var sucessUpload: Bool = false
     
     @State var docURL:URL
 
     @State var showDocumentPicker = false
     @State var inputURL: URL?
+    
+    var is_ok = false
+    @State var alertText = "Hi ha hagut un error al pujar l'arxiu a Wordpress"
+    
     
     func toggle_post_options() {
        if published {
@@ -36,6 +41,7 @@ struct ContentView: View {
    }
     
     var body: some View {
+        
         
         NavigationView {
             List() {
@@ -92,12 +98,21 @@ struct ContentView: View {
                         print("FILE URL:")
                         print(self.docURL)
                         
-                        let is_ok = uploadPost(draft: self.draft, documentURL: self.docURL)
+                        
+                        uploadPost(draft: self.draft, documentURL: self.docURL, completion: { (is_ok) -> Void in
+                            self.alert = true
+                            print("es ok")
+                            print(is_ok)
+                            if is_ok {
+                                self.alertText = "Arxiu carregat correctament!"
+                            }
+                        })
+                            
+                        
                         
                         // Make sure you release the security-scoped resource when you are done.
                         do { self.docURL.stopAccessingSecurityScopedResource() }
                         
-                        //self.alert = uploadPost(draft: self.draft, documentURL: someurl)
                         
                         
                     }) {
@@ -121,7 +136,8 @@ struct ContentView: View {
                         )
 
                     }.alert(isPresented: $alert) {
-                        Alert(title: Text("Carrgat correctament"), message: Text("S'ha carregat"), dismissButton: .default(Text("OK")))
+                        //Alert(title: Text("Carrgat correctament"), message: Text("S'ha carregat"), dismissButton: .default(Text("OK")))
+                        Alert(title: Text("Alerta!"), message: Text(alertText), dismissButton: .default(Text("Ok!")))
                     }
                     
                 }

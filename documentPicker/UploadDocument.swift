@@ -44,7 +44,7 @@ func extractStringFromHTMLDocument(htmlDocURL:URL) -> String {
     
 }
 
-func uploadPost(draft:Bool, documentURL:URL) -> Bool {
+func uploadPost(draft:Bool, documentURL:URL, completion: @escaping (Bool) -> Void) -> Void {
     
     let user = "publisher"
     let psw = "XbIb 8kS6 31Xw 2szM xVmd 58JK"
@@ -86,13 +86,13 @@ func uploadPost(draft:Bool, documentURL:URL) -> Bool {
     let jsonData = try? JSONSerialization.data(withJSONObject: json)
     //request.httpBody = postString.data(using: String.Encoding.utf8);
     request.httpBody = jsonData
-    
-    
-    
     var success = false
+    var sc:Int = 0
     // Perform HTTP Request
     let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+        
             
+        
             // Check for Error
             if let error = error {
                 print("Error took place \(error)")
@@ -106,13 +106,13 @@ func uploadPost(draft:Bool, documentURL:URL) -> Bool {
             }
             if let httpResponse = response as? HTTPURLResponse {
                 print("statusCode: \(httpResponse.statusCode)")
-                if httpResponse.statusCode == 201 {
-                    success =  true
-                }
+                
+                completion(httpResponse.statusCode == 201)
+    
             }
        
                     
     }
+    //resume() will send the request
     task.resume()
-    return success
 }
