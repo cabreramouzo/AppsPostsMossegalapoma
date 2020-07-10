@@ -19,11 +19,10 @@ struct ContentView: View {
     
     @State var alert:Bool = false
     
-    @State var doc_url:String = ""
-    
-    @State var doc: FileWrapper?
+    @State var docURL:URL
+
     @State var showDocumentPicker = false
-    @State var inputURL: String?
+    @State var inputURL: URL?
     
     func toggle_post_options() {
        if published {
@@ -53,7 +52,7 @@ struct ContentView: View {
 
                     }
                     .sheet(isPresented: self.$showDocumentPicker, onDismiss: loadDocumentUrl) {
-                        DocumentPicker2(doc_url: self.$inputURL)
+                        DocumentPicker2(docURL: self.$inputURL)
                     }
                         
 
@@ -91,9 +90,16 @@ struct ContentView: View {
                 Section {
                     Button(action: {
                         print("FILE URL:")
-                        print(self.doc_url)
-                        let is_ok = uploadPost(draft: self.draft, documentURL: self.doc_url)
+                        print(self.docURL)
+                        
+                        let is_ok = uploadPost(draft: self.draft, documentURL: self.docURL)
+                        
+                        // Make sure you release the security-scoped resource when you are done.
+                        do { self.docURL.stopAccessingSecurityScopedResource() }
+                        
                         //self.alert = uploadPost(draft: self.draft, documentURL: someurl)
+                        
+                        
                     }) {
                         HStack(alignment: .center) {
                             Spacer()
@@ -126,52 +132,13 @@ struct ContentView: View {
     }
     func loadDocumentUrl() {
         guard let inputURL = inputURL else { return }
-        doc_url = String(inputURL)
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+        docURL = inputURL
     }
 }
 
 /*
-
-//from https://www.youtube.com/watch?v=q8y_eRVfpMA
-struct DocumentPicker : UIViewControllerRepresentable {
-    
-    func makeCoordinator() ->DocumentPicker.Coordinator {
-        return DocumentPicker.Coordinator(parent1: self)
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
     }
-    
-    
-    
-    func makeUIViewController(context: UIViewControllerRepresentableContext<DocumentPicker>) -> UIDocumentPickerViewController {
-        
-        let picker = UIDocumentPickerViewController(documentTypes: [String(kUTTypeHTML)], in: .open)
-        picker.allowsMultipleSelection = false
-        picker.delegate = context.coordinator
-        return picker
-    }
-    
-    func updateUIViewController(_ uiViewController: UIDocumentPickerViewController, context: UIViewControllerRepresentableContext<DocumentPicker>) {
-        
-    }
-    
-    class Coordinator: NSObject, UIDocumentPickerDelegate {
-        
-        var parent: DocumentPicker
-        
-        init(parent1: DocumentPicker) {
-            parent = parent1
-        }
-        
-        func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
-            let path = urls.first!.absoluteString
-            
-            
-        }
-    }
-}
-*/
+}*/

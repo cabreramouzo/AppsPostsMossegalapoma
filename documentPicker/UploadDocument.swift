@@ -10,26 +10,22 @@ import Foundation
 import UIKit
 
 
-func extractStringFromHTMLDocument(htmlDocURL:String) -> String {
+func extractStringFromHTMLDocument(htmlDocURL:URL) -> String {
     
     //let path = htmlDocURL
     var fileContent: String = ""
     let fm = FileManager.default
-    let baseURL = URL(fileURLWithPath:htmlDocURL)
-    let path = baseURL.path
-    print("PATH")
-    print(path)
+    //extract path from URL
     
-    //read in app bundle
-    var filePath = Bundle.main.url(forResource: "programa_tipic_nomes_body", withExtension: "html")
-    print("file bundle")
-    print(filePath!.path)
-        
+    let htmlDocPath = htmlDocURL.path
+    print("PATH")
+    print(htmlDocPath)
+    
     do {
-        if fm.fileExists(atPath: filePath!.path) {
+        if fm.fileExists(atPath: htmlDocPath) {
             
-            if fm.isReadableFile(atPath: filePath!.path) {
-                fileContent = try String(contentsOfFile: filePath!.path, encoding: .utf8)
+            if fm.isReadableFile(atPath: htmlDocPath) {
+                fileContent = try String(contentsOfFile: htmlDocPath, encoding: .utf8)
             }
             else {
                 print("FILE NO READABLE")
@@ -48,7 +44,7 @@ func extractStringFromHTMLDocument(htmlDocURL:String) -> String {
     
 }
 
-func uploadPost(draft:Bool, documentURL:String) -> Bool {
+func uploadPost(draft:Bool, documentURL:URL) -> Bool {
     
     let user = "publisher"
     let psw = "XbIb 8kS6 31Xw 2szM xVmd 58JK"
@@ -59,7 +55,6 @@ func uploadPost(draft:Bool, documentURL:String) -> Bool {
     let decodedToken = Data(base64Encoded: token!)!
     
     //read html file
-    
     let html_content:String = extractStringFromHTMLDocument(htmlDocURL: documentURL)
     //print("HTML content:")
     //print(html_content)

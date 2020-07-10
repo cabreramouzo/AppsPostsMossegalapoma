@@ -21,16 +21,19 @@ struct DocumentPicker2: UIViewControllerRepresentable {
         }
         
         func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
-            let path = urls.first!.absoluteString
             
-            if let url_doc = path as String? {
-                parent.doc_url = url_doc
+            // Start accessing a security-scoped resource.
+            guard urls.first!.startAccessingSecurityScopedResource() else {
+                // Handle the failure here.
+                return
             }
+            
+            parent.docURL = urls.first!
             parent.presentationMode.wrappedValue.dismiss()
         }
     }
     
-    @Binding var doc_url: String?
+    @Binding var docURL: URL?
     @Environment(\.presentationMode) var presentationMode
     
     func makeCoordinator() -> Coordinator {
@@ -39,7 +42,7 @@ struct DocumentPicker2: UIViewControllerRepresentable {
     
     
     func makeUIViewController(context: Context) -> UIDocumentPickerViewController {
-        let picker = UIDocumentPickerViewController(documentTypes: [String(kUTTypeHTML)], in: .open)
+        let picker = UIDocumentPickerViewController(documentTypes: [kUTTypeHTML as String], in: .open)
         picker.allowsMultipleSelection = false
         picker.delegate = context.coordinator
         return picker
