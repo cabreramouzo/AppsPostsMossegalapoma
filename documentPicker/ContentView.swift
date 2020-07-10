@@ -90,7 +90,6 @@ struct ContentView: View {
                     
                 Section {
                     Button(action: {
-                        print(self.doc_url)
                         print("FILE URL:")
                         print(self.doc_url)
                         let is_ok = uploadPost(draft: self.draft, documentURL: self.doc_url)
