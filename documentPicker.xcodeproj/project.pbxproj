@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		042B90F224B73D3F00FE9043 /* UploadDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B90F124B73D3F00FE9043 /* UploadDocument.swift */; };
+		042B90F424B760A000FE9043 /* documentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B90F324B760A000FE9043 /* documentPicker.swift */; };
 		04A5000A24B3395000E40D2A /* documentPickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5000924B3395000E40D2A /* documentPickerTests.swift */; };
 		04A5001524B47DE300E40D2A /* programa_tipic_nomes_body.html in Resources */ = {isa = PBXBuildFile; fileRef = 04A5001424B47DE200E40D2A /* programa_tipic_nomes_body.html */; };
 		04A5FFF024B3394D00E40D2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5FFEF24B3394D00E40D2A /* AppDelegate.swift */; };
@@ -29,6 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		042B90F124B73D3F00FE9043 /* UploadDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadDocument.swift; sourceTree = "<group>"; };
+		042B90F324B760A000FE9043 /* documentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = documentPicker.swift; sourceTree = "<group>"; };
 		04A5000024B3394F00E40D2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04A5000524B3395000E40D2A /* documentPickerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = documentPickerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04A5000924B3395000E40D2A /* documentPickerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = documentPickerTests.swift; sourceTree = "<group>"; };
@@ -92,10 +96,12 @@
 		04A5FFEE24B3394D00E40D2A /* documentPicker */ = {
 			isa = PBXGroup;
 			children = (
+				042B90F324B760A000FE9043 /* documentPicker.swift */,
 				04A5001424B47DE200E40D2A /* programa_tipic_nomes_body.html */,
 				04A5FFEF24B3394D00E40D2A /* AppDelegate.swift */,
 				04A5FFF124B3394D00E40D2A /* SceneDelegate.swift */,
 				04A5FFF624B3394D00E40D2A /* ContentView.swift */,
+				042B90F124B73D3F00FE9043 /* UploadDocument.swift */,
 				04A5FFF824B3394F00E40D2A /* Assets.xcassets */,
 				04A5FFFD24B3394F00E40D2A /* LaunchScreen.storyboard */,
 				04A5000024B3394F00E40D2A /* Info.plist */,
@@ -157,6 +163,9 @@
 		04A5FFE424B3394D00E40D2A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					New,
+				);
 				LastSwiftUpdateCheck = 1150;
 				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = MAC;
@@ -225,7 +234,9 @@
 			files = (
 				04A5FFF024B3394D00E40D2A /* AppDelegate.swift in Sources */,
 				04A5FFF524B3394D00E40D2A /* documentPicker.xcdatamodeld in Sources */,
+				042B90F224B73D3F00FE9043 /* UploadDocument.swift in Sources */,
 				04A5FFF724B3394D00E40D2A /* ContentView.swift in Sources */,
+				042B90F424B760A000FE9043 /* documentPicker.swift in Sources */,
 				04A5FFF224B3394D00E40D2A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
