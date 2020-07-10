@@ -7,36 +7,42 @@
 //
 
 import Foundation
+import UIKit
 
 
 func extractStringFromHTMLDocument(htmlDocURL:String) -> String {
     
-    let path = htmlDocURL
+    //let path = htmlDocURL
     var fileContent: String = ""
     let fm = FileManager.default
-    var baseURL = NSURL(fileURLWithPath: "file:///private/var/mobile/Library/Mobile%20Documents/com~apple~CloudDocs/Porno%20Mossegalapoma/programa_tipic_nomes_body.html")
-    //var url = NSURL(URLWithString:"programa_tipic_nomes_body.html", relativeTo: baseURL)
-    print(baseURL.absoluteString ?? "joder")
-    if baseURL.startAccessingSecurityScopedResource() {
+    let baseURL = URL(fileURLWithPath:htmlDocURL)
+    let path = baseURL.path
+    print("PATH")
+    print(path)
+    
+    //read in app bundle
+    var filePath = Bundle.main.url(forResource: "programa_tipic_nomes_body", withExtension: "html")
+    print("file bundle")
+    print(filePath!.path)
         
-        do {
-            if fm.fileExists(atPath: path) && fm.isReadableFile(atPath: path) {
-                
-                fileContent = try String(contentsOfFile: path, encoding: .utf8)
-                
+    do {
+        if fm.fileExists(atPath: filePath!.path) {
             
+            if fm.isReadableFile(atPath: filePath!.path) {
+                fileContent = try String(contentsOfFile: filePath!.path, encoding: .utf8)
             }
-            fileContent = try String(contentsOfFile: path, encoding: .utf8)
+            else {
+                print("FILE NO READABLE")
+            }
         }
-        catch {
-            print("no funca")
+        else {
+            print("FILE NOT EXIST")
         }
+    }
+    catch {
+        print("no funca")
+    }
         
-    }
-    else {
-        print("No access")
-    }
-    baseURL.stopAccessingSecurityScopedResource()
     
     return fileContent
     
@@ -55,8 +61,8 @@ func uploadPost(draft:Bool, documentURL:String) -> Bool {
     //read html file
     
     let html_content:String = extractStringFromHTMLDocument(htmlDocURL: documentURL)
-    print("HHHHHHHTTTTTTTTMMMMMLLLLLLL")
-    print(html_content)
+    //print("HTML content:")
+    //print(html_content)
 
     let url_srcdest = URL(string: "http://192.168.1.128/wp-json/wp/v2/posts")
     guard let requestUrl = url_srcdest else { fatalError() }
@@ -100,7 +106,7 @@ func uploadPost(draft:Bool, documentURL:String) -> Bool {
      
             // Convert HTTP Response Data to a String
             if let data = data, let dataString = String(data: data, encoding: .utf8) {
-                print("Response data string:\n \(dataString)")
+                //print("Response data string:\n \(dataString)")
                               
             }
             if let httpResponse = response as? HTTPURLResponse {
