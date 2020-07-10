@@ -86,8 +86,7 @@ func uploadPost(draft:Bool, documentURL:URL, completion: @escaping (Bool) -> Voi
     let jsonData = try? JSONSerialization.data(withJSONObject: json)
     //request.httpBody = postString.data(using: String.Encoding.utf8);
     request.httpBody = jsonData
-    var success = false
-    var sc:Int = 0
+
     // Perform HTTP Request
     let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
         
@@ -96,6 +95,7 @@ func uploadPost(draft:Bool, documentURL:URL, completion: @escaping (Bool) -> Voi
             // Check for Error
             if let error = error {
                 print("Error took place \(error)")
+                completion(false)
                 return
             }
      
