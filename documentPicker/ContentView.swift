@@ -28,6 +28,8 @@ struct ContentView: View {
     var is_ok = false
     @State var alertText = "Hi ha hagut un error al pujar l'arxiu a Wordpress"
     
+    @State private var userPickedDocument:Bool = false
+    
     
     func toggle_post_options() {
        if published {
@@ -50,18 +52,21 @@ struct ContentView: View {
 
                     Button(action: {
                         self.showDocumentPicker = true
+                        self.userPickedDocument = true
                     }) {
                         HStack {
                             Image(systemName: "rectangle.and.paperclip")
-                            Text("Seleccionar arxiu html...")
+                            if self.inputURL != nil {
+                                Text(self.inputURL!.path)
+                            }
+                            else {
+                                Text("Seleccionar arxiu html...")
+                            }
                         }
-
                     }
                     .sheet(isPresented: self.$showDocumentPicker, onDismiss: loadDocumentUrl) {
                         DocumentPicker2(docURL: self.$inputURL)
                     }
-                        
-
                 }
                 Section {
                     Text("Estat Wordpress").font(.subheadline).foregroundColor(.gray)
@@ -73,7 +78,6 @@ struct ContentView: View {
                             else {
                                 Image(systemName: "circle")
                             }
-                            
                         }
                         Text("Esborrany")
                     }
@@ -85,19 +89,15 @@ struct ContentView: View {
                             else {
                                 Image(systemName: "circle")
                             }
-                            
                         }
                         Text("Publicació")
                     }
-                        
-                    
                 }
                     
                 Section {
                     Button(action: {
                         print("FILE URL:")
                         print(self.docURL)
-                        
                         
                         uploadPost(draft: self.draft, documentURL: self.docURL, completion: { (is_ok) -> Void in
                             self.alert = true
@@ -106,16 +106,13 @@ struct ContentView: View {
                             if is_ok {
                                 self.alertText = "Arxiu carregat correctament!"
                             }
+                            
                         })
                             
-                        
-                        
                         // Make sure you release the security-scoped resource when you are done.
                         do { self.docURL.stopAccessingSecurityScopedResource() }
-                        
-                        
-                        
-                    }) {
+
+                        }) {
                         HStack(alignment: .center) {
                             Spacer()
                             if draft {
@@ -128,7 +125,6 @@ struct ContentView: View {
                             }
                             Spacer()
                             
-                            
                         }.padding(10.0)
                         .overlay(
                             RoundedRectangle(cornerRadius: 10.0)
@@ -136,19 +132,20 @@ struct ContentView: View {
                         )
 
                     }.alert(isPresented: $alert) {
-                        //Alert(title: Text("Carrgat correctament"), message: Text("S'ha carregat"), dismissButton: .default(Text("OK")))
                         Alert(title: Text("Alerta!"), message: Text(alertText), dismissButton: .default(Text("Ok!")))
                     }
-                    
+                    .disabled(!userPickedDocument)
                 }
-
-                
             }.listStyle(GroupedListStyle()).navigationBarTitle("Carregar Post HTML")
         }
     }
     func loadDocumentUrl() {
+        print ("loadDocument---")
         guard let inputURL = inputURL else { return }
         docURL = inputURL
+        if self.inputURL != nil {
+            self.userPickedDocument = true
+        }
     }
 }
 

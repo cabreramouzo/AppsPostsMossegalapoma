@@ -12,9 +12,13 @@ import MobileCoreServices
 
 struct DocumentPicker2: UIViewControllerRepresentable {
     
+    @Binding var docURL: URL?
+    @Environment(\.presentationMode) var presentationMode
+    
     class Coordinator:NSObject, UIDocumentPickerDelegate, UINavigationControllerDelegate  {
         
         var parent: DocumentPicker2
+        
         
         init(_ parent: DocumentPicker2) {
             self.parent = parent
@@ -29,12 +33,11 @@ struct DocumentPicker2: UIViewControllerRepresentable {
             }
             
             parent.docURL = urls.first!
+            print("fist url")
+            print(urls.first!)
             parent.presentationMode.wrappedValue.dismiss()
         }
     }
-    
-    @Binding var docURL: URL?
-    @Environment(\.presentationMode) var presentationMode
     
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
