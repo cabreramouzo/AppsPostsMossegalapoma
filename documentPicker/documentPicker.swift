@@ -26,7 +26,10 @@ struct DocumentPicker2: UIViewControllerRepresentable {
         }
         
         func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
-            parent.userPickedDocument = false
+            if parent.docURL == nil {
+                parent.userPickedDocument = false
+            }
+            
         }
         
         func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
