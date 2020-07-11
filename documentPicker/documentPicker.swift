@@ -13,6 +13,7 @@ import MobileCoreServices
 struct DocumentPicker2: UIViewControllerRepresentable {
     
     @Binding var docURL: URL?
+    @Binding var userPickedDocument: Bool?
     @Environment(\.presentationMode) var presentationMode
     
     class Coordinator:NSObject, UIDocumentPickerDelegate, UINavigationControllerDelegate  {
@@ -22,6 +23,10 @@ struct DocumentPicker2: UIViewControllerRepresentable {
         
         init(_ parent: DocumentPicker2) {
             self.parent = parent
+        }
+        
+        func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+            parent.userPickedDocument = false
         }
         
         func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
@@ -55,6 +60,7 @@ struct DocumentPicker2: UIViewControllerRepresentable {
         
         
     }
+    
     
 }
 

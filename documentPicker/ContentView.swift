@@ -28,7 +28,7 @@ struct ContentView: View {
     var is_ok = false
     @State var alertText = "Hi ha hagut un error al pujar l'arxiu a Wordpress"
     
-    @State private var userPickedDocument:Bool = false
+    @State var userPickedDocument:Bool? = false
     
     
     func toggle_post_options() {
@@ -65,7 +65,7 @@ struct ContentView: View {
                         }
                     }
                     .sheet(isPresented: self.$showDocumentPicker, onDismiss: loadDocumentUrl) {
-                        DocumentPicker2(docURL: self.$inputURL)
+                        DocumentPicker2(docURL: self.$inputURL, userPickedDocument: self.$userPickedDocument)
                     }
                 }
                 Section {
@@ -134,7 +134,7 @@ struct ContentView: View {
                     }.alert(isPresented: $alert) {
                         Alert(title: Text("Alerta!"), message: Text(alertText), dismissButton: .default(Text("Ok!")))
                     }
-                    .disabled(!userPickedDocument)
+                    .disabled(!userPickedDocument!)
                 }
             }.listStyle(GroupedListStyle()).navigationBarTitle("Carregar Post HTML")
         }
@@ -143,9 +143,9 @@ struct ContentView: View {
         print ("loadDocument---")
         guard let inputURL = inputURL else { return }
         docURL = inputURL
-        if self.inputURL != nil {
+        /*if self.inputURL != nil {
             self.userPickedDocument = true
-        }
+        }*/
     }
 }
 
