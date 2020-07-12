@@ -30,7 +30,7 @@ struct ContentView: View {
     
     @State var userPickedDocument:Bool? = false
     
-    @State private var isAnimating: Bool = false
+    @State private var showActivityIndicator: Bool = false
     
     
     func toggle_post_options() {
@@ -99,7 +99,7 @@ struct ContentView: View {
                     Button(action: {
                         print("FILE URL:")
                         print(self.docURL)
-                        self.isAnimating = true
+                        self.showActivityIndicator = true
                         
                         uploadPost(draft: self.draft, documentURL: self.docURL, completion: { (is_ok) -> Void in
                             self.alert = true
@@ -125,7 +125,7 @@ struct ContentView: View {
                                 Image(systemName: "text.bubble")
                                 Text("Publicar Entrada").accentColor(.red)
                             }
-                            if isAnimating == true {
+                            if showActivityIndicator == true {
                                 ActivityIndicator()
                                 .frame(width: 20, height: 20)
                             }
@@ -139,7 +139,7 @@ struct ContentView: View {
                         )
 
                     }.alert(isPresented: $alert) {
-                        return Alert(title: Text("Alerta!"), message: Text(alertText), dismissButton: .default(Text("Ok!")) {self.isAnimating = false})
+                        return Alert(title: Text("Alerta!"), message: Text(alertText), dismissButton: .default(Text("Ok!")) {self.showActivityIndicator = false})
                     }
                     .disabled(!userPickedDocument!)
                 }
@@ -151,7 +151,7 @@ struct ContentView: View {
         print ("loadDocument---")
         guard let inputURL = inputURL else { return }
         docURL = inputURL
-        isAnimating = false
+        showActivityIndicator = false
     }
 }
 
@@ -161,29 +161,3 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }*/
-
-struct ActivityIndicator: View {
-
-  @State private var isAnimating: Bool = false
-
-  var body: some View {
-    GeometryReader { (geometry: GeometryProxy) in
-      ForEach(0..<5) { index in
-        Group {
-          Circle()
-            .frame(width: geometry.size.width / 5, height: geometry.size.height / 5)
-            .scaleEffect(!self.isAnimating ? 1 - CGFloat(index) / 5 : 0.2 + CGFloat(index) / 5)
-            .offset(y: geometry.size.width / 10 - geometry.size.height / 2)
-          }.frame(width: geometry.size.width, height: geometry.size.height)
-            .rotationEffect(!self.isAnimating ? .degrees(0) : .degrees(360))
-            .animation(Animation
-              .timingCurve(0.5, 0.15 + Double(index) / 5, 0.25, 1, duration: 1.5)
-              .repeatForever(autoreverses: false))
-        }
-      }
-    .aspectRatio(1, contentMode: .fit)
-    .onAppear {
-        self.isAnimating = true
-    }
-  }
-}
