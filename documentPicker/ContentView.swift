@@ -27,8 +27,11 @@ struct ContentView: View {
     
     var is_ok = false
     @State var alertText = "Hi ha hagut un error al pujar l'arxiu a Wordpress"
+    @State var alertTitle = "Error!"
     
     @State var userPickedDocument:Bool? = false
+    
+    @State private var showActivityIndicator: Bool = false
     
     
     func toggle_post_options() {
@@ -47,9 +50,8 @@ struct ContentView: View {
         
         NavigationView {
             List() {
-                
                 Section {
-
+                    
                     Button(action: {
                         self.showDocumentPicker = true
                         self.userPickedDocument = true
@@ -98,6 +100,7 @@ struct ContentView: View {
                     Button(action: {
                         print("FILE URL:")
                         print(self.docURL)
+                        self.showActivityIndicator = true
                         
                         uploadPost(draft: self.draft, documentURL: self.docURL, completion: { (is_ok) -> Void in
                             self.alert = true
@@ -105,6 +108,7 @@ struct ContentView: View {
                             print(is_ok)
                             if is_ok {
                                 self.alertText = "Arxiu carregat correctament!"
+                                self.alertTitle = "OK"
                             }
                             
                         })
@@ -123,6 +127,11 @@ struct ContentView: View {
                                 Image(systemName: "text.bubble")
                                 Text("Publicar Entrada").accentColor(.red)
                             }
+                            if showActivityIndicator == true {
+                                ActivityIndicator()
+                                .frame(width: 20, height: 20)
+                            }
+                            
                             Spacer()
                             
                         }.padding(10.0)
@@ -132,10 +141,11 @@ struct ContentView: View {
                         )
 
                     }.alert(isPresented: $alert) {
-                        Alert(title: Text("Alerta!"), message: Text(alertText), dismissButton: .default(Text("Ok!")))
+                        return Alert(title: Text(alertTitle), message: Text(alertText), dismissButton: .default(Text("Ok!")) {self.showActivityIndicator = false})
                     }
                     .disabled(!userPickedDocument!)
                 }
+                
             }.listStyle(GroupedListStyle()).navigationBarTitle("Carregar Post HTML")
         }
     }
@@ -143,9 +153,7 @@ struct ContentView: View {
         print ("loadDocument---")
         guard let inputURL = inputURL else { return }
         docURL = inputURL
-        /*if self.inputURL != nil {
-            self.userPickedDocument = true
-        }*/
+        showActivityIndicator = false
     }
 }
 
