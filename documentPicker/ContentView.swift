@@ -25,7 +25,7 @@ struct ContentView: View {
     
     var is_ok = false
     @State var alertText = "Hi ha hagut un error al pujar l'arxiu a Wordpress"
-    @State var alertTitle = "Error!"
+    @State var alertTitle = "⚠️ Error!"
     
     @State var userPickedDocument:Bool? = false
     
@@ -106,7 +106,11 @@ struct ContentView: View {
                             print(is_ok)
                             if is_ok {
                                 self.alertText = "Arxiu carregat correctament!"
-                                self.alertTitle = "OK"
+                                self.alertTitle = "✅ OK"
+                            }
+                            else {
+                                self.alertText = "Hi ha hagut un error al pujar l'arxiu a Wordpress"
+                                self.alertTitle = "⚠️ Error!"
                             }
                             
                         })
