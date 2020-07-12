@@ -19,8 +19,6 @@ struct ContentView: View {
     
     @State var alert:Bool = false
     @State var sucessUpload: Bool = false
-    
-    @State var docURL:URL
 
     @State var showDocumentPicker = false
     @State var inputURL: URL?
@@ -66,7 +64,7 @@ struct ContentView: View {
                             }
                         }
                     }
-                    .sheet(isPresented: self.$showDocumentPicker, onDismiss: loadDocumentUrl) {
+                    .sheet(isPresented: self.$showDocumentPicker) {
                         DocumentPicker2(docURL: self.$inputURL, userPickedDocument: self.$userPickedDocument)
                     }
                 }
@@ -99,10 +97,10 @@ struct ContentView: View {
                 Section {
                     Button(action: {
                         print("FILE URL:")
-                        print(self.docURL)
+                        print(self.inputURL as Any)
                         self.showActivityIndicator = true
                         
-                        uploadPost(draft: self.draft, documentURL: self.docURL, completion: { (is_ok) -> Void in
+                        uploadPost(draft: self.draft, documentURL: self.inputURL!, completion: { (is_ok) -> Void in
                             self.alert = true
                             print("es ok")
                             print(is_ok)
@@ -114,7 +112,7 @@ struct ContentView: View {
                         })
                             
                         // Make sure you release the security-scoped resource when you are done.
-                        do { self.docURL.stopAccessingSecurityScopedResource() }
+                        do { self.inputURL!.stopAccessingSecurityScopedResource() }
 
                         }) {
                         HStack(alignment: .center) {
@@ -148,12 +146,6 @@ struct ContentView: View {
                 
             }.listStyle(GroupedListStyle()).navigationBarTitle("Carregar Post HTML")
         }
-    }
-    func loadDocumentUrl() {
-        print ("loadDocument---")
-        guard let inputURL = inputURL else { return }
-        docURL = inputURL
-        showActivityIndicator = false
     }
 }
 
