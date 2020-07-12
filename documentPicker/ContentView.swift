@@ -27,6 +27,7 @@ struct ContentView: View {
     
     var is_ok = false
     @State var alertText = "Hi ha hagut un error al pujar l'arxiu a Wordpress"
+    @State var alertTitle = "Error!"
     
     @State var userPickedDocument:Bool? = false
     
@@ -107,6 +108,7 @@ struct ContentView: View {
                             print(is_ok)
                             if is_ok {
                                 self.alertText = "Arxiu carregat correctament!"
+                                self.alertTitle = "OK"
                             }
                             
                         })
@@ -139,7 +141,7 @@ struct ContentView: View {
                         )
 
                     }.alert(isPresented: $alert) {
-                        return Alert(title: Text("Alerta!"), message: Text(alertText), dismissButton: .default(Text("Ok!")) {self.showActivityIndicator = false})
+                        return Alert(title: Text(alertTitle), message: Text(alertText), dismissButton: .default(Text("Ok!")) {self.showActivityIndicator = false})
                     }
                     .disabled(!userPickedDocument!)
                 }
