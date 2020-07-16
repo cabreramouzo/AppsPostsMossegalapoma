@@ -33,6 +33,11 @@ struct ContentView: View {
     
     @State private var showActivityIndicator: Bool = false
     
+    @State private var image: Image?
+    @State private var showImagePicker = false
+    @State private var inputImage: UIImage?
+    @State private var userPickedImage: Bool? = false
+    
     
     func toggle_post_options() {
        if published {
@@ -45,11 +50,23 @@ struct ContentView: View {
        }
    }
     
+    func loadImage() {
+        print("loadimage")
+        guard let inputImage = inputImage else {return}
+        image = Image(uiImage: inputImage)
+    }
+    
+    
+    
     var body: some View {
         
         
         NavigationView {
             List() {
+                Section {
+                    Text("Títol del post").font(.subheadline).foregroundColor(.gray)
+                    TextField("El més destacable de la WWDC20 - Programa 420", text: $postTitle)
+                }
                 Section {
                     
                     Button(action: {
@@ -71,9 +88,29 @@ struct ContentView: View {
                     }
                 }
                 Section {
-                    Text("Títol del post").font(.subheadline).foregroundColor(.gray)
-                    TextField("El més destacable de la WWDC20 - Programa 420", text: $postTitle)
-                    
+                    Text("Imatge principal")
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
+                    ZStack {
+                        Rectangle().fill(Color.secondary)
+                        
+                        if image != nil {
+                            image?
+                            .resizable()
+                            .scaledToFit()
+                        }
+                        else {
+                            Text("Prémer aquí per triar una imatge")
+                                .foregroundColor(.white)
+                                .font(.subheadline)
+                        }
+                    }
+                    .onTapGesture {
+                        self.showImagePicker = true
+                    }
+                    .sheet(isPresented: self.$showImagePicker, onDismiss: loadImage) {
+                        ImagePicker(image: self.$inputImage, userPickedImage: self.$userPickedImage)
+                    }
                 }
                 Section {
                     Text("Estat Wordpress").font(.subheadline).foregroundColor(.gray)
