@@ -23,6 +23,8 @@ struct ContentView: View {
     @State var showDocumentPicker = false
     @State var inputURL: URL?
     
+    @State var postTitle: String
+    
     var is_ok = false
     @State var alertText = "Hi ha hagut un error al pujar l'arxiu a Wordpress"
     @State var alertTitle = "⚠️ Error!"
@@ -61,6 +63,10 @@ struct ContentView: View {
         
         NavigationView {
             List() {
+                Section {
+                    Text("Títol del post").font(.subheadline).foregroundColor(.gray)
+                    TextField("El més destacable de la WWDC20 - Programa 420", text: $postTitle)
+                }
                 Section {
                     
                     Button(action: {
@@ -138,7 +144,7 @@ struct ContentView: View {
                         print(self.inputURL as Any)
                         self.showActivityIndicator = true
                         
-                        uploadPost(draft: self.draft, documentURL: self.inputURL!, completion: { (is_ok) -> Void in
+                        uploadPost(draft: self.draft, title: self.postTitle , documentURL: self.inputURL!, completion: { (is_ok) -> Void in
                             self.alert = true
                             print("es ok")
                             print(is_ok)
