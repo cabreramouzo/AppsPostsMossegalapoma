@@ -34,6 +34,7 @@
 /* Begin PBXFileReference section */
 		042B90F124B73D3F00FE9043 /* UploadDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadDocument.swift; sourceTree = "<group>"; };
 		042B90F324B760A000FE9043 /* documentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = documentPicker.swift; sourceTree = "<group>"; };
+		0458DE9024BCD20C00B35592 /* documentPicker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = documentPicker.entitlements; sourceTree = "<group>"; };
 		04A5000024B3394F00E40D2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04A5000524B3395000E40D2A /* documentPickerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = documentPickerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04A5000924B3395000E40D2A /* documentPickerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = documentPickerTests.swift; sourceTree = "<group>"; };
@@ -98,6 +99,7 @@
 		04A5FFEE24B3394D00E40D2A /* documentPicker */ = {
 			isa = PBXGroup;
 			children = (
+				0458DE9024BCD20C00B35592 /* documentPicker.entitlements */,
 				04C237E824BA0FB2005BA9D0 /* ActivityIndicator.swift */,
 				042B90F324B760A000FE9043 /* documentPicker.swift */,
 				04A5001424B47DE200E40D2A /* programa_tipic_nomes_body.html */,
@@ -385,6 +387,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = documentPicker/documentPicker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"documentPicker/Preview Content\"";
 				DEVELOPMENT_TEAM = 7V6773B2EX;
@@ -396,6 +399,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = mac.documentPicker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -405,6 +409,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = documentPicker/documentPicker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"documentPicker/Preview Content\"";
 				DEVELOPMENT_TEAM = 7V6773B2EX;
@@ -416,6 +421,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = mac.documentPicker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

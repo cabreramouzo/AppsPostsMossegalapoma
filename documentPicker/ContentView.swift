@@ -9,6 +9,7 @@
 import SwiftUI
 import MobileCoreServices
 import Foundation
+import AppKit
 
 struct ContentView: View {
     
@@ -30,7 +31,7 @@ struct ContentView: View {
     @State var userPickedDocument:Bool? = false
     
     @State private var showActivityIndicator: Bool = false
-    
+
     
     func toggle_post_options() {
        if published {
@@ -48,14 +49,26 @@ struct ContentView: View {
         
         NavigationView {
             List() {
+                #if targetEnvironment(macCatalyst)
                 Section {
-                    
                     Button(action: {
                         self.showDocumentPicker = true
                         self.userPickedDocument = true
+                        let picker = DocumentPickerViewController(
+                            supportedTypes: [String(kUTTypeHTML)],
+                            onPick: { url in
+                                print("url : \(url)")
+                                self.inputURL = url
+                            },
+                            onDismiss: {
+                                print("dismiss")
+                                self.showDocumentPicker = false
+                            }
+                        )
+                        UIApplication.shared.windows[0].rootViewController!.present(picker, animated: true)
                     }) {
                         HStack {
-                            Image(systemName: "rectangle.and.paperclip")
+                            Image(systemName: "rectangle.and.paperclip").resizable().frame(width: 40, height: 40)
                             if self.inputURL != nil {
                                 Text(self.inputURL!.path)
                             }
@@ -64,10 +77,35 @@ struct ContentView: View {
                             }
                         }
                     }
-                    .sheet(isPresented: self.$showDocumentPicker) {
-                        DocumentPicker2(docURL: self.$inputURL, userPickedDocument: self.$userPickedDocument)
-                    }
+                    
                 }
+                #else
+                Section {
+                    
+                    Button(action: {
+                        self.showDocumentPicker = true
+                        self.userPickedDocument = true
+                        //#if targetEnvironment(macCatalyst)
+                        //UIApplication.shared.windows[0].rootViewController!.present(self.picker, animated: true)
+                        //#endif
+                    }) {
+                        HStack {
+                            Image(systemName: "rectangle.and.paperclip").resizable().frame(width: 40, height: 40)
+                            if self.inputURL != nil {
+                                Text(self.inputURL!.path)
+                            }
+                            else {
+                                Text("Seleccionar arxiu html...")
+                            }
+                        }
+                    }
+                    .sheet(isPresented: $showDocumentPicker, onDismiss: {self.showDocumentPicker = false}) {
+                        DocumentPicker2(docURL: self.$inputURL, userPickedDocument: self.$userPickedDocument)
+
+                    }
+                    
+                }
+                #endif
                 Section {
                     Text("Estat Wordpress").font(.subheadline).foregroundColor(.gray)
                     HStack {
@@ -99,9 +137,10 @@ struct ContentView: View {
                         print("FILE URL:")
                         print(self.inputURL as Any)
                         self.showActivityIndicator = true
+                        self.alert = true
                         
                         uploadPost(draft: self.draft, documentURL: self.inputURL!, completion: { (is_ok) -> Void in
-                            self.alert = true
+                            
                             print("es ok")
                             print(is_ok)
                             if is_ok {
@@ -115,9 +154,10 @@ struct ContentView: View {
                             
                         })
                             
+                        #if !targetEnvironment(macCatalyst)
                         // Make sure you release the security-scoped resource when you are done.
                         do { self.inputURL!.stopAccessingSecurityScopedResource() }
-
+                        #endif
                         }) {
                         HStack(alignment: .center) {
                             Spacer()
@@ -143,6 +183,8 @@ struct ContentView: View {
                         )
 
                     }.alert(isPresented: $alert) {
+                        print("alert:")
+                        print(self.alert)
                         return Alert(title: Text(alertTitle), message: Text(alertText), dismissButton: .default(Text("Ok!")) {self.showActivityIndicator = false})
                     }
                     .disabled(!userPickedDocument!)
