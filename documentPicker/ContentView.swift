@@ -34,10 +34,13 @@ struct ContentView: View {
     @State private var showActivityIndicator: Bool = false
     
     @State private var image: Image?
+    @State  var imageFileName: String
+    @State  var imageTitle: String
     @State private var showImagePicker = false
     @State private var inputImage: UIImage?
     @State private var userPickedImage: Bool? = false
-    
+    @State var mediaIDstate: Int
+    var mediaID: Int = -1
     
     func toggle_post_options() {
        if published {
@@ -91,14 +94,15 @@ struct ContentView: View {
                     Text("Imatge principal")
                         .font(.subheadline)
                         .foregroundColor(.gray)
+                    TextField("Crisi de confiança", text: $imageTitle)
+                    TextField("crisi_de_confiança.png", text: $imageFileName)
                     ZStack {
                         Rectangle().fill(Color.secondary)
                         
                         if image != nil {
                             image?
                             .resizable()
-                            .scaledToFit()
-                        }
+                            .scaledToFit()                        }
                         else {
                             Text("Prémer aquí per triar una imatge")
                                 .foregroundColor(.white)
@@ -137,6 +141,54 @@ struct ContentView: View {
                         Text("Publicació")
                     }
                 }
+                
+                Section {
+                    Button(action: {
+                        self.showActivityIndicator = true
+                        self.userPickedImage = true
+                        uploadImage(image: self.inputImage!, imageTitle: self.imageTitle, fileName: self.imageFileName, completion: {
+                            (is_ok, mediaID) -> Void in
+                            self.alert = true
+                            print("es ok")
+                            print(is_ok)
+                            print("mediaID")
+                            print(mediaID)
+                            self.mediaIDstate = mediaID
+                            if is_ok {
+                                self.alertText = "Imatge carregada correctament!"
+                                self.alertTitle = "✅ OK"
+                            }
+                            else {
+                                self.alertText = "Hi ha hagut un error al pujar l'imatge a Wordpress"
+                                self.alertTitle = "⚠️ Error!"
+                            }
+                        })
+                        
+                        }) {
+                        HStack(alignment: .center) {
+                            Spacer()
+
+                            Image(systemName: "bookmark")
+                            Text("Pujar Imatge")
+
+                            if showActivityIndicator == true {
+                                ActivityIndicator()
+                                .frame(width: 20, height: 20)
+                            }
+                            
+                            Spacer()
+                            
+                        }.padding(10.0)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10.0)
+                                .stroke(lineWidth: 2.0)
+                        )
+
+                    }.alert(isPresented: $alert) {
+                        return Alert(title: Text(alertTitle), message: Text(alertText), dismissButton: .default(Text("Ok!")) {self.showActivityIndicator = false})
+                    }
+                    .disabled(!userPickedImage!)
+                }
                     
                 Section {
                     Button(action: {
@@ -144,7 +196,8 @@ struct ContentView: View {
                         print(self.inputURL as Any)
                         self.showActivityIndicator = true
                         
-                        uploadPost(draft: self.draft, title: self.postTitle , documentURL: self.inputURL!, completion: { (is_ok) -> Void in
+                        
+                        uploadPost(draft: self.draft, title: self.postTitle , documentURL: self.inputURL!, mediaID: self.mediaIDstate,  completion: { (is_ok) -> Void in
                             self.alert = true
                             print("es ok")
                             print(is_ok)

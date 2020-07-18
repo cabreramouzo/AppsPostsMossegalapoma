@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		040BCAF224C054DB002F544A /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040BCAF124C054DB002F544A /* ImagePicker.swift */; };
+		040BCAF424C08DB8002F544A /* UploadFeaturedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040BCAF324C08DB8002F544A /* UploadFeaturedImage.swift */; };
 		042B90F224B73D3F00FE9043 /* UploadDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B90F124B73D3F00FE9043 /* UploadDocument.swift */; };
 		042B90F424B760A000FE9043 /* documentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B90F324B760A000FE9043 /* documentPicker.swift */; };
 		04A5000A24B3395000E40D2A /* documentPickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5000924B3395000E40D2A /* documentPickerTests.swift */; };
@@ -34,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		040BCAF124C054DB002F544A /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		040BCAF324C08DB8002F544A /* UploadFeaturedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadFeaturedImage.swift; sourceTree = "<group>"; };
 		042B90F124B73D3F00FE9043 /* UploadDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadDocument.swift; sourceTree = "<group>"; };
 		042B90F324B760A000FE9043 /* documentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = documentPicker.swift; sourceTree = "<group>"; };
 		04A5000024B3394F00E40D2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				04A5FFF124B3394D00E40D2A /* SceneDelegate.swift */,
 				04A5FFF624B3394D00E40D2A /* ContentView.swift */,
 				042B90F124B73D3F00FE9043 /* UploadDocument.swift */,
+				040BCAF324C08DB8002F544A /* UploadFeaturedImage.swift */,
 				04A5FFF824B3394F00E40D2A /* Assets.xcassets */,
 				04A5FFFD24B3394F00E40D2A /* LaunchScreen.storyboard */,
 				04A5000024B3394F00E40D2A /* Info.plist */,
@@ -240,6 +243,7 @@
 			files = (
 				04A5FFF024B3394D00E40D2A /* AppDelegate.swift in Sources */,
 				04A5FFF524B3394D00E40D2A /* documentPicker.xcdatamodeld in Sources */,
+				040BCAF424C08DB8002F544A /* UploadFeaturedImage.swift in Sources */,
 				042B90F224B73D3F00FE9043 /* UploadDocument.swift in Sources */,
 				04A5FFF724B3394D00E40D2A /* ContentView.swift in Sources */,
 				040BCAF224C054DB002F544A /* ImagePicker.swift in Sources */,
