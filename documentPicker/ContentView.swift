@@ -9,8 +9,9 @@
 import SwiftUI
 import MobileCoreServices
 import Foundation
+#if targetEnvironment(macCatalyst)
 import AppKit
-
+#endif
 struct ContentView: View {
     
     @State var show = false
@@ -48,7 +49,7 @@ struct ContentView: View {
         
         
         NavigationView {
-            List() {
+            Form() {
                 #if targetEnvironment(macCatalyst)
                 Section {
                     Button(action: {

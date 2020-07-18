@@ -393,6 +393,7 @@
 				DEVELOPMENT_TEAM = 7V6773B2EX;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = documentPicker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -415,6 +416,7 @@
 				DEVELOPMENT_TEAM = 7V6773B2EX;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = documentPicker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
