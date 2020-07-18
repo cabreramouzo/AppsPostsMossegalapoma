@@ -44,7 +44,7 @@ func extractStringFromHTMLDocument(htmlDocURL:URL) -> String {
     
 }
 
-func uploadPost(draft:Bool, title: String, documentURL:URL, completion: @escaping (Bool) -> Void) -> Void {
+func uploadPost(draft:Bool, title: String, documentURL:URL, mediaID:Int, completion: @escaping (Bool) -> Void) -> Void {
     
     let user = "publisher"
     let psw = "XbIb 8kS6 31Xw 2szM xVmd 58JK"
@@ -81,7 +81,11 @@ func uploadPost(draft:Bool, title: String, documentURL:URL, completion: @escapin
     let json: [String: Any] = ["title": title,
     "content": html_content,
     "status": status,
-    "comment_status" : "open"]
+    "comment_status" : "open",
+    "featured_media" : mediaID]
+    
+    print("featured media ID")
+    print(mediaID)
     
     let jsonData = try? JSONSerialization.data(withJSONObject: json)
     //request.httpBody = postString.data(using: String.Encoding.utf8);
