@@ -65,9 +65,8 @@ struct ContentView: View {
         
         
         NavigationView {
-            List() {
-                Section {
-                    Text("Títol del post").font(.subheadline).foregroundColor(.gray)
+            Form {
+                Section(header: Text("Títol del post").bold()) {
                     TextField("El més destacable de la WWDC20 - Programa 420", text: $postTitle)
                 }
                 Section {
@@ -90,10 +89,8 @@ struct ContentView: View {
                         DocumentPicker2(docURL: self.$inputURL, userPickedDocument: self.$userPickedDocument)
                     }
                 }
-                Section {
-                    Text("Imatge principal")
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
+                Section(header: Text("Imatge principal").bold()) {
+
                     TextField("Crisi de confiança", text: $imageTitle)
                     TextField("crisi_de_confiança.png", text: $imageFileName)
                     ZStack {
@@ -116,32 +113,6 @@ struct ContentView: View {
                         ImagePicker(image: self.$inputImage, userPickedImage: self.$userPickedImage)
                     }
                 }
-                Section {
-                    Text("Estat Wordpress").font(.subheadline).foregroundColor(.gray)
-                    HStack {
-                        Button(action: toggle_post_options) {
-                            if draft {
-                                Image(systemName: "checkmark.circle")
-                            }
-                            else {
-                                Image(systemName: "circle")
-                            }
-                        }
-                        Text("Esborrany")
-                    }
-                    HStack {
-                        Button(action: toggle_post_options) {
-                            if published {
-                                Image(systemName: "checkmark.circle")
-                            }
-                            else {
-                                Image(systemName: "circle")
-                            }
-                        }
-                        Text("Publicació")
-                    }
-                }
-                
                 Section {
                     Button(action: {
                         self.showActivityIndicator = true
@@ -188,6 +159,30 @@ struct ContentView: View {
                         return Alert(title: Text(alertTitle), message: Text(alertText), dismissButton: .default(Text("Ok!")) {self.showActivityIndicator = false})
                     }
                     .disabled(!userPickedImage!)
+                }
+                Section(header: Text("Estat Wordpress").bold()) {
+                    HStack {
+                        Button(action: toggle_post_options) {
+                            if draft {
+                                Image(systemName: "checkmark.circle")
+                            }
+                            else {
+                                Image(systemName: "circle")
+                            }
+                        }
+                        Text("Esborrany")
+                    }
+                    HStack {
+                        Button(action: toggle_post_options) {
+                            if published {
+                                Image(systemName: "checkmark.circle")
+                            }
+                            else {
+                                Image(systemName: "circle")
+                            }
+                        }
+                        Text("Publicació")
+                    }
                 }
                     
                 Section {
