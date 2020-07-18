@@ -160,7 +160,7 @@ struct ContentView: View {
                     }
                     .disabled(!userPickedImage!)
                 }
-                Section(header: Text("Estat Wordpress").bold()) {
+                Section(header: Text("Estat Wordpress").bold(), footer: Text("Abans de pujar el post, puja la imatge destacada") ) {
                     HStack {
                         Button(action: toggle_post_options) {
                             if draft {
