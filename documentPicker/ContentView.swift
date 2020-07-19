@@ -42,6 +42,8 @@ struct ContentView: View {
     @State var mediaIDstate: Int
     var mediaID: Int = -1
     
+    @State var mlpAudioURL = "https://storagemossegui.com/mlpaudio/mlp345.mp3ac"
+    
     func toggle_post_options() {
        if published {
            draft = true
@@ -160,6 +162,10 @@ struct ContentView: View {
                     }
                     .disabled(!userPickedImage!)
                 }
+                Section(header: Text("MLP - arxiu d'àudio"), footer: Text("Recorda que la URL acaba en \"mlpxxx.mp3\". Per exemple: https://storagemossegui.com/mlpaudio/mlp445.mp3")) {
+                    TextField("https://storagemossegui.com/mlpaudio/mlp445.mp3", text: $mlpAudioURL)
+                    
+                }
                 Section(header: Text("Estat Wordpress").bold(), footer: Text("Abans de pujar el post, puja la imatge destacadas") ) {
                     HStack {
                         Button(action: toggle_post_options) {
@@ -245,9 +251,9 @@ struct ContentView: View {
     }
 }
 
-/*
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(postTitle: "", imageFileName: "", imageTitle:"", mediaIDstate: -1)
     }
-}*/
+}
