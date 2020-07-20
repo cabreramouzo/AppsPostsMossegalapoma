@@ -19,7 +19,7 @@ struct ContentView: View {
     
     @State var alert:Bool = false
     @State var sucessUpload: Bool = false
-
+    
     @State var showDocumentPicker = false
     @State var inputURL: URL?
     
@@ -47,15 +47,15 @@ struct ContentView: View {
     @State var urlButtonImage:String = "questionmark.square"
     
     func toggle_post_options() {
-       if published {
-           draft = true
-           published = false
-       }
-       else {
-           draft = false
-           published = true
-       }
-   }
+        if published {
+            draft = true
+            published = false
+        }
+        else {
+            draft = false
+            published = true
+        }
+    }
     
     func loadImage() {
         print("loadimage")
@@ -94,7 +94,7 @@ struct ContentView: View {
                     }
                 }
                 Section(header: Text("Imatge principal").bold()) {
-
+                    
                     TextField("Crisi de confiança", text: $imageTitle)
                     TextField("crisi_de_confiança.png", text: $imageFileName)
                     ZStack {
@@ -102,8 +102,8 @@ struct ContentView: View {
                         
                         if image != nil {
                             image?
-                            .resizable()
-                            .scaledToFit()                        }
+                                .resizable()
+                                .scaledToFit()                        }
                         else {
                             Text("Prémer aquí per triar una imatge")
                                 .foregroundColor(.white)
@@ -139,26 +139,26 @@ struct ContentView: View {
                             }
                         })
                         
-                        }) {
+                    }) {
                         HStack(alignment: .center) {
                             Spacer()
-
+                            
                             Image(systemName: "photo")
                             Text("Pujar Imatge")
-
+                            
                             if showActivityIndicator == true {
                                 ActivityIndicator()
-                                .frame(width: 20, height: 20)
+                                    .frame(width: 20, height: 20)
                             }
                             
                             Spacer()
                             
                         }.padding(10.0)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10.0)
-                                .stroke(lineWidth: 2.0)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10.0)
+                                    .stroke(lineWidth: 2.0)
                         )
-
+                        
                     }.alert(isPresented: $alert) {
                         return Alert(title: Text(alertTitle), message: Text(alertText), dismissButton: .default(Text("Ok!")) {self.showActivityIndicator = false})
                     }
@@ -174,67 +174,54 @@ struct ContentView: View {
                     VStack {
                         
                         Button(action: {
-
-                                               self.showActivityIndicator = true
-                                               
-                            checkURL(url: self.mlpAudioURL, completion: { (url_ok) -> Void in
-                                                   //self.alert = true
-                                                   if url_ok {
-                                                       self.alertText = "URL accessible"
-                                                       self.alertTitle = "✅ OK"
-
-                                                        self.urlButtonImage = "checkmark.seal.fill"
-                                                    
-
-                                                   }
-                                                   else {
-                                                       self.alertText = "URL no accessible"
-                                                       self.alertTitle = "⚠️ Error!"
-
-                                                        self.urlButtonImage = "exclamationmark.icloud"
-
-
-                                                    
-                                                   }
-                                self.showActivityIndicator = false
-                                                   
-                            })
-                        
-                     }) {
-                        HStack(alignment: .center) {
-                            Spacer()
-                            cloudImage(iconString: self.$urlButtonImage)
-                            /*
-                            if url_ok == nil {
-                                Image(systemName: "icloud")
-                            }
-                            else if !url_ok! {
-                                Image(systemName: "exclamationmark.icloud")
-                            }
-                            else if url_ok! {
-                                Image(systemName: "checkmark.icloud")
-                            }*/
-                                
-                            Text("Comprovar URL")
-
-                            if showActivityIndicator == true {
-                                ActivityIndicator()
-                                .frame(width: 20, height: 20)
-                            }
+                            self.showActivityIndicator = true
                             
-                            Spacer()
+                            checkURL(url: self.mlpAudioURL, completion: { (url_ok) -> Void in
+                                if url_ok {
+                                    self.alertText = "URL accessible"
+                                    self.alertTitle = "✅ OK"
+                                    
+                                    self.urlButtonImage = "checkmark.seal.fill"
+                                    
+                                    
+                                }
+                                else {
+                                    self.alertText = "URL no accessible"
+                                    self.alertTitle = "⚠️ Error!"
+                                    
+                                    self.urlButtonImage = "exclamationmark.icloud"
+                                    
+                                    
+                                    
+                                }
+                                self.showActivityIndicator = false
                                 
-                        }.padding(10.0)
-                            .overlay(
-                        RoundedRectangle(cornerRadius: 10.0)
-                            .stroke(lineWidth: 2.0)
+                            })
+                            
+                        }) {
+                            HStack(alignment: .center) {
+                                Spacer()
+                                cloudImage(iconString: self.$urlButtonImage)
+                                Text("Comprovar URL")
+                                
+                                if showActivityIndicator == true {
+                                    ActivityIndicator()
+                                        .frame(width: 20, height: 20)
+                                }
+                                
+                                Spacer()
+                                
+                            }.padding(10.0)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 10.0)
+                                        .stroke(lineWidth: 2.0)
                             )
-
+                            
                         }
-
-                    
-                    
-                    
+                        
+                        
+                        
+                        
                     }
                 }
                 Section(header: Text("Estat Wordpress").bold(), footer: Text("Abans de pujar el post, puja la imatge destacadas") ) {
@@ -261,7 +248,7 @@ struct ContentView: View {
                         Text("Publicació")
                     }
                 }
-                    
+                
                 Section {
                     Button(action: {
                         print("FILE URL:")
@@ -283,11 +270,11 @@ struct ContentView: View {
                             }
                             
                         })
-                            
+                        
                         // Make sure you release the security-scoped resource when you are done.
                         do { self.inputURL!.stopAccessingSecurityScopedResource() }
-
-                        }) {
+                        
+                    }) {
                         HStack(alignment: .center) {
                             Spacer()
                             if draft {
@@ -300,17 +287,17 @@ struct ContentView: View {
                             }
                             if showActivityIndicator == true {
                                 ActivityIndicator()
-                                .frame(width: 20, height: 20)
+                                    .frame(width: 20, height: 20)
                             }
                             
                             Spacer()
                             
                         }.padding(10.0)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10.0)
-                                .stroke(lineWidth: 2.0)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10.0)
+                                    .stroke(lineWidth: 2.0)
                         )
-
+                        
                     }.alert(isPresented: $alert) {
                         return Alert(title: Text(alertTitle), message: Text(alertText), dismissButton: .default(Text("Ok!")) {self.showActivityIndicator = false})
                     }
@@ -330,8 +317,8 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 struct cloudImage: View {
-  @Binding var iconString: String
-  var body: some View {
-    Image(systemName: self.iconString)
-  }
+    @Binding var iconString: String
+    var body: some View {
+        Image(systemName: self.iconString)
+    }
 }
