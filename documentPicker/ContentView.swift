@@ -31,7 +31,9 @@ struct ContentView: View {
     
     @State var userPickedDocument:Bool? = false
     
-    @State private var showActivityIndicator: Bool = false
+    @State private var showActivityIndicatorImageButton: Bool = false
+    @State private var showActivityIndicatorURLButton: Bool = false
+    @State private var showActivityIndicatorPostButton: Bool = false
     
     @State private var image: Image?
     @State  var imageFileName: String
@@ -119,7 +121,7 @@ struct ContentView: View {
                 }
                 Section {
                     Button(action: {
-                        self.showActivityIndicator = true
+                        self.showActivityIndicatorImageButton = true
                         self.userPickedImage = true
                         uploadImage(image: self.inputImage!, imageTitle: self.imageTitle, fileName: self.imageFileName, completion: {
                             (is_ok, mediaID) -> Void in
@@ -146,7 +148,7 @@ struct ContentView: View {
                             Image(systemName: "photo")
                             Text("Pujar Imatge")
                             
-                            if showActivityIndicator == true {
+                            if showActivityIndicatorImageButton == true {
                                 ActivityIndicator()
                                     .frame(width: 20, height: 20)
                             }
@@ -160,7 +162,7 @@ struct ContentView: View {
                         )
                         
                     }.alert(isPresented: $alert) {
-                        return Alert(title: Text(alertTitle), message: Text(alertText), dismissButton: .default(Text("Ok!")) {self.showActivityIndicator = false})
+                        return Alert(title: Text(alertTitle), message: Text(alertText), dismissButton: .default(Text("Ok!")) {self.showActivityIndicatorImageButton = false})
                     }
                     .disabled(!userPickedImage!)
                 }
@@ -174,7 +176,7 @@ struct ContentView: View {
                     VStack {
                         
                         Button(action: {
-                            self.showActivityIndicator = true
+                            self.showActivityIndicatorURLButton = true
                             
                             checkURL(url: self.mlpAudioURL, completion: { (url_ok) -> Void in
                                 if url_ok {
@@ -194,7 +196,7 @@ struct ContentView: View {
                                     
                                     
                                 }
-                                self.showActivityIndicator = false
+                                self.showActivityIndicatorURLButton = false
                                 
                             })
                             
@@ -204,7 +206,7 @@ struct ContentView: View {
                                 cloudImage(iconString: self.$urlButtonImage)
                                 Text("Comprovar URL")
                                 
-                                if showActivityIndicator == true {
+                                if showActivityIndicatorURLButton == true {
                                     ActivityIndicator()
                                         .frame(width: 20, height: 20)
                                 }
@@ -253,7 +255,7 @@ struct ContentView: View {
                     Button(action: {
                         print("FILE URL:")
                         print(self.inputURL as Any)
-                        self.showActivityIndicator = true
+                        self.showActivityIndicatorPostButton = true
                         
                         
                         uploadPost(draft: self.draft, title: self.postTitle , documentURL: self.inputURL!, mediaID: self.mediaIDstate,  completion: { (is_ok) -> Void in
@@ -285,7 +287,7 @@ struct ContentView: View {
                                 Image(systemName: "text.bubble")
                                 Text("Publicar Entrada").accentColor(.red)
                             }
-                            if showActivityIndicator == true {
+                            if showActivityIndicatorPostButton == true {
                                 ActivityIndicator()
                                     .frame(width: 20, height: 20)
                             }
@@ -299,7 +301,7 @@ struct ContentView: View {
                         )
                         
                     }.alert(isPresented: $alert) {
-                        return Alert(title: Text(alertTitle), message: Text(alertText), dismissButton: .default(Text("Ok!")) {self.showActivityIndicator = false})
+                        return Alert(title: Text(alertTitle), message: Text(alertText), dismissButton: .default(Text("Ok!")) {self.showActivityIndicatorPostButton = false})
                     }
                     .disabled(!userPickedDocument!)
                 }
