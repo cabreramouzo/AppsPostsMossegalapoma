@@ -59,7 +59,7 @@ func uploadPost(draft:Bool, title: String, documentURL:URL, mediaID:Int, complet
     //print("HTML content:")
     //print(html_content)
 
-    let url_srcdest = URL(string: "http://192.168.1.129/wp-json/wp/v2/posts")
+    let url_srcdest = URL(string: "http://192.168.1.130/wp-json/wp/v2/posts")
     guard let requestUrl = url_srcdest else { fatalError() }
     
     
@@ -76,13 +76,18 @@ func uploadPost(draft:Bool, title: String, documentURL:URL, mediaID:Int, complet
     if draft {
         status = "draft"
     }
+    
+    let meta: [String: Any] = [
+        "audio_file": "https://storagemossegui.com/mlpaudio/mlp445.mp3"]
         
     // Set HTTP Request Body
     let json: [String: Any] = ["title": title,
     "content": html_content,
     "status": status,
     "comment_status" : "open",
-    "featured_media" : mediaID]
+    "featured_media" : mediaID,
+    "meta" : meta,
+    ]
     
     print("featured media ID")
     print(mediaID)
