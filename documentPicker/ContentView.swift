@@ -42,7 +42,8 @@ struct ContentView: View {
     @State var mediaIDstate: Int
     var mediaID: Int = -1
     
-    @State var mlpAudioURL = "https://storagemossegui.com/mlpaudio/mlp345.mp3ac"
+    @State var mlpAudioURL:String = "https://storagemossegui.com/mlpaudio/mlp345.mp3"
+    @State var url_ok:Bool?
     
     func toggle_post_options() {
        if published {
@@ -162,9 +163,63 @@ struct ContentView: View {
                     }
                     .disabled(!userPickedImage!)
                 }
-                Section(header: Text("MLP - arxiu d'àudio"), footer: Text("Recorda que la URL acaba en \"mlpxxx.mp3\". Per exemple: https://storagemossegui.com/mlpaudio/mlp445.mp3")) {
+                
+                Section {
                     TextField("https://storagemossegui.com/mlpaudio/mlp445.mp3", text: $mlpAudioURL)
+                }
+                
+                Section(header: Text("MLP - arxiu d'àudio"), footer: Text("Recorda que la URL acaba en \"mlpxxx.mp3\". Per exemple: https://storagemossegui.com/mlpaudio/mlp445.mp3")) {
                     
+                    VStack {
+                        
+                        Button(action: {
+
+                                               self.showActivityIndicator = true
+                                               
+                                               
+                            checkURL(url: self.mlpAudioURL, completion: { (url_ok) -> Void in
+                                                   self.alert = true
+                                                   print("es ok")
+                                                   print(url_ok)
+                                                   if url_ok {
+                                                       self.alertText = "URL accessible"
+                                                       self.alertTitle = "✅ OK"
+                                                   }
+                                                   else {
+                                                       self.alertText = "URL no accessible"
+                                                       self.alertTitle = "⚠️ Error!"
+                                                   }
+                                                   
+                            })
+                        
+                     }) {
+                        HStack(alignment: .center) {
+                                Spacer()
+                                Image(systemName: "bookmark")
+                                Text("Comprovar URL")
+
+                                if showActivityIndicator == true {
+                                    ActivityIndicator()
+                                    .frame(width: 20, height: 20)
+                                }
+                                
+                                Spacer()
+                                
+                            }.padding(10.0)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10.0)
+                                    .stroke(lineWidth: 2.0)
+                            )
+
+                        }.alert(isPresented: $alert) {
+                            return Alert(title: Text(alertTitle), message: Text(alertText), dismissButton: .default(Text("Ok!")) {self.showActivityIndicator = false})
+                        
+                    }
+
+                    
+                    
+                    
+                    }
                 }
                 Section(header: Text("Estat Wordpress").bold(), footer: Text("Abans de pujar el post, puja la imatge destacadas") ) {
                     HStack {
