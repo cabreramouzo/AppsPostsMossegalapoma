@@ -43,7 +43,8 @@ struct ContentView: View {
     var mediaID: Int = -1
     
     @State var mlpAudioURL:String = "https://storagemossegui.com/mlpaudio/mlp345.mp3"
-    @State var url_ok:Bool?
+    @State var url_ok:Bool? = false
+    @State var urlButtonImage:String = "questionmark.square"
     
     func toggle_post_options() {
        if published {
@@ -165,7 +166,7 @@ struct ContentView: View {
                 }
                 
                 Section {
-                    TextField("https://storagemossegui.com/mlpaudio/mlp445.mp3", text: $mlpAudioURL)
+                    TextField("https://storagemossegui.com/mlpaudio/mlp445.mp35", text: $mlpAudioURL)
                 }
                 
                 Section(header: Text("MLP - arxiu d'àudio"), footer: Text("Recorda que la URL acaba en \"mlpxxx.mp3\". Per exemple: https://storagemossegui.com/mlpaudio/mlp445.mp3")) {
@@ -176,45 +177,60 @@ struct ContentView: View {
 
                                                self.showActivityIndicator = true
                                                
-                                               
                             checkURL(url: self.mlpAudioURL, completion: { (url_ok) -> Void in
-                                                   self.alert = true
-                                                   print("es ok")
-                                                   print(url_ok)
+                                                   //self.alert = true
                                                    if url_ok {
                                                        self.alertText = "URL accessible"
                                                        self.alertTitle = "✅ OK"
+
+                                                        self.urlButtonImage = "checkmark.seal.fill"
+                                                    
+
                                                    }
                                                    else {
                                                        self.alertText = "URL no accessible"
                                                        self.alertTitle = "⚠️ Error!"
+
+                                                        self.urlButtonImage = "exclamationmark.icloud"
+
+
+                                                    
                                                    }
+                                self.showActivityIndicator = false
                                                    
                             })
                         
                      }) {
                         HStack(alignment: .center) {
-                                Spacer()
-                                Image(systemName: "bookmark")
-                                Text("Comprovar URL")
+                            Spacer()
+                            cloudImage(iconString: self.$urlButtonImage)
+                            /*
+                            if url_ok == nil {
+                                Image(systemName: "icloud")
+                            }
+                            else if !url_ok! {
+                                Image(systemName: "exclamationmark.icloud")
+                            }
+                            else if url_ok! {
+                                Image(systemName: "checkmark.icloud")
+                            }*/
+                                
+                            Text("Comprovar URL")
 
-                                if showActivityIndicator == true {
-                                    ActivityIndicator()
-                                    .frame(width: 20, height: 20)
-                                }
+                            if showActivityIndicator == true {
+                                ActivityIndicator()
+                                .frame(width: 20, height: 20)
+                            }
+                            
+                            Spacer()
                                 
-                                Spacer()
-                                
-                            }.padding(10.0)
+                        }.padding(10.0)
                             .overlay(
-                                RoundedRectangle(cornerRadius: 10.0)
-                                    .stroke(lineWidth: 2.0)
+                        RoundedRectangle(cornerRadius: 10.0)
+                            .stroke(lineWidth: 2.0)
                             )
 
-                        }.alert(isPresented: $alert) {
-                            return Alert(title: Text(alertTitle), message: Text(alertText), dismissButton: .default(Text("Ok!")) {self.showActivityIndicator = false})
-                        
-                    }
+                        }
 
                     
                     
@@ -311,4 +327,11 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView(postTitle: "", imageFileName: "", imageTitle:"", mediaIDstate: -1)
     }
+}
+
+struct cloudImage: View {
+  @Binding var iconString: String
+  var body: some View {
+    Image(systemName: self.iconString)
+  }
 }
