@@ -169,6 +169,9 @@ struct ContentView: View {
                 
                 Section {
                     TextField("https://storagemossegui.com/mlpaudio/mlp445.mp35", text: $mlpAudioURL)
+                        .disableAutocorrection(true)
+                        .autocapitalization(.none)
+                        .keyboardType(.URL)
                 }
                 
                 Section(header: Text("MLP - arxiu d'àudio"), footer: Text("Recorda que la URL acaba en \"mlpxxx.mp3\". Per exemple: https://storagemossegui.com/mlpaudio/mlp445.mp3")) {
@@ -219,14 +222,14 @@ struct ContentView: View {
                                         .stroke(lineWidth: 2.0)
                             )
                             
-                        }
+                        }.disabled(self.mlpAudioURL == "")
                         
                         
                         
                         
                     }
                 }
-                Section(header: Text("Estat Wordpress").bold(), footer: Text("Abans de pujar el post, puja la imatge destacadas") ) {
+                Section(header: Text("Estat Wordpress").bold(), footer: Text("Abans de pujar el post, puja la imatge destacada") ) {
                     HStack {
                         Button(action: toggle_post_options) {
                             if draft {
