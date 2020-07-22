@@ -7,8 +7,11 @@
 //
 
 import Foundation
-
-func extractSingleBlock(inputStr:String, tag:String) -> String {
+/**
+ This function returns a String wich is the result of appending the tag blocs in InputString. %tag1% Hi
+ Mossegalapoma %tag1%, how its going ? %tag1% :)%tag1%  -> Hi Mossegalapoma :)
+ */
+func extractBlock(inputStr:String, tag:String) -> String {
     
     do {
         
@@ -18,23 +21,28 @@ func extractSingleBlock(inputStr:String, tag:String) -> String {
         if regex.firstMatch(in: inputStr, options: [], range: range) != nil {
             let numberOfMatches = regex.numberOfMatches(in: inputStr, range: range)
             
-            if numberOfMatches == 2 {
+            if numberOfMatches%2 == 0 {
                 
                 let results = regex.matches(in: inputStr, range: range)
                 var ranges = [NSRange]()
                 _ = results.map {
                     ranges.append($0.range)
                 }
-                var result = inputStr.dropLast(inputStr.count - ranges[1].lowerBound)
-                result = result.dropFirst(ranges[0].upperBound)
-                return String(result)
+    
                 
+                var result = ""
+                for index in stride(from: 0, through: ranges.count-1, by: 2){
+                    var partialBlock = inputStr.dropLast(inputStr.count - ranges[index+1].lowerBound)
+                    partialBlock = partialBlock.dropFirst(ranges[index].upperBound)
+                    result.append(contentsOf: partialBlock)
+                    
+                }
+                
+                return String(result)
             }
-            
-            
+            else { return "error: Número de tags no parell" }
+
         }
-        
-        
         
     }
     catch let error {
@@ -44,9 +52,3 @@ func extractSingleBlock(inputStr:String, tag:String) -> String {
     return ""
 }
 
-func extractBlock(inputStr:String, tag:String) {
-    
-    
-    
-    
-}
