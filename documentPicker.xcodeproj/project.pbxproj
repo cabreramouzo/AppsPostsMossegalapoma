@@ -11,6 +11,7 @@
 		040BCAF424C08DB8002F544A /* UploadFeaturedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040BCAF324C08DB8002F544A /* UploadFeaturedImage.swift */; };
 		042B90F224B73D3F00FE9043 /* UploadDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B90F124B73D3F00FE9043 /* UploadDocument.swift */; };
 		042B90F424B760A000FE9043 /* documentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B90F324B760A000FE9043 /* documentPicker.swift */; };
+		0459721B24C8446B001C7222 /* BlocExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459721A24C8446B001C7222 /* BlocExtractor.swift */; };
 		04740C4D24C4C2E100F9C8D5 /* CheckURLExists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04740C4C24C4C2E100F9C8D5 /* CheckURLExists.swift */; };
 		04A5000A24B3395000E40D2A /* documentPickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5000924B3395000E40D2A /* documentPickerTests.swift */; };
 		04A5001524B47DE300E40D2A /* programa_tipic_nomes_body.html in Resources */ = {isa = PBXBuildFile; fileRef = 04A5001424B47DE200E40D2A /* programa_tipic_nomes_body.html */; };
@@ -39,6 +40,7 @@
 		040BCAF324C08DB8002F544A /* UploadFeaturedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadFeaturedImage.swift; sourceTree = "<group>"; };
 		042B90F124B73D3F00FE9043 /* UploadDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadDocument.swift; sourceTree = "<group>"; };
 		042B90F324B760A000FE9043 /* documentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = documentPicker.swift; sourceTree = "<group>"; };
+		0459721A24C8446B001C7222 /* BlocExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlocExtractor.swift; sourceTree = "<group>"; };
 		04740C4C24C4C2E100F9C8D5 /* CheckURLExists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckURLExists.swift; sourceTree = "<group>"; };
 		04A5000024B3394F00E40D2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04A5000524B3395000E40D2A /* documentPickerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = documentPickerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,6 +113,7 @@
 				04A5FFEF24B3394D00E40D2A /* AppDelegate.swift */,
 				04A5FFF124B3394D00E40D2A /* SceneDelegate.swift */,
 				04A5FFF624B3394D00E40D2A /* ContentView.swift */,
+				0459721A24C8446B001C7222 /* BlocExtractor.swift */,
 				042B90F124B73D3F00FE9043 /* UploadDocument.swift */,
 				04740C4C24C4C2E100F9C8D5 /* CheckURLExists.swift */,
 				040BCAF324C08DB8002F544A /* UploadFeaturedImage.swift */,
@@ -247,6 +250,7 @@
 				04A5FFF024B3394D00E40D2A /* AppDelegate.swift in Sources */,
 				04A5FFF524B3394D00E40D2A /* documentPicker.xcdatamodeld in Sources */,
 				040BCAF424C08DB8002F544A /* UploadFeaturedImage.swift in Sources */,
+				0459721B24C8446B001C7222 /* BlocExtractor.swift in Sources */,
 				042B90F224B73D3F00FE9043 /* UploadDocument.swift in Sources */,
 				04A5FFF724B3394D00E40D2A /* ContentView.swift in Sources */,
 				040BCAF224C054DB002F544A /* ImagePicker.swift in Sources */,
