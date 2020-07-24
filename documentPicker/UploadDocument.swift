@@ -26,6 +26,10 @@ func extractStringFromHTMLDocument(htmlDocURL:URL) -> String {
             
             if fm.isReadableFile(atPath: htmlDocPath) {
                 fileContent = try String(contentsOfFile: htmlDocPath, encoding: .utf8)
+                let post = makePostFromGuioString(guioString: fileContent, arrayOfTags: ["%extracte%","%part1%","%part2%","%propostes%","%trukis%"])
+                
+                let html = post.getPostHTML()
+                print (html)
             }
             else {
                 print("FILE NO READABLE")

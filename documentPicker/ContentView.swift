@@ -235,7 +235,7 @@ struct ContentView: View {
                     }
                 }
                 
-                Section(header: Text("parsejar").bold(), footer: Text("parsekar") ) {
+                Section(header: Text("make html from post").bold() ) {
                     
                     VStack {
                         Button(action: {

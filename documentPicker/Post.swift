@@ -25,6 +25,17 @@ struct Post: Identifiable {
         return "sectionErrr"
     }
     
+    func getPostHTML() -> String {
+        
+        var html:String = ""
+        
+        for sect in sections {
+            html += self.getSectionContentInHTML(sectionName: sect.key)
+        }
+        
+        return html
+    }
+    
     
 }
 
@@ -36,9 +47,7 @@ struct PostSection {
         self.name = name
         self.content = content
     }
-    
-    
-    
+
 }
 
 
