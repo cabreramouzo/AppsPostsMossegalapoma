@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Ink",
+        "repositoryURL": "https://github.com/johnsundell/ink.git",
+        "state": {
+          "branch": null,
+          "revision": "bd223a2482449507bd3286cb262c962d32d81e4b",
+          "version": "0.5.0"
+        }
+      },
+      {
+        "package": "SwiftSoup",
+        "repositoryURL": "https://github.com/scinfu/SwiftSoup.git",
+        "state": {
+          "branch": null,
+          "revision": "774dc9c7213085db8aa59595e27c1cd22e428904",
+          "version": "2.3.2"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
