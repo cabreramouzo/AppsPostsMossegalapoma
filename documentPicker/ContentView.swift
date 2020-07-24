@@ -10,6 +10,7 @@ import SwiftUI
 import MobileCoreServices
 import Foundation
 
+
 struct ContentView: View {
     
     @State var show = false
@@ -63,6 +64,10 @@ struct ContentView: View {
         print("loadimage")
         guard let inputImage = inputImage else {return}
         image = Image(uiImage: inputImage)
+    }
+    
+    func parser() {
+        parseMarkdown(inputString: "")
     }
     
     
@@ -229,6 +234,21 @@ struct ContentView: View {
                         
                     }
                 }
+                
+                Section(header: Text("parsejar").bold(), footer: Text("parsekar") ) {
+                    
+                    VStack {
+                        Button(action: {
+                            
+                            self.parser()
+                        }) {
+                            Text("parsejar")
+                            
+                        }
+                    }
+                    
+                }
+                
                 Section(header: Text("Estat Wordpress").bold(), footer: Text("Abans de pujar el post, puja la imatge destacada") ) {
                     HStack {
                         Button(action: toggle_post_options) {

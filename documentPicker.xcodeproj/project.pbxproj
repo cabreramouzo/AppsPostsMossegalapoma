@@ -12,6 +12,7 @@
 		042B90F224B73D3F00FE9043 /* UploadDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B90F124B73D3F00FE9043 /* UploadDocument.swift */; };
 		042B90F424B760A000FE9043 /* documentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B90F324B760A000FE9043 /* documentPicker.swift */; };
 		0432DD0924C886C600C62CA1 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 0432DD0824C886C600C62CA1 /* SwiftSoup */; };
+		0432DD0B24C8884800C62CA1 /* DocumentParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0432DD0A24C8884800C62CA1 /* DocumentParser.swift */; };
 		0459721B24C8446B001C7222 /* BlocExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459721A24C8446B001C7222 /* BlocExtractor.swift */; };
 		04740C4D24C4C2E100F9C8D5 /* CheckURLExists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04740C4C24C4C2E100F9C8D5 /* CheckURLExists.swift */; };
 		04A5000A24B3395000E40D2A /* documentPickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5000924B3395000E40D2A /* documentPickerTests.swift */; };
@@ -24,6 +25,7 @@
 		04A5FFFC24B3394F00E40D2A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04A5FFFB24B3394F00E40D2A /* Preview Assets.xcassets */; };
 		04A5FFFF24B3394F00E40D2A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04A5FFFD24B3394F00E40D2A /* LaunchScreen.storyboard */; };
 		04C237E924BA0FB2005BA9D0 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C237E824BA0FB2005BA9D0 /* ActivityIndicator.swift */; };
+		04FCE33324CAE5D4004E8FED /* Ink in Frameworks */ = {isa = PBXBuildFile; productRef = 04FCE33224CAE5D4004E8FED /* Ink */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +43,7 @@
 		040BCAF324C08DB8002F544A /* UploadFeaturedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadFeaturedImage.swift; sourceTree = "<group>"; };
 		042B90F124B73D3F00FE9043 /* UploadDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadDocument.swift; sourceTree = "<group>"; };
 		042B90F324B760A000FE9043 /* documentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = documentPicker.swift; sourceTree = "<group>"; };
+		0432DD0A24C8884800C62CA1 /* DocumentParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentParser.swift; sourceTree = "<group>"; };
 		0459721A24C8446B001C7222 /* BlocExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlocExtractor.swift; sourceTree = "<group>"; };
 		04740C4C24C4C2E100F9C8D5 /* CheckURLExists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckURLExists.swift; sourceTree = "<group>"; };
 		04A5000024B3394F00E40D2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -72,6 +75,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0432DD0924C886C600C62CA1 /* SwiftSoup in Frameworks */,
+				04FCE33324CAE5D4004E8FED /* Ink in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,6 +120,7 @@
 				04A5FFF124B3394D00E40D2A /* SceneDelegate.swift */,
 				04A5FFF624B3394D00E40D2A /* ContentView.swift */,
 				0459721A24C8446B001C7222 /* BlocExtractor.swift */,
+				0432DD0A24C8884800C62CA1 /* DocumentParser.swift */,
 				042B90F124B73D3F00FE9043 /* UploadDocument.swift */,
 				04740C4C24C4C2E100F9C8D5 /* CheckURLExists.swift */,
 				040BCAF324C08DB8002F544A /* UploadFeaturedImage.swift */,
@@ -172,6 +177,7 @@
 			name = documentPicker;
 			packageProductDependencies = (
 				0432DD0824C886C600C62CA1 /* SwiftSoup */,
+				04FCE33224CAE5D4004E8FED /* Ink */,
 			);
 			productName = documentPicker;
 			productReference = 04A5FFEC24B3394D00E40D2A /* documentPicker.app */;
@@ -210,6 +216,7 @@
 			mainGroup = 04A5FFE324B3394D00E40D2A;
 			packageReferences = (
 				0432DD0724C886C600C62CA1 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+				04FCE33124CAE5D4004E8FED /* XCRemoteSwiftPackageReference "ink" */,
 			);
 			productRefGroup = 04A5FFED24B3394D00E40D2A /* Products */;
 			projectDirPath = "";
@@ -266,6 +273,7 @@
 				04A5FFF224B3394D00E40D2A /* SceneDelegate.swift in Sources */,
 				04740C4D24C4C2E100F9C8D5 /* CheckURLExists.swift in Sources */,
 				04C237E924BA0FB2005BA9D0 /* ActivityIndicator.swift in Sources */,
+				0432DD0B24C8884800C62CA1 /* DocumentParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,6 +538,14 @@
 				minimumVersion = 2.3.2;
 			};
 		};
+		04FCE33124CAE5D4004E8FED /* XCRemoteSwiftPackageReference "ink" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/johnsundell/ink.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -537,6 +553,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0432DD0724C886C600C62CA1 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
 			productName = SwiftSoup;
+		};
+		04FCE33224CAE5D4004E8FED /* Ink */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04FCE33124CAE5D4004E8FED /* XCRemoteSwiftPackageReference "ink" */;
+			productName = Ink;
 		};
 /* End XCSwiftPackageProductDependency section */
 
