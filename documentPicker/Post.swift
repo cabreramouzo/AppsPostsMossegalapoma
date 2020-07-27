@@ -28,9 +28,10 @@ struct Post: Identifiable {
     func getPostHTML() -> String {
         
         var html:String = ""
+        let orderTags = ["%extracte%","%part1%","%part2%","%propostes%","%trukis%"]
         
-        for sect in sections {
-            html += self.getSectionContentInHTML(sectionName: sect.key)
+        for sect in orderTags {
+            html += self.getSectionContentInHTML(sectionName: sect)
         }
         
         return html

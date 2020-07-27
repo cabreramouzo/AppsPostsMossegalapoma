@@ -9,7 +9,7 @@
 import Foundation
 
 func makePostFromGuioString(guioString: String, arrayOfTags: [String]) -> Post {
-    
+        
     var p = Post()
     let tags = extractBlocks(arrayOfTags: arrayOfTags, guioString: guioString)
     for tag in tags{
