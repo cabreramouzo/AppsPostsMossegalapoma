@@ -65,12 +65,7 @@ struct ContentView: View {
         guard let inputImage = inputImage else {return}
         image = Image(uiImage: inputImage)
     }
-    
-    func parser() {
-        parseMarkdown(inputString: "")
-    }
-    
-    
+   
     
     var body: some View {
         
@@ -234,21 +229,7 @@ struct ContentView: View {
                         
                     }
                 }
-                
-                Section(header: Text("make html from post").bold() ) {
-                    
-                    VStack {
-                        Button(action: {
-                            
-                            self.parser()
-                        }) {
-                            Text("parsejar")
-                            
-                        }
-                    }
-                    
-                }
-                
+                                
                 Section(header: Text("Estat Wordpress").bold(), footer: Text("Abans de pujar el post, puja la imatge destacada") ) {
                     HStack {
                         Button(action: toggle_post_options) {
