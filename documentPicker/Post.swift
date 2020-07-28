@@ -69,7 +69,7 @@ struct Post: Identifiable {
     
 }
 
-enum PostContent {
+enum PostContent:String {
     case html, markdown
 }
 
