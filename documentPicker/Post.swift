@@ -61,6 +61,7 @@ struct Post: Identifiable {
         
         for sect in orderTags {
             html += self.getSectionContentInHTML(sectionName: sect)
+            html += "\r\r"
         }
         
         return html
