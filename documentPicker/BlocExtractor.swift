@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import Ink
 
 func makePostFromGuioString(guioString: String, arrayOfTags: [String]) -> Post {
-        
+
     var p = Post()
     p.initDefaultHTMLSections()
     let tags = extractBlocks(arrayOfTags: arrayOfTags, guioString: guioString)
