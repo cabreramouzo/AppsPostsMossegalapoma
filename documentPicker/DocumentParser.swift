@@ -18,16 +18,13 @@ func parseMarkdown(inputString: String) -> String {
     
     var mdparser = MarkdownParser()
     let modifier = Modifier(target: .paragraphs, closure: {html,markdown in
-        var new_html = html
-        var new_html2 = new_html.replacingOccurrences(of: "<p>", with: "")
+        let new_html = html
+        let new_html2 = new_html.replacingOccurrences(of: "<p>", with: "")
         return new_html2.replacingOccurrences(of: "</p>", with: "")
     })
     
     mdparser.addModifier(modifier)
     
-    
-    
     let html = mdparser.html(from: inputStringWithoutSpacesInListItems)
-    return html
-    
+    return html    
 }
