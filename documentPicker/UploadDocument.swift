@@ -10,22 +10,27 @@ import Foundation
 import UIKit
 
 
-func extractStringFromHTMLDocument(htmlDocURL:URL) -> String {
+func getHTMLStringFromMdDocument(MdDocURL:URL) -> String {
     
     //let path = htmlDocURL
     var fileContent: String = ""
+    var html: String = ""
     let fm = FileManager.default
     //extract path from URL
     
-    let htmlDocPath = htmlDocURL.path
+    let MdDocPath = MdDocURL.path
     print("PATH")
-    print(htmlDocPath)
+    print(MdDocPath)
     
     do {
-        if fm.fileExists(atPath: htmlDocPath) {
+        if fm.fileExists(atPath: MdDocPath) {
             
-            if fm.isReadableFile(atPath: htmlDocPath) {
-                fileContent = try String(contentsOfFile: htmlDocPath, encoding: .utf8)
+            if fm.isReadableFile(atPath: MdDocPath) {
+                fileContent = try String(contentsOfFile: MdDocPath, encoding: .utf8)
+                let post = makePostFromGuioString(guioString: fileContent, arrayOfTags: ["%extracte%","%part1%","%part2%","%propostes%","%trukis%"])
+                
+                html = post.getPostHTML()
+                print (html)
             }
             else {
                 print("FILE NO READABLE")
@@ -40,7 +45,7 @@ func extractStringFromHTMLDocument(htmlDocURL:URL) -> String {
     }
         
     
-    return fileContent
+    return html
     
 }
 
@@ -55,11 +60,11 @@ func uploadPost(draft:Bool, title: String, documentURL:URL, mediaID:Int, complet
     let decodedToken = Data(base64Encoded: token!)!
     
     //read html file
-    let html_content:String = extractStringFromHTMLDocument(htmlDocURL: documentURL)
+    let html_content:String = getHTMLStringFromMdDocument(MdDocURL: documentURL)
     //print("HTML content:")
     //print(html_content)
 
-    let url_srcdest = URL(string: "http://192.168.1.130/wp-json/wp/v2/posts")
+    let url_srcdest = URL(string: "http://192.168.0.106/wp-json/wp/v2/posts")
     guard let requestUrl = url_srcdest else { fatalError() }
     
     

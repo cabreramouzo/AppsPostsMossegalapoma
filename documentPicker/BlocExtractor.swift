@@ -7,6 +7,20 @@
 //
 
 import Foundation
+import Ink
+
+func makePostFromGuioString(guioString: String, arrayOfTags: [String]) -> Post {
+
+    var p = Post()
+    p.initDefaultHTMLSections()
+    let tags = extractBlocks(arrayOfTags: arrayOfTags, guioString: guioString)
+    for tag in tags{
+        p.addSection(name: tag.key, markDownContent: tag.value)
+    }
+    return p
+    
+    
+}
 
 func extractBlocks(arrayOfTags: [String] , guioString: String) -> Dictionary<String, String> {
     

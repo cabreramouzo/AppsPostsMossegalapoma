@@ -26,6 +26,7 @@
 		04A5FFFF24B3394F00E40D2A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04A5FFFD24B3394F00E40D2A /* LaunchScreen.storyboard */; };
 		04C237E924BA0FB2005BA9D0 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C237E824BA0FB2005BA9D0 /* ActivityIndicator.swift */; };
 		04FCE33324CAE5D4004E8FED /* Ink in Frameworks */ = {isa = PBXBuildFile; productRef = 04FCE33224CAE5D4004E8FED /* Ink */; };
+		04FCE33724CAF4B2004E8FED /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FCE33624CAF4B2004E8FED /* Post.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		04A5FFFB24B3394F00E40D2A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		04A5FFFE24B3394F00E40D2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04C237E824BA0FB2005BA9D0 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		04FCE33624CAF4B2004E8FED /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 				0459721A24C8446B001C7222 /* BlocExtractor.swift */,
 				0432DD0A24C8884800C62CA1 /* DocumentParser.swift */,
 				042B90F124B73D3F00FE9043 /* UploadDocument.swift */,
+				04FCE33624CAF4B2004E8FED /* Post.swift */,
 				04740C4C24C4C2E100F9C8D5 /* CheckURLExists.swift */,
 				040BCAF324C08DB8002F544A /* UploadFeaturedImage.swift */,
 				04A5FFF824B3394F00E40D2A /* Assets.xcassets */,
@@ -266,6 +269,7 @@
 				04A5FFF524B3394D00E40D2A /* documentPicker.xcdatamodeld in Sources */,
 				040BCAF424C08DB8002F544A /* UploadFeaturedImage.swift in Sources */,
 				0459721B24C8446B001C7222 /* BlocExtractor.swift in Sources */,
+				04FCE33724CAF4B2004E8FED /* Post.swift in Sources */,
 				042B90F224B73D3F00FE9043 /* UploadDocument.swift in Sources */,
 				04A5FFF724B3394D00E40D2A /* ContentView.swift in Sources */,
 				040BCAF224C054DB002F544A /* ImagePicker.swift in Sources */,

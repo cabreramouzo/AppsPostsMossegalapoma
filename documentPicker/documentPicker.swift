@@ -53,7 +53,7 @@ struct DocumentPicker2: UIViewControllerRepresentable {
     
     
     func makeUIViewController(context: Context) -> UIDocumentPickerViewController {
-        let picker = UIDocumentPickerViewController(documentTypes: [kUTTypeHTML as String], in: .open)
+        let picker = UIDocumentPickerViewController(documentTypes: [kUTTypeHTML as String, kUTTypeText as String], in: .open)
         picker.allowsMultipleSelection = false
         picker.delegate = context.coordinator
         return picker

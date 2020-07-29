@@ -29,7 +29,7 @@ func uploadImage(image: UIImage, imageTitle: String, fileName: String, completio
     let token = credentials.data(using: String.Encoding.utf8)?.base64EncodedString()
     
 
-    let url_srcdest = URL(string: "http://192.168.1.129/wp-json/wp/v2/media")
+    let url_srcdest = URL(string: "http://192.168.0.106/wp-json/wp/v2/media")
     guard let requestUrl = url_srcdest else { fatalError() }
     
     let postData = image.pngData()
