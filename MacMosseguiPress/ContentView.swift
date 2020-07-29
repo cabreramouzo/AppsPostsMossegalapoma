@@ -12,12 +12,15 @@ struct ContentView: View {
     @State var postTitle: String
     @State var mlpAudioURL: String
     
+    @State private var selectorIndex = 0
+    
     var body: some View {
         Form {
             
             Section(header:Text("Títol del Post") ) {
                 TextField("El més destacable de la WWDC20 - Programa 420", text: $postTitle)
             }
+            Divider()
             Section(header:Text("Arxiu Markdown (Guió)") ) {
                 HStack {
                     Button("seleccionar arxiu", action:{
@@ -28,6 +31,7 @@ struct ContentView: View {
                     
                 }
             }
+            Divider()
             Section(header:Text("Imatge proncipal") ) {
                 HStack {
                     Button("seleccionar imatge", action:{
@@ -42,6 +46,7 @@ struct ContentView: View {
                 }
                 
             }
+            Divider()
             Section(header: Text("Arxiu d'àudio MLP") ) {
                 HStack {
                     TextField("https://storagemossegui.com/mlpaudio/mlp445.mp35", text: $mlpAudioURL)
@@ -50,16 +55,18 @@ struct ContentView: View {
                     })
                 }
             }
-            
+            Divider()
             Section(header: Text("Estat Post de Wordpress") ) {
                 HStack {
                     VStack {
-                        Button("Esborrany", action:{
-                            print("RadioButton")
-                        })
-                        Button("Publicació", action:{
-                            print("RadioButton")
-                        })
+                        Picker("Seleccionar Estat", selection: $selectorIndex) {
+
+                            Text("Esborrany").tag(0)
+                            Text("Publicació").tag(1)
+                            
+                        }
+                        .pickerStyle(RadioGroupPickerStyle())
+                        .padding()
                     }
                     Button("Pujar Esborrany", action:{
                         print("Comprovar URL")
