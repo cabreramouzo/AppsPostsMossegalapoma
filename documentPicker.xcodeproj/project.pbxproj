@@ -20,11 +20,6 @@
 		04A1506824D1D1B700315C3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04A1506724D1D1B700315C3F /* Assets.xcassets */; };
 		04A1506B24D1D1B700315C3F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04A1506A24D1D1B700315C3F /* Preview Assets.xcassets */; };
 		04A1506E24D1D1B700315C3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04A1506C24D1D1B700315C3F /* Main.storyboard */; };
-		04A1507424D1D3EF00315C3F /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C237E824BA0FB2005BA9D0 /* ActivityIndicator.swift */; };
-		04A1507524D1D3EF00315C3F /* BlocExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459721A24C8446B001C7222 /* BlocExtractor.swift */; };
-		04A1507624D1D3EF00315C3F /* DocumentParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0432DD0A24C8884800C62CA1 /* DocumentParser.swift */; };
-		04A1507724D1D3EF00315C3F /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FCE33624CAF4B2004E8FED /* Post.swift */; };
-		04A1507824D1D3EF00315C3F /* CheckURLExists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04740C4C24C4C2E100F9C8D5 /* CheckURLExists.swift */; };
 		04A5000A24B3395000E40D2A /* documentPickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5000924B3395000E40D2A /* documentPickerTests.swift */; };
 		04A5001524B47DE300E40D2A /* programa_tipic_nomes_body.html in Resources */ = {isa = PBXBuildFile; fileRef = 04A5001424B47DE200E40D2A /* programa_tipic_nomes_body.html */; };
 		04A5FFF024B3394D00E40D2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5FFEF24B3394D00E40D2A /* AppDelegate.swift */; };
@@ -337,12 +332,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04A1507624D1D3EF00315C3F /* DocumentParser.swift in Sources */,
 				04A1506624D1D1B300315C3F /* ContentView.swift in Sources */,
-				04A1507424D1D3EF00315C3F /* ActivityIndicator.swift in Sources */,
-				04A1507724D1D3EF00315C3F /* Post.swift in Sources */,
-				04A1507824D1D3EF00315C3F /* CheckURLExists.swift in Sources */,
-				04A1507524D1D3EF00315C3F /* BlocExtractor.swift in Sources */,
 				04A1506424D1D1B300315C3F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

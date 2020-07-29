@@ -8,8 +8,9 @@
 
 import Foundation
 import SwiftUI
+#if !os(macOS)
 import MobileCoreServices
-
+#endif
 struct DocumentPicker2: UIViewControllerRepresentable {
     
     @Binding var docURL: URL?
