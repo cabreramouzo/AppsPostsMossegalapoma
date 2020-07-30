@@ -11,8 +11,23 @@ import SwiftUI
 struct ContentView: View {
     @State var postTitle: String
     @State var mlpAudioURL: String
+    @State var documentUrl: String
     
     @State private var selectorIndex = 0
+    
+    
+    func pickDocument() {
+        let panel = NSOpenPanel()
+        panel.nameFieldLabel = "Selecciona el document Markdown:"
+        panel.nameFieldStringValue = "hola.jpg"
+        panel.canCreateDirectories = false
+        panel.begin { response in
+            if response == NSApplication.ModalResponse.OK, let fileUrl = panel.url {
+                print(fileUrl)
+                self.documentUrl = fileUrl.path
+            }
+        }
+    }
     
     var body: some View {
         Form {
@@ -24,10 +39,9 @@ struct ContentView: View {
             Section(header:Text("Arxiu Markdown (Guió)") ) {
                 HStack {
                     Button("seleccionar arxiu", action:{
-                        print("hola")
-                        let a = "hola"
+                        self.pickDocument()
                     })
-                    Text("Ruta: /Users/macma/documents/...")
+                    Text(documentUrl)
                     
                 }
             }
@@ -85,6 +99,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(postTitle: "Programa 42", mlpAudioURL: "https://...")
+        ContentView(postTitle: "Programa 42", mlpAudioURL: "https://...", documentUrl: "")
     }
 }
