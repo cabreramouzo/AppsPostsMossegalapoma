@@ -18,7 +18,8 @@ struct ContentView: View {
     @State var mediaIDstate: Int
     var mediaID: Int = -1
     
-    @State var alert = false
+    @State var alertImage = false
+    @State var alertPost = false
     @State var alertText = ""
     @State var alertTitle = ""
     
@@ -74,7 +75,7 @@ struct ContentView: View {
             print("image funca")
             uploadImageMac(image: self.image!, imageTitle: "hola_como_estas", fileName: "hola.png", completion: {
                 (is_ok, mediaID) -> Void in
-                self.alert = true
+                self.alertImage = true
                 print("es ok")
                 print(is_ok)
                 print("mediaID")
@@ -120,11 +121,10 @@ struct ContentView: View {
                     Text(imagePath)
                     Button("pujar imatge", action:{
                         self.uploadImage()
-                    }).alert(isPresented: $alert) {
-                        return Alert(title: Text(alertTitle), message: Text(alertText), dismissButton: .default(Text("Ok!")) {print("activity indicator"); self.alert = false})
+                    }).alert(isPresented: $alertImage) {
+                        Alert(title: Text(alertTitle), message: Text(alertText), dismissButton: .default(Text("Ok!")))
                     }
                     .disabled(!self.userPickedImage)
-                    
                 }
                 
             }
@@ -153,7 +153,7 @@ struct ContentView: View {
                     Button("Pujar Post", action:{
                         
                         uploadPost(draft: self.draft, title: self.postTitle , documentURL: self.inputURL!, mediaID: self.mediaIDstate,  completion: { (is_ok) -> Void in
-                            self.alert = true
+                            self.alertPost = true
                             print("es ok")
                             print(is_ok)
                             if is_ok {
@@ -166,8 +166,8 @@ struct ContentView: View {
                             }
                             
                         })
-                    }).alert(isPresented: $alert) {
-                        return Alert(title: Text(alertTitle), message: Text(alertText), dismissButton: .default(Text("Ok!")) {print("activity indicator"); self.alert = false})
+                    }).alert(isPresented: $alertPost) {
+                        return Alert(title: Text(alertTitle), message: Text(alertText), dismissButton: .default(Text("Ok!")) {print("activity indicator")})
                     }
                 }
             }
