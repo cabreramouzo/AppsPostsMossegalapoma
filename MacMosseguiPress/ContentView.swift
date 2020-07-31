@@ -10,13 +10,15 @@ import SwiftUI
 
 struct ContentView: View {
     @State var postTitle: String
-    @State var mlpAudioURL: String
+    @State var mlpAudioURL: String = "https://storagemossegui.com/mlpaudio/mlp4"
     @State var inputURL: URL?
     @State var imagePath: String
     @State var image: NSImage?
     @State private var userPickedImage: Bool = false
     @State var mediaIDstate: Int
     var mediaID: Int = -1
+    @State var imageTitle:String = ""
+    @State var imageFileName: String = ""
     
     @State var ShowAlertImage = false
     @State var ShowAlertPost = false
@@ -29,6 +31,7 @@ struct ContentView: View {
     
     @State var url_ok:Bool? = false
     @State var url_ok_message:String = ""
+    
     
     
     func pickFile() {
@@ -75,7 +78,7 @@ struct ContentView: View {
         self.image = NSImage(byReferencingFile: self.imagePath)
         if self.image != nil && self.userPickedImage {
             print("image funca")
-            uploadImageMac(image: self.image!, imageTitle: "hola_como_estas", fileName: "hola.png", completion: {
+            uploadImageMac(image: self.image!, imageTitle: self.imageTitle, fileName: self.imageFileName, completion: {
                 (is_ok, mediaID) -> Void in
                 print("es ok")
                 print(is_ok)
@@ -122,19 +125,36 @@ struct ContentView: View {
             }
             Divider()
             Section(header:Text("Imatge principal") ) {
-                HStack {
-                    Button("seleccionar imatge", action:{
-                        self.pickImage()
-                    })
-                    Text(imagePath)
-                    Button("pujar imatge", action:{
-                        self.uploadImage()
-                    }).alert(isPresented: $ShowAlertImage) {
-                        Alert(title: Text(alertTitle), message: Text(alertText), dismissButton: .default(Text("Ok!")))
+                VStack {
+                    HStack {
+                        TextField("Crisi de confiança", text: $imageTitle)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        Spacer()
                     }
-                    .disabled(!self.userPickedImage)
+                    HStack {
+                        TextField("crisi_de_confiança.png", text: $imageFileName)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        Spacer()
+                    }
+                    
+                    Spacer()
+                    
+                    HStack {
+                        Button("seleccionar imatge", action:{
+                            self.pickImage()
+                        })
+                        Text(imagePath)
+                        Button("pujar imatge", action:{
+                            self.uploadImage()
+                        }).alert(isPresented: $ShowAlertImage) {
+                            Alert(title: Text(alertTitle), message: Text(alertText), dismissButton: .default(Text("Ok!")))
+                        }
+                        .disabled(!self.userPickedImage)
+                        Spacer()
+                    }
                     Spacer()
                 }
+                
                 
             }
             Divider()
@@ -235,7 +255,7 @@ struct ContentView: View {
             }
             
             
-            Text("Hello, World!")
+            Text("Hello Mossegui!")
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         
