@@ -18,8 +18,8 @@ struct ContentView: View {
     @State var mediaIDstate: Int
     var mediaID: Int = -1
     
-    @State var alertImage = false
-    @State var alertPost = false
+    @State var ShowAlertImage = false
+    @State var ShowAlertPost = false
     @State var alertText = ""
     @State var alertTitle = ""
     
@@ -75,7 +75,7 @@ struct ContentView: View {
             print("image funca")
             uploadImageMac(image: self.image!, imageTitle: "hola_como_estas", fileName: "hola.png", completion: {
                 (is_ok, mediaID) -> Void in
-                self.alertImage = true
+                self.ShowAlertImage = true
                 print("es ok")
                 print(is_ok)
                 print("mediaID")
@@ -121,7 +121,7 @@ struct ContentView: View {
                     Text(imagePath)
                     Button("pujar imatge", action:{
                         self.uploadImage()
-                    }).alert(isPresented: $alertImage) {
+                    }).alert(isPresented: $ShowAlertImage) {
                         Alert(title: Text(alertTitle), message: Text(alertText), dismissButton: .default(Text("Ok!")))
                     }
                     .disabled(!self.userPickedImage)
@@ -153,7 +153,6 @@ struct ContentView: View {
                     Button("Pujar Post", action:{
                         
                         uploadPost(draft: self.draft, title: self.postTitle , documentURL: self.inputURL!, mediaID: self.mediaIDstate,  completion: { (is_ok) -> Void in
-                            self.alertPost = true
                             print("es ok")
                             print(is_ok)
                             if is_ok {
@@ -164,9 +163,10 @@ struct ContentView: View {
                                 self.alertText = "Hi ha hagut un error al pujar l'arxiu a Wordpress"
                                 self.alertTitle = "⚠️ Error!"
                             }
+                            self.ShowAlertPost = true
                             
                         })
-                    }).alert(isPresented: $alertPost) {
+                    }).alert(isPresented: $ShowAlertPost) {
                         return Alert(title: Text(alertTitle), message: Text(alertText), dismissButton: .default(Text("Ok!")) {print("activity indicator")})
                     }
                 }
