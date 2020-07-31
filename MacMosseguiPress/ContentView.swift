@@ -75,7 +75,6 @@ struct ContentView: View {
             print("image funca")
             uploadImageMac(image: self.image!, imageTitle: "hola_como_estas", fileName: "hola.png", completion: {
                 (is_ok, mediaID) -> Void in
-                self.ShowAlertImage = true
                 print("es ok")
                 print(is_ok)
                 print("mediaID")
@@ -89,6 +88,7 @@ struct ContentView: View {
                     self.alertText = "Hi ha hagut un error al pujar l'imatge a Wordpress"
                     self.alertTitle = "⚠️ Error!"
                 }
+                self.ShowAlertImage = true
             })
         }
     }
@@ -167,7 +167,7 @@ struct ContentView: View {
                             
                         })
                     }).alert(isPresented: $ShowAlertPost) {
-                        return Alert(title: Text(alertTitle), message: Text(alertText), dismissButton: .default(Text("Ok!")) {print("activity indicator")})
+                        Alert(title: Text(alertTitle), message: Text(alertText), dismissButton: .default(Text("Ok!")) {print("activity indicator")})
                     }
                 }
             }
