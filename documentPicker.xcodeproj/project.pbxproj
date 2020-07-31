@@ -21,6 +21,11 @@
 		04A1506B24D1D1B700315C3F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04A1506A24D1D1B700315C3F /* Preview Assets.xcassets */; };
 		04A1506E24D1D1B700315C3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04A1506C24D1D1B700315C3F /* Main.storyboard */; };
 		04A1507B24D2E25000315C3F /* UploadFeaturedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040BCAF324C08DB8002F544A /* UploadFeaturedImage.swift */; };
+		04A1507E24D435E800315C3F /* UploadDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B90F124B73D3F00FE9043 /* UploadDocument.swift */; };
+		04A1507F24D435FD00315C3F /* BlocExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459721A24C8446B001C7222 /* BlocExtractor.swift */; };
+		04A1508224D4362600315C3F /* Ink in Frameworks */ = {isa = PBXBuildFile; productRef = 04A1508124D4362600315C3F /* Ink */; };
+		04A1508324D4365200315C3F /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FCE33624CAF4B2004E8FED /* Post.swift */; };
+		04A1508424D4366300315C3F /* DocumentParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0432DD0A24C8884800C62CA1 /* DocumentParser.swift */; };
 		04A5000A24B3395000E40D2A /* documentPickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5000924B3395000E40D2A /* documentPickerTests.swift */; };
 		04A5001524B47DE300E40D2A /* programa_tipic_nomes_body.html in Resources */ = {isa = PBXBuildFile; fileRef = 04A5001424B47DE200E40D2A /* programa_tipic_nomes_body.html */; };
 		04A5FFF024B3394D00E40D2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5FFEF24B3394D00E40D2A /* AppDelegate.swift */; };
@@ -83,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04A1508224D4362600315C3F /* Ink in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +133,13 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		04A1508024D4362600315C3F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		04A5000824B3395000E40D2A /* documentPickerTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +156,7 @@
 				04A5000824B3395000E40D2A /* documentPickerTests */,
 				04A1506224D1D1B300315C3F /* MacMosseguiPress */,
 				04A5FFED24B3394D00E40D2A /* Products */,
+				04A1508024D4362600315C3F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -205,6 +219,9 @@
 			dependencies = (
 			);
 			name = MacMosseguiPress;
+			packageProductDependencies = (
+				04A1508124D4362600315C3F /* Ink */,
+			);
 			productName = MacMosseguiPress;
 			productReference = 04A1506124D1D1B300315C3F /* MacMosseguiPress.app */;
 			productType = "com.apple.product-type.application";
@@ -334,8 +351,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				04A1506624D1D1B300315C3F /* ContentView.swift in Sources */,
+				04A1507F24D435FD00315C3F /* BlocExtractor.swift in Sources */,
 				04A1506424D1D1B300315C3F /* AppDelegate.swift in Sources */,
+				04A1508324D4365200315C3F /* Post.swift in Sources */,
+				04A1508424D4366300315C3F /* DocumentParser.swift in Sources */,
 				04A1507B24D2E25000315C3F /* UploadFeaturedImage.swift in Sources */,
+				04A1507E24D435E800315C3F /* UploadDocument.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -711,6 +732,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0432DD0724C886C600C62CA1 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
 			productName = SwiftSoup;
+		};
+		04A1508124D4362600315C3F /* Ink */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04FCE33124CAE5D4004E8FED /* XCRemoteSwiftPackageReference "ink" */;
+			productName = Ink;
 		};
 		04FCE33224CAE5D4004E8FED /* Ink */ = {
 			isa = XCSwiftPackageProductDependency;

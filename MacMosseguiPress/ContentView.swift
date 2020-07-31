@@ -11,7 +11,7 @@ import SwiftUI
 struct ContentView: View {
     @State var postTitle: String
     @State var mlpAudioURL: String
-    @State var documentUrl: String
+    @State var inputURL: URL?
     @State var imagePath: String
     @State var image: NSImage?
     @State private var userPickedImage: Bool = false
@@ -23,6 +23,9 @@ struct ContentView: View {
     @State var alertTitle = ""
     
     @State private var selectorIndex = 0
+    
+    @State var draft:Bool = false
+    
     
     
     func pickFile() {
@@ -36,7 +39,7 @@ struct ContentView: View {
         panel.begin { response in
             if response == NSApplication.ModalResponse.OK, let fileUrl = panel.url {
                 print(fileUrl)
-                self.documentUrl = fileUrl.path
+                self.inputURL = fileUrl
             }
         }
         
@@ -60,6 +63,7 @@ struct ContentView: View {
             }
             else {
                 self.userPickedImage = false
+                self.imagePath = ""
             }
         }
     }
@@ -100,7 +104,10 @@ struct ContentView: View {
                     Button("seleccionar arxiu", action:{
                         self.pickFile()
                     })
-                    Text(documentUrl)
+                    if inputURL != nil {
+                        Text(inputURL!.path)
+                    }
+                    
                     
                 }
             }
@@ -113,7 +120,10 @@ struct ContentView: View {
                     Text(imagePath)
                     Button("pujar imatge", action:{
                         self.uploadImage()
-                    }).disabled(!self.userPickedImage)
+                    }).alert(isPresented: $alert) {
+                        return Alert(title: Text(alertTitle), message: Text(alertText), dismissButton: .default(Text("Ok!")) {print("activity indicator"); self.alert = false})
+                    }
+                    .disabled(!self.userPickedImage)
                     
                 }
                 
@@ -140,9 +150,25 @@ struct ContentView: View {
                         .pickerStyle(RadioGroupPickerStyle())
                         .padding()
                     }
-                    Button("Pujar Esborrany", action:{
-                        print("Comprovar URL")
-                    })
+                    Button("Pujar Post", action:{
+                        
+                        uploadPost(draft: self.draft, title: self.postTitle , documentURL: self.inputURL!, mediaID: self.mediaIDstate,  completion: { (is_ok) -> Void in
+                            self.alert = true
+                            print("es ok")
+                            print(is_ok)
+                            if is_ok {
+                                self.alertText = "Arxiu carregat correctament!"
+                                self.alertTitle = "✅ OK"
+                            }
+                            else {
+                                self.alertText = "Hi ha hagut un error al pujar l'arxiu a Wordpress"
+                                self.alertTitle = "⚠️ Error!"
+                            }
+                            
+                        })
+                    }).alert(isPresented: $alert) {
+                        return Alert(title: Text(alertTitle), message: Text(alertText), dismissButton: .default(Text("Ok!")) {print("activity indicator"); self.alert = false})
+                    }
                 }
             }
             
@@ -157,6 +183,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(postTitle: "Programa 42", mlpAudioURL: "https://...", documentUrl: "", imagePath: "", mediaIDstate: -1)
+        ContentView(postTitle: "Programa 42", mlpAudioURL: "https://...", inputURL: URL(string: ""), imagePath: "", mediaIDstate: -1)
     }
 }
