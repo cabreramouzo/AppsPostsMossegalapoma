@@ -14,7 +14,7 @@ struct ContentView: View {
     @State var documentUrl: String
     @State var imagePath: String
     @State var image: NSImage?
-    @State private var userPickedImage: Bool? = false
+    @State private var userPickedImage: Bool = false
     @State var mediaIDstate: Int
     var mediaID: Int = -1
     
@@ -66,7 +66,7 @@ struct ContentView: View {
     
     func uploadImage() {
         self.image = NSImage(byReferencingFile: self.imagePath)
-        if self.image != nil && self.userPickedImage! {
+        if self.image != nil && self.userPickedImage {
             print("image funca")
             uploadImageMac(image: self.image!, imageTitle: "hola_como_estas", fileName: "hola.png", completion: {
                 (is_ok, mediaID) -> Void in
@@ -113,7 +113,7 @@ struct ContentView: View {
                     Text(imagePath)
                     Button("pujar imatge", action:{
                         self.uploadImage()
-                    })
+                    }).disabled(!self.userPickedImage)
                     
                 }
                 
