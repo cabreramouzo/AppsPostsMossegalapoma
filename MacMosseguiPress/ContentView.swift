@@ -27,6 +27,8 @@ struct ContentView: View {
     
     @State var draft:Bool = false
     
+    @State var url_ok:Bool? = false
+    @State var url_ok_message:String = ""
     
     
     func pickFile() {
@@ -60,7 +62,7 @@ struct ContentView: View {
                 self.imagePath = fileUrl.path
                 self.image = NSImage(byReferencingFile: fileUrl.path)
                 self.userPickedImage = true
-
+                
             }
             else {
                 self.userPickedImage = false
@@ -97,7 +99,13 @@ struct ContentView: View {
         Form {
             
             Section(header:Text("Títol del Post") ) {
-                TextField("El més destacable de la WWDC20 - Programa 420", text: $postTitle)
+                HStack {
+                    Spacer()
+                    TextField("El més destacable de la WWDC20 - Programa 420", text: $postTitle)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    Spacer()
+                }
+                
             }
             Divider()
             Section(header:Text("Arxiu Markdown (Guió)") ) {
@@ -125,24 +133,78 @@ struct ContentView: View {
                         Alert(title: Text(alertTitle), message: Text(alertText), dismissButton: .default(Text("Ok!")))
                     }
                     .disabled(!self.userPickedImage)
+                    Spacer()
                 }
                 
             }
             Divider()
-            Section(header: Text("Arxiu d'àudio MLP") ) {
+            Section(header: Text(url_ok_message + " Arxiu d'àudio MLP " + url_ok_message) ) {
                 HStack {
-                    TextField("https://storagemossegui.com/mlpaudio/mlp445.mp35", text: $mlpAudioURL)
-                    Button("Comprovar URL", action:{
-                        print("Comprovar URL")
-                    })
+                    TextField("https://storagemossegui.com/mlpaudio/mlp445.mp3", text: $mlpAudioURL, onCommit: {
+
+                        checkURL(url: self.mlpAudioURL, completion: { (url_ok) -> Void in
+                            
+                            if url_ok {
+                                self.alertText = "URL accessible"
+                                self.alertTitle = "✅ OK"
+                                
+                                self.url_ok_message = "✅"
+                                
+                            }
+                            else {
+                                self.alertText = "URL no accessible"
+                                self.alertTitle = "⚠️ Error!"
+                                
+                                self.url_ok_message = "⚠️"
+                                print("no url")
+                            }
+                            
+                            
+                            })
+                        
+                        }).textFieldStyle(RoundedBorderTextFieldStyle())
+                        
+                        //.textCase(.lowercase) is beta for 11.0
+
+                        
+                    
+                    Button(action:{
+                        checkURL(url: self.mlpAudioURL, completion: { (url_ok) -> Void in
+                            
+                            if url_ok {
+                                self.alertText = "URL accessible"
+                                self.alertTitle = "✅ OK"
+                                
+                                self.url_ok_message = "✅"
+                                
+                            }
+                            else {
+                                self.alertText = "URL no accessible"
+                                self.alertTitle = "⚠️ Error!"
+                                
+                                self.url_ok_message = "⚠️"
+                                print("no url")
+                            }
+                            
+                            
+                        })
+                    }) {
+                        
+                        HStack(alignment: .center) {
+                            Spacer()
+                            Text("Comprovar URL")
+                            Spacer()
+                        }
+                    }.disabled(self.mlpAudioURL == "")
+                    Spacer()
                 }
             }
             Divider()
             Section(header: Text("Estat Post de Wordpress") ) {
                 HStack {
                     VStack {
-                        Picker("Seleccionar Estat", selection: $selectorIndex) {
-
+                        Picker("", selection: $selectorIndex) {
+                            
                             Text("Esborrany").tag(0)
                             Text("Publicació").tag(1)
                             
@@ -174,7 +236,7 @@ struct ContentView: View {
             
             
             Text("Hello, World!")
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         
     }
@@ -186,3 +248,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView(postTitle: "Programa 42", mlpAudioURL: "https://...", inputURL: URL(string: ""), imagePath: "", mediaIDstate: -1)
     }
 }
+
