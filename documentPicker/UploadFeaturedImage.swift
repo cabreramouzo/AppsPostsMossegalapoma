@@ -14,18 +14,26 @@ import UIKit
 
 #if os(macOS)
 import Cocoa
-func uploadImageMac(image: NSImage, imageTitle: String, fileName: String, completion: @escaping (Bool, Int) -> Void) {
+
+func uploadImageMac(image: NSImage, imageTitle: String, imageAlternativetext: String, completion: @escaping (Bool, Int) -> Void) {
     
     var imageTitle2 = imageTitle
-    var fileName2 = fileName
+    var fileName2 = imageTitle
+    var imageAltText = imageAlternativetext
     if imageTitle2 == "" {
         imageTitle2 = "Sense_titol.png"
     }
-    
-    if fileName2 == "" {
-        fileName2 = "SenseNom.png"
+    else {
+        fileName2 = imageTitle2.replacingOccurrences(of: " ", with: "_") + ".jpg"
     }
     
+    if fileName2 == "" {
+        fileName2 = "SenseNom.jpg"
+    }
+    
+    if imageAltText == "" {
+        imageAltText = imageTitle2.replacingOccurrences(of: "_", with: " ")
+    }
     
     let user = "publisher"
     let psw = "XbIb 8kS6 31Xw 2szM xVmd 58JK"
@@ -33,8 +41,23 @@ func uploadImageMac(image: NSImage, imageTitle: String, fileName: String, comple
     
     let token = credentials.data(using: String.Encoding.utf8)?.base64EncodedString()
     
+    let urlParamsDict = ["alt_text=":imageAltText,
+                     "author=": "2",
+                     "title=":imageTitle2,
+                    ]
+    var urlParamsString = ""
+    var counter = 0
+    for (key, value) in urlParamsDict {
+        var seperator = "?"
+        if counter != 0 {
+            seperator = "&"
+        }
+        urlParamsString += seperator + key + value.addingPercentEncoding(withAllowedCharacters: .alphanumerics)!
+        print(urlParamsString)
+        counter+=1
+    }
     
-    let url_srcdest = URL(string: "http://192.168.0.110/wp-json/wp/v2/media")
+    let url_srcdest = URL(string: "http://192.168.0.104/wp-json/wp/v2/media" + urlParamsString)
     guard let requestUrl = url_srcdest else { fatalError() }
     
     //convert to data from https://gist.github.com/zappycode/3b5e151d4d98407901af5748745f5845

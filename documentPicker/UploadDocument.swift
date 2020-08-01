@@ -65,7 +65,7 @@ func uploadPost(draft:Bool, title: String, documentURL:URL, mediaID:Int, complet
     //print("HTML content:")
     //print(html_content)
 
-    let url_srcdest = URL(string: "http://192.168.0.110/wp-json/wp/v2/posts")
+    let url_srcdest = URL(string: "http://192.168.0.104/wp-json/wp/v2/posts")
     guard let requestUrl = url_srcdest else { fatalError() }
     
     

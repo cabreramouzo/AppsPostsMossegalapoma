@@ -18,7 +18,7 @@ struct ContentView: View {
     @State var mediaIDstate: Int
     var mediaID: Int = -1
     @State var imageTitle:String = ""
-    @State var imageFileName: String = ""
+    @State var imageAlternativeText: String = ""
     
     @State var ShowAlertImage = false
     @State var ShowAlertPost = false
@@ -78,7 +78,7 @@ struct ContentView: View {
         self.image = NSImage(byReferencingFile: self.imagePath)
         if self.image != nil && self.userPickedImage {
             print("image funca")
-            uploadImageMac(image: self.image!, imageTitle: self.imageTitle, fileName: self.imageFileName, completion: {
+            uploadImageMac(image: self.image!, imageTitle: self.imageTitle, imageAlternativetext: self.imageAlternativeText, completion: {
                 (is_ok, mediaID) -> Void in
                 print("es ok")
                 print(is_ok)
@@ -127,12 +127,12 @@ struct ContentView: View {
             Section(header:Text("Imatge principal") ) {
                 VStack {
                     HStack {
-                        TextField("Crisi de confiança", text: $imageTitle)
+                        TextField("Títol: Crisi de confiança", text: $imageTitle)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         Spacer()
                     }
                     HStack {
-                        TextField("crisi_de_confiança.png", text: $imageFileName)
+                        TextField("Text Alternatiu: Cel vermell amb núvols", text: $imageAlternativeText)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         Spacer()
                     }
@@ -144,7 +144,7 @@ struct ContentView: View {
                             self.pickImage()
                         })
                         Text(imagePath)
-                        Button("pujar imatge", action:{
+                        Button("Pujar Imatge", action:{
                             self.uploadImage()
                         }).alert(isPresented: $ShowAlertImage) {
                             Alert(title: Text(alertTitle), message: Text(alertText), dismissButton: .default(Text("Ok!")))
