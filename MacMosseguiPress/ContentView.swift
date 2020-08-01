@@ -32,7 +32,9 @@ struct ContentView: View {
     @State var url_ok:Bool? = false
     @State var url_ok_message:String = ""
     
-    
+    @State private var showActivityIndicatorImageButton: Bool = false
+    @State private var showActivityIndicatorURLButton: Bool = false
+    @State private var showActivityIndicatorPostButton: Bool = false
     
     func pickFile() {
         let panel = NSOpenPanel()
@@ -124,7 +126,7 @@ struct ContentView: View {
                 }
             }
             Divider()
-            Section(header:Text("Imatge principal") ) {
+            Section(header:Text("Imatge principal"), footer: Text("Abans de publicar, puja la imatge.") ) {
                 VStack {
                     HStack {
                         TextField("Títol: Crisi de confiança", text: $imageTitle)
@@ -136,14 +138,17 @@ struct ContentView: View {
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         Spacer()
                     }
-                    
                     Spacer()
                     
-                    HStack {
-                        Button("seleccionar imatge", action:{
-                            self.pickImage()
-                        })
-                        Text(imagePath)
+                    VStack(alignment: .leading, spacing: 5) {
+                        HStack {
+                            Button("seleccionar imatge", action:{
+                                self.pickImage()
+                            })
+                            Text(imagePath)
+                            Spacer()
+                        }
+                        
                         Button("Pujar Imatge", action:{
                             self.uploadImage()
                         }).alert(isPresented: $ShowAlertImage) {
@@ -152,6 +157,7 @@ struct ContentView: View {
                         .disabled(!self.userPickedImage)
                         Spacer()
                     }
+                    
                     Spacer()
                 }
                 
@@ -161,7 +167,7 @@ struct ContentView: View {
             Section(header: Text(url_ok_message + " Arxiu d'àudio MLP " + url_ok_message) ) {
                 HStack {
                     TextField("https://storagemossegui.com/mlpaudio/mlp445.mp3", text: $mlpAudioURL, onCommit: {
-
+                        self.showActivityIndicatorURLButton = true
                         checkURL(url: self.mlpAudioURL, completion: { (url_ok) -> Void in
                             
                             if url_ok {
@@ -179,7 +185,7 @@ struct ContentView: View {
                                 print("no url")
                             }
                             
-                            
+                            self.showActivityIndicatorURLButton = false
                             })
                         
                         }).textFieldStyle(RoundedBorderTextFieldStyle())
@@ -189,6 +195,7 @@ struct ContentView: View {
                         
                     
                     Button(action:{
+                        self.showActivityIndicatorURLButton = true
                         checkURL(url: self.mlpAudioURL, completion: { (url_ok) -> Void in
                             
                             if url_ok {
@@ -205,6 +212,7 @@ struct ContentView: View {
                                 self.url_ok_message = "⚠️"
                                 print("no url")
                             }
+                            self.showActivityIndicatorURLButton = false
                             
                             
                         })
@@ -213,6 +221,10 @@ struct ContentView: View {
                         HStack(alignment: .center) {
                             Spacer()
                             Text("Comprovar URL")
+                            if showActivityIndicatorURLButton == true {
+                                ActivityIndicator()
+                                    .frame(width: 20, height: 20)
+                            }
                             Spacer()
                         }
                     }.disabled(self.mlpAudioURL == "")
