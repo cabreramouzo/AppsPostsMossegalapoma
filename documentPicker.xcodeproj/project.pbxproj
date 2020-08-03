@@ -39,6 +39,9 @@
 		04C237E924BA0FB2005BA9D0 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C237E824BA0FB2005BA9D0 /* ActivityIndicator.swift */; };
 		04F6B35124D5C34A00A41C6C /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C237E824BA0FB2005BA9D0 /* ActivityIndicator.swift */; };
 		04F6B35C24D82F1C00A41C6C /* SettingsMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F6B35B24D82F1C00A41C6C /* SettingsMac.swift */; };
+		04F6B35F24D834C000A41C6C /* Preferences in Frameworks */ = {isa = PBXBuildFile; productRef = 04F6B35E24D834C000A41C6C /* Preferences */; };
+		04F6B36124D8355100A41C6C /* GeneralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F6B36024D8355100A41C6C /* GeneralView.swift */; };
+		04F6B36424D83DD400A41C6C /* PreferencesStyle+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F6B36324D83DD400A41C6C /* PreferencesStyle+UserDefaults.swift */; };
 		04FCE33324CAE5D4004E8FED /* Ink in Frameworks */ = {isa = PBXBuildFile; productRef = 04FCE33224CAE5D4004E8FED /* Ink */; };
 		04FCE33724CAF4B2004E8FED /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FCE33624CAF4B2004E8FED /* Post.swift */; };
 /* End PBXBuildFile section */
@@ -84,6 +87,8 @@
 		04A5FFFE24B3394F00E40D2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04C237E824BA0FB2005BA9D0 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		04F6B35B24D82F1C00A41C6C /* SettingsMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMac.swift; sourceTree = "<group>"; };
+		04F6B36024D8355100A41C6C /* GeneralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralView.swift; sourceTree = "<group>"; };
+		04F6B36324D83DD400A41C6C /* PreferencesStyle+UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PreferencesStyle+UserDefaults.swift"; sourceTree = "<group>"; };
 		04FCE33624CAF4B2004E8FED /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,6 +98,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04A1508224D4362600315C3F /* Ink in Frameworks */,
+				04F6B35F24D834C000A41C6C /* Preferences in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +126,7 @@
 			children = (
 				04A1506324D1D1B300315C3F /* AppDelegate.swift */,
 				04F6B35B24D82F1C00A41C6C /* SettingsMac.swift */,
+				04F6B36224D8391D00A41C6C /* Preferences */,
 				04A1506524D1D1B300315C3F /* ContentView.swift */,
 				04A1506724D1D1B700315C3F /* Assets.xcassets */,
 				04A1506C24D1D1B700315C3F /* Main.storyboard */,
@@ -208,6 +215,15 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		04F6B36224D8391D00A41C6C /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				04F6B36324D83DD400A41C6C /* PreferencesStyle+UserDefaults.swift */,
+				04F6B36024D8355100A41C6C /* GeneralView.swift */,
+			);
+			path = Preferences;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -226,6 +242,7 @@
 			name = MacMosseguiPress;
 			packageProductDependencies = (
 				04A1508124D4362600315C3F /* Ink */,
+				04F6B35E24D834C000A41C6C /* Preferences */,
 			);
 			productName = MacMosseguiPress;
 			productReference = 04A1506124D1D1B300315C3F /* MacMosseguiPress.app */;
@@ -307,6 +324,7 @@
 			packageReferences = (
 				0432DD0724C886C600C62CA1 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 				04FCE33124CAE5D4004E8FED /* XCRemoteSwiftPackageReference "ink" */,
+				04F6B35D24D834C000A41C6C /* XCRemoteSwiftPackageReference "Preferences" */,
 			);
 			productRefGroup = 04A5FFED24B3394D00E40D2A /* Products */;
 			projectDirPath = "";
@@ -362,6 +380,8 @@
 				04F6B35C24D82F1C00A41C6C /* SettingsMac.swift in Sources */,
 				04A1508324D4365200315C3F /* Post.swift in Sources */,
 				04A1508424D4366300315C3F /* DocumentParser.swift in Sources */,
+				04F6B36424D83DD400A41C6C /* PreferencesStyle+UserDefaults.swift in Sources */,
+				04F6B36124D8355100A41C6C /* GeneralView.swift in Sources */,
 				04A1507B24D2E25000315C3F /* UploadFeaturedImage.swift in Sources */,
 				04F6B35124D5C34A00A41C6C /* ActivityIndicator.swift in Sources */,
 				04A1507E24D435E800315C3F /* UploadDocument.swift in Sources */,
@@ -725,6 +745,14 @@
 				minimumVersion = 2.3.2;
 			};
 		};
+		04F6B35D24D834C000A41C6C /* XCRemoteSwiftPackageReference "Preferences" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/Preferences";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.1;
+			};
+		};
 		04FCE33124CAE5D4004E8FED /* XCRemoteSwiftPackageReference "ink" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/johnsundell/ink.git";
@@ -745,6 +773,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 04FCE33124CAE5D4004E8FED /* XCRemoteSwiftPackageReference "ink" */;
 			productName = Ink;
+		};
+		04F6B35E24D834C000A41C6C /* Preferences */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04F6B35D24D834C000A41C6C /* XCRemoteSwiftPackageReference "Preferences" */;
+			productName = Preferences;
 		};
 		04FCE33224CAE5D4004E8FED /* Ink */ = {
 			isa = XCSwiftPackageProductDependency;

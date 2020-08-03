@@ -8,6 +8,11 @@
 
 import Cocoa
 import SwiftUI
+import Preferences
+
+extension Preferences.PaneIdentifier {
+    static let general = Self("general")
+}
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -33,6 +38,32 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
+    
+    
+    //preferences:
+    
+    lazy var preferencesWindowController = PreferencesWindowController(
+        preferencePanes: preferences,
+        style: preferencesStyle,
+        animated: true,
+        hidesToolbarForSingleItem: true
+    )
+    
+    @IBAction private func preferencesMenuItemActionHandler(_ sender: NSMenuItem) {
+        preferencesWindowController.show()
+    }
+    
+    var preferencesStyle: Preferences.Style {
+        get { .preferencesStyleFromUserDefaults() }
+        set {
+            newValue.storeInUserDefaults()
+        }
+    }
+
+    lazy var preferences: [PreferencePane] = [
+        GeneralViewController(),
+    ]
+    
 
 
 }

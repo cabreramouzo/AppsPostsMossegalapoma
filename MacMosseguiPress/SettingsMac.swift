@@ -35,7 +35,7 @@ final class SettingsMac {
         }
     }
     
-    var MediaServer: String {
+    var mediaServer: String {
         get {
             defaults.string(forKey: "app.mac.wordpress.media.server")!
         }
