@@ -38,6 +38,7 @@
 		04A5FFFF24B3394F00E40D2A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04A5FFFD24B3394F00E40D2A /* LaunchScreen.storyboard */; };
 		04C237E924BA0FB2005BA9D0 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C237E824BA0FB2005BA9D0 /* ActivityIndicator.swift */; };
 		04F6B35124D5C34A00A41C6C /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C237E824BA0FB2005BA9D0 /* ActivityIndicator.swift */; };
+		04F6B35C24D82F1C00A41C6C /* SettingsMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F6B35B24D82F1C00A41C6C /* SettingsMac.swift */; };
 		04FCE33324CAE5D4004E8FED /* Ink in Frameworks */ = {isa = PBXBuildFile; productRef = 04FCE33224CAE5D4004E8FED /* Ink */; };
 		04FCE33724CAF4B2004E8FED /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FCE33624CAF4B2004E8FED /* Post.swift */; };
 /* End PBXBuildFile section */
@@ -82,6 +83,7 @@
 		04A5FFFB24B3394F00E40D2A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		04A5FFFE24B3394F00E40D2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04C237E824BA0FB2005BA9D0 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		04F6B35B24D82F1C00A41C6C /* SettingsMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMac.swift; sourceTree = "<group>"; };
 		04FCE33624CAF4B2004E8FED /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				04A1506324D1D1B300315C3F /* AppDelegate.swift */,
+				04F6B35B24D82F1C00A41C6C /* SettingsMac.swift */,
 				04A1506524D1D1B300315C3F /* ContentView.swift */,
 				04A1506724D1D1B700315C3F /* Assets.xcassets */,
 				04A1506C24D1D1B700315C3F /* Main.storyboard */,
@@ -356,6 +359,7 @@
 				04A1506624D1D1B300315C3F /* ContentView.swift in Sources */,
 				04A1507F24D435FD00315C3F /* BlocExtractor.swift in Sources */,
 				04A1506424D1D1B300315C3F /* AppDelegate.swift in Sources */,
+				04F6B35C24D82F1C00A41C6C /* SettingsMac.swift in Sources */,
 				04A1508324D4365200315C3F /* Post.swift in Sources */,
 				04A1508424D4366300315C3F /* DocumentParser.swift in Sources */,
 				04A1507B24D2E25000315C3F /* UploadFeaturedImage.swift in Sources */,
