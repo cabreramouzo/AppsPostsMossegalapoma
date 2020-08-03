@@ -48,13 +48,15 @@ struct GeneralView: View {
         
         Preferences.Container(contentWidth: contentWidth) {
             Preferences.Section(title: "URL Servidor Post:") {
-                TextField("Títol: Crisi de confiança", text: self.$urlPost)
+                TextField("https://mossegalapoma.cat/wp-json/wp/v2/posts", text: self.$urlPost)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .frame(width: 420.0)
+                Text("URL per penjar els posts")
+                .preferenceDescription()
 
             }
             Preferences.Section(title: "URL Servidor Media:") {
-                TextField("Títol: Crisi de confiança", text: self.$urlMedia)
+                TextField("https://mossegalapoma.cat/wp-json/wp/v2/media", text: self.$urlMedia)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .frame(width: 420.0)
                 Text("URL per penjar la mèdia (foto entrada)")
@@ -86,7 +88,7 @@ struct GeneralView: View {
                     .preferenceDescription()
             }
             
-            Preferences.Section(title: "Guardar ajustaments:") {
+            Preferences.Section(title: "") {
                 Button(action: {
                     self.settings.postServer = self.urlPost
                     self.settings.mediaServer = self.urlMedia
