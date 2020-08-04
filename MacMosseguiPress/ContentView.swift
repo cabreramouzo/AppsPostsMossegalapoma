@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    let settings: SettingsMac
     @State var postTitle: String
     @State var mlpAudioURL: String = "https://storagemossegui.com/mlpaudio/mlp4"
     @State var inputURL: URL?
@@ -25,7 +26,7 @@ struct ContentView: View {
     @State var alertText = ""
     @State var alertTitle = ""
     
-    @State private var selectorIndex = 0
+    @State var selectorIndex: Int = 0
     
     @State var draft:Bool = false
     
@@ -235,10 +236,10 @@ struct ContentView: View {
             Section(header: Text("Estat Post de Wordpress") ) {
                 HStack {
                     VStack {
-                        Picker("", selection: $selectorIndex) {
+                        Picker("", selection: self.$selectorIndex) {
                             
-                            Text("Esborrany").tag(0)
-                            Text("Publicació").tag(1)
+                            Text("Publicació").tag(0)
+                            Text("Esborrany").tag(1)
                             
                         }
                         .pickerStyle(RadioGroupPickerStyle())
@@ -269,6 +270,8 @@ struct ContentView: View {
             
             Text("Hello Mossegui!")
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
+        }.onAppear {
+            self.selectorIndex = self.settings.defaultIndexRadioButton
         }
         
     }
@@ -277,7 +280,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(postTitle: "Programa 42", mlpAudioURL: "https://...", inputURL: URL(string: ""), imagePath: "", mediaIDstate: -1)
+        ContentView(settings: SettingsMac(), postTitle: "Programa 42", mlpAudioURL: "https://...", inputURL: URL(string: ""), imagePath: "", mediaIDstate: -1)
     }
 }
 

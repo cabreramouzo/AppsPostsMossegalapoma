@@ -35,6 +35,7 @@ struct GeneralView: View {
     @State private var authorId:String = "1"
     @State private var user:String = "macma"
     @State private var password:String = "1234"
+    @State private var defaultIndexRadioButton:Int = 0
     
     @State private var isOn1 = true
     @State private var isOn2 = false
@@ -88,6 +89,16 @@ struct GeneralView: View {
                     .preferenceDescription()
             }
             
+            Preferences.Section(title: "Tipus de post per omisió:") {
+                
+                Picker("", selection: self.$defaultIndexRadioButton) {
+                    Text("Publicació").tag(0)
+                    Text("Esborrany").tag(1)
+                }
+                .labelsHidden()
+                .frame(width: 120.0)
+            }
+            
             Preferences.Section(title: "") {
                 Button(action: {
                     self.settings.postServer = self.urlPost
@@ -95,6 +106,7 @@ struct GeneralView: View {
                     //self.settings.authorId = self.authorId
                     self.settings.user = self.user
                     self.settings.password = self.password
+                    self.settings.defaultIndexRadioButton = self.defaultIndexRadioButton
                 }) {
                     Text("Aplicar canvis")
                 }
@@ -106,6 +118,7 @@ struct GeneralView: View {
             //self.authorId = self.settings.authorId
             self.user = self.settings.user
             self.password = self.settings.password
+            self.defaultIndexRadioButton = self.settings.defaultIndexRadioButton
         }
     }
 }

@@ -22,6 +22,7 @@ final class SettingsMac {
             "app.mac.wordpress.author.id" : "2",
             "app.mac.user" : "macma",
             "app.mac.password" : "1234",
+            "app.view.defaultIndexRadioButton" : 0,
             
         ])
     }
@@ -68,6 +69,15 @@ final class SettingsMac {
         }
         set {
             defaults.set(newValue, forKey: "app.mac.password")
+        }
+    }
+    
+    var defaultIndexRadioButton: Int {
+        get {
+            defaults.integer(forKey: "app.view.defaultIndexRadioButton")
+        }
+        set {
+            defaults.set(newValue, forKey: "app.view.defaultIndexRadioButton")
         }
     }
     
