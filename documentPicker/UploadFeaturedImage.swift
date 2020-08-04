@@ -17,7 +17,7 @@ import Cocoa
 
 func uploadImageMac(image: NSImage, imageTitle: String, imageAlternativetext: String, completion: @escaping (Bool, Int) -> Void) {
     
-    var settings: SettingsMac = SettingsMac()
+    let settings: SettingsMac = SettingsMac()
     
     var imageTitle2 = imageTitle
     var fileName2 = imageTitle
@@ -59,7 +59,7 @@ func uploadImageMac(image: NSImage, imageTitle: String, imageAlternativetext: St
         counter+=1
     }
     
-    let url_srcdest = URL(string: "http://192.168.0.101/wp-json/wp/v2/media" + urlParamsString)
+    let url_srcdest = URL(string: settings.mediaServer + urlParamsString)
     guard let requestUrl = url_srcdest else { fatalError() }
     
     //convert to data from https://gist.github.com/zappycode/3b5e151d4d98407901af5748745f5845

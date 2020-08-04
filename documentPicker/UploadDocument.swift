@@ -51,9 +51,9 @@ func getHTMLStringFromMdDocument(MdDocURL:URL) -> String {
 }
 
 func uploadPost(draft:Bool, title: String, documentURL:URL, mediaID:Int, completion: @escaping (Bool) -> Void) -> Void {
-    
-    let user = "publisher"
-    let psw = "XbIb 8kS6 31Xw 2szM xVmd 58JK"
+    let settings: SettingsMac = SettingsMac()
+    let user = settings.user
+    let psw = settings.password
     let credentials = user + ":" + psw
 
     let token = credentials.data(using: String.Encoding.utf8)?.base64EncodedString()
@@ -65,7 +65,8 @@ func uploadPost(draft:Bool, title: String, documentURL:URL, mediaID:Int, complet
     //print("HTML content:")
     //print(html_content)
 
-    let url_srcdest = URL(string: "http://192.168.0.104/wp-json/wp/v2/posts")
+    let url_srcdest = URL(string: settings.postServer)
+    //TODO que no pete la app aqui
     guard let requestUrl = url_srcdest else { fatalError() }
     
     
