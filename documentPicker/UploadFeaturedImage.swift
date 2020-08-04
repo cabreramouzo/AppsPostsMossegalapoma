@@ -17,6 +17,8 @@ import Cocoa
 
 func uploadImageMac(image: NSImage, imageTitle: String, imageAlternativetext: String, completion: @escaping (Bool, Int) -> Void) {
     
+    var settings: SettingsMac = SettingsMac()
+    
     var imageTitle2 = imageTitle
     var fileName2 = imageTitle
     var imageAltText = imageAlternativetext
@@ -35,8 +37,8 @@ func uploadImageMac(image: NSImage, imageTitle: String, imageAlternativetext: St
         imageAltText = imageTitle2.replacingOccurrences(of: "_", with: " ")
     }
     
-    let user = "publisher"
-    let psw = "XbIb 8kS6 31Xw 2szM xVmd 58JK"
+    let user = settings.user
+    let psw = settings.password
     let credentials = user + ":" + psw
     
     let token = credentials.data(using: String.Encoding.utf8)?.base64EncodedString()
@@ -57,7 +59,7 @@ func uploadImageMac(image: NSImage, imageTitle: String, imageAlternativetext: St
         counter+=1
     }
     
-    let url_srcdest = URL(string: "http://192.168.0.104/wp-json/wp/v2/media" + urlParamsString)
+    let url_srcdest = URL(string: "http://192.168.0.101/wp-json/wp/v2/media" + urlParamsString)
     guard let requestUrl = url_srcdest else { fatalError() }
     
     //convert to data from https://gist.github.com/zappycode/3b5e151d4d98407901af5748745f5845
@@ -80,7 +82,7 @@ func uploadImageMac(image: NSImage, imageTitle: String, imageAlternativetext: St
     request.httpBody = postData
     
     struct MediaResponse: Codable { // or Decodable
-        let id: Int
+        let id: Int?
     }
     
     // Perform HTTP Request
@@ -102,7 +104,7 @@ func uploadImageMac(image: NSImage, imageTitle: String, imageAlternativetext: St
             let mediaResponse: MediaResponse = try! JSONDecoder().decode(MediaResponse.self, from: data!)
             print("mediaresponse.id")
             print(mediaResponse.id)
-            completion(httpResponse.statusCode == 201, mediaResponse.id )
+            completion(httpResponse.statusCode == 201, mediaResponse.id ?? -1 )
             
         }
         
