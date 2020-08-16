@@ -247,6 +247,13 @@ struct ContentView: View {
                     }
                     Button("Pujar Post", action:{
                         
+                        if self.selectorIndex == 0 {
+                            self.draft = false
+                        }
+                        else if self.selectorIndex == 1 {
+                            self.draft = true
+                        }
+                        
                         uploadPost(draft: self.draft, title: self.postTitle , documentURL: self.inputURL!, mediaID: self.mediaIDstate,  completion: { (is_ok) -> Void in
                             print("es ok")
                             print(is_ok)
