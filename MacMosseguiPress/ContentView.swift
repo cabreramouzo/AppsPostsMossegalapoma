@@ -28,7 +28,7 @@ struct ContentView: View {
     
     @State var selectorIndex: Int = 0
     
-    @State var draft:Bool = false
+    @State var draft:Bool = true
     
     @State var url_ok:Bool? = false
     @State var url_ok_message:String = ""
