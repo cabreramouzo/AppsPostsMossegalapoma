@@ -17,6 +17,11 @@ struct Post: Identifiable {
         self.sections[name] = ps
     }
     
+    mutating func addSection(name: String, HTMLContent: String) {
+        let ps = PostSection(name: name, contentHTML: HTMLContent)
+        self.sections[name] = ps
+    }
+    
     mutating func initDefaultHTMLSections() {
         
         let upc = PostSection(name: "upc", contentHTML: """
@@ -57,7 +62,7 @@ struct Post: Identifiable {
     func getPostHTML() -> String {
         
         var html:String = ""
-        let orderTags = ["upc", "%extracte%", "hr", "%part1%", "afiliats", "hr", "%part2%", "hr", "%propostes%", "hr", "%trukis%"]
+        let orderTags = ["upc", "imatge", "%extracte%", "hr", "%part1%", "afiliats", "hr", "%part2%", "hr", "%propostes%", "hr", "%trukis%"]
         
         for sect in orderTags {
             html += self.getSectionContentInHTML(sectionName: sect)
