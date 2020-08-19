@@ -52,7 +52,7 @@ struct GeneralView: View {
                 TextField("https://mossegalapoma.cat/wp-json/wp/v2/posts", text: self.$urlPost)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .frame(width: 420.0)
-                Text("URL per penjar els posts")
+                Text("URL per penjar els posts sense '/' final")
                 .preferenceDescription()
 
             }
@@ -60,7 +60,7 @@ struct GeneralView: View {
                 TextField("https://mossegalapoma.cat/wp-json/wp/v2/media", text: self.$urlMedia)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .frame(width: 420.0)
-                Text("URL per penjar la mèdia (foto entrada)")
+                Text("URL per penjar la mèdia (foto entrada) sense '/' final")
                     .preferenceDescription()
 
             }
