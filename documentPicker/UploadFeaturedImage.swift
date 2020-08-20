@@ -44,8 +44,8 @@ func uploadImageMac(image: NSImage, imageTitle: String, imageAlternativetext: St
     let token = credentials.data(using: String.Encoding.utf8)?.base64EncodedString()
     
     let urlParamsDict = ["alt_text=":imageAltText,
-                     "author=": "2",
-                     "title=":imageTitle2,
+                         "author=": settings.authorId,
+                         "title=":imageTitle2,
                     ]
     var urlParamsString = ""
     var counter = 0

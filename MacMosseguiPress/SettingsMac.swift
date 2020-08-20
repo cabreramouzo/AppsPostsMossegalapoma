@@ -19,7 +19,7 @@ final class SettingsMac {
         defaults.register(defaults: [
             "app.mac.wordpress.post.server" : "localhost/wp-json/wp/v2/posts",
             "app.mac.wordpress.media.server" : "localhost/wp-json/wp/v2/media",
-            "app.mac.wordpress.author.id" : "2",
+            "app.mac.wordpress.author.id" : "1",
             "app.mac.user" : "macma",
             "app.mac.password" : "1234",
             "app.view.defaultIndexRadioButton" : 0,

@@ -99,6 +99,7 @@ func uploadPost(draft:Bool, title: String, documentURL:URL, mediaID:Int, complet
             "content": html_content,
             "status": status,
             "comment_status" : "open",
+            "author" : settings.authorId,
             "featured_media" : mediaID,
             "meta" : meta,
             ]

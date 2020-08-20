@@ -36,13 +36,7 @@ struct GeneralView: View {
     @State private var user:String = "macma"
     @State private var password:String = "1234"
     @State private var defaultIndexRadioButton:Int = 0
-    
-    @State private var isOn1 = true
-    @State private var isOn2 = false
-    @State private var isOn3 = true
-    @State private var selection1 = 1
-    @State private var selection2 = 0
-    @State private var selection3 = 0
+
     private let contentWidth: Double = 600.0
     
     var body: some View {
@@ -77,11 +71,11 @@ struct GeneralView: View {
             }
 
             Preferences.Section(title: "Autor per defecte:") {
-                Picker("", selection: self.$selection3) {
-                    Text("tomasmanz").tag(0)
-                    Text("Ludo").tag(1)
-                    Text("macma").tag(3)
-                    Text("wolffan").tag(4)
+                Picker("", selection: self.$authorId) {
+                    Text("tomasmanz").tag("1")
+                    Text("Ludo").tag("2")
+                    Text("macma").tag("18")
+                    Text("wolffan").tag("5")
                 }
                     .labelsHidden()
                     .frame(width: 120.0)
@@ -103,19 +97,20 @@ struct GeneralView: View {
                 Button(action: {
                     self.settings.postServer = self.urlPost
                     self.settings.mediaServer = self.urlMedia
-                    //self.settings.authorId = self.authorId
+                    self.settings.authorId = self.authorId
                     self.settings.user = self.user
                     self.settings.password = self.password
                     self.settings.defaultIndexRadioButton = self.defaultIndexRadioButton
                 }) {
                     Text("Aplicar canvis")
+ 
                 }
     
             }
         }.onAppear {
             self.urlPost = self.settings.postServer
             self.urlMedia = self.settings.mediaServer
-            //self.authorId = self.settings.authorId
+            self.authorId = self.settings.authorId
             self.user = self.settings.user
             self.password = self.settings.password
             self.defaultIndexRadioButton = self.settings.defaultIndexRadioButton
