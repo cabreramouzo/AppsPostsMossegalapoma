@@ -50,7 +50,7 @@ func getHTMLStringFromMdDocument(MdDocURL:URL, mediaAttributes:[String:String]) 
     
 }
 
-func uploadPost(draft:Bool, title: String, documentURL:URL, mediaID:Int, completion: @escaping (Bool) -> Void) -> Void {
+func uploadPost(draft:Bool, title: String, documentURL:URL, audioURL:String, mediaID:Int, completion: @escaping (Bool) -> Void) -> Void {
     let settings: SettingsMac = SettingsMac()
     let user = settings.user
     let psw = settings.password
@@ -92,7 +92,7 @@ func uploadPost(draft:Bool, title: String, documentURL:URL, mediaID:Int, complet
             }
             
             let meta: [String: Any] = [
-                "audio_file": "https://storagemossegui.com/mlpaudio/mlp445.mp3"]
+                "audio_file": audioURL]
                 
             // Set HTTP Request Body
             let json: [String: Any] = ["title": title,

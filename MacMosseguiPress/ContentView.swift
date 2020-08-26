@@ -9,9 +9,9 @@
 import SwiftUI
 
 struct ContentView: View {
-    let settings: SettingsMac
+    let settings = SettingsMac()
     @State var postTitle: String
-    @State var mlpAudioURL: String = "https://storagemossegui.com/mlpaudio/mlp4"
+    @State var mlpAudioURL: String
     @State var inputURL: URL?
     @State var imagePath: String
     @State var image: NSImage?
@@ -254,7 +254,7 @@ struct ContentView: View {
                             self.draft = true
                         }
                         
-                        uploadPost(draft: self.draft, title: self.postTitle , documentURL: self.inputURL!, mediaID: self.mediaIDstate,  completion: { (is_ok) -> Void in
+                        uploadPost(draft: self.draft, title: self.postTitle , documentURL: self.inputURL!, audioURL: self.mlpAudioURL, mediaID: self.mediaIDstate,  completion: { (is_ok) -> Void in
                             print("es ok")
                             print(is_ok)
                             if is_ok {
@@ -287,7 +287,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(settings: SettingsMac(), postTitle: "Programa 42", mlpAudioURL: "https://...", inputURL: URL(string: ""), imagePath: "", mediaIDstate: -1)
+        ContentView(postTitle: "Programa 42", mlpAudioURL: "https://...", inputURL: URL(string: ""), imagePath: "", mediaIDstate: -1)
     }
 }
 

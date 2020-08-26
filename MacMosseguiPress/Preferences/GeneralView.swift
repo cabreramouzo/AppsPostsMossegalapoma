@@ -32,11 +32,12 @@ struct GeneralView: View {
     
     @State private var urlPost:String = "localhost/posts"
     @State private var urlMedia:String = "localhost/media"
+    @State private var urlAudio:String = "localhost/mlpaudio"
     @State private var authorId:String = "1"
     @State private var user:String = "macma"
     @State private var password:String = "1234"
     @State private var defaultIndexRadioButton:Int = 0
-
+    
     private let contentWidth: Double = 600.0
     
     var body: some View {
@@ -55,6 +56,14 @@ struct GeneralView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .frame(width: 420.0)
                 Text("URL per penjar la mèdia (foto entrada) sense '/' final")
+                    .preferenceDescription()
+
+            }
+            Preferences.Section(title: "URL Audio:") {
+                TextField("https://storagemossegui.com/mlpaudio/4", text: self.$urlAudio)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .frame(width: 420.0)
+                Text("URL per penjar l'àudio")
                     .preferenceDescription()
 
             }
@@ -97,6 +106,7 @@ struct GeneralView: View {
                 Button(action: {
                     self.settings.postServer = self.urlPost
                     self.settings.mediaServer = self.urlMedia
+                    self.settings.audioUrl = self.urlAudio
                     self.settings.authorId = self.authorId
                     self.settings.user = self.user
                     self.settings.password = self.password
@@ -110,6 +120,7 @@ struct GeneralView: View {
         }.onAppear {
             self.urlPost = self.settings.postServer
             self.urlMedia = self.settings.mediaServer
+            self.urlAudio = self.settings.audioUrl
             self.authorId = self.settings.authorId
             self.user = self.settings.user
             self.password = self.settings.password

@@ -19,6 +19,7 @@ final class SettingsMac {
         defaults.register(defaults: [
             "app.mac.wordpress.post.server" : "localhost/wp-json/wp/v2/posts",
             "app.mac.wordpress.media.server" : "localhost/wp-json/wp/v2/media",
+            "app.mac.storagemossegui.audio.url" : "https://storagemossegui.com/mlpaudio/4",
             "app.mac.wordpress.author.id" : "1",
             "app.mac.user" : "macma",
             "app.mac.password" : "1234",
@@ -37,6 +38,15 @@ final class SettingsMac {
     }
     
     var mediaServer: String {
+        get {
+            defaults.string(forKey: "app.mac.storagemossegui.audio.url")!
+        }
+        set {
+            defaults.set(newValue, forKey: "app.mac.storagemossegui.audio.url")
+        }
+    }
+    
+    var audioUrl: String {
         get {
             defaults.string(forKey: "app.mac.wordpress.media.server")!
         }
