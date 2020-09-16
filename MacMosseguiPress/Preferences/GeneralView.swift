@@ -60,7 +60,7 @@ struct GeneralView: View {
 
             }
             Preferences.Section(title: "URL Audio:") {
-                TextField("https://storagemossegui.com/mlpaudio/4", text: self.$urlAudio)
+                TextField("https://storagemossegui.com/mlpaudio/mlp4", text: self.$urlAudio)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .frame(width: 420.0)
                 Text("URL per penjar l'àudio")
