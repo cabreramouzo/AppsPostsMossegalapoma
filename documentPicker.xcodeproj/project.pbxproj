@@ -27,7 +27,6 @@
 		04A1508324D4365200315C3F /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FCE33624CAF4B2004E8FED /* Post.swift */; };
 		04A1508424D4366300315C3F /* DocumentParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0432DD0A24C8884800C62CA1 /* DocumentParser.swift */; };
 		04A1508524D44B4C00315C3F /* CheckURLExists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04740C4C24C4C2E100F9C8D5 /* CheckURLExists.swift */; };
-		04A5000A24B3395000E40D2A /* documentPickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5000924B3395000E40D2A /* documentPickerTests.swift */; };
 		04A5001524B47DE300E40D2A /* programa_tipic_nomes_body.html in Resources */ = {isa = PBXBuildFile; fileRef = 04A5001424B47DE200E40D2A /* programa_tipic_nomes_body.html */; };
 		04A5FFF024B3394D00E40D2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5FFEF24B3394D00E40D2A /* AppDelegate.swift */; };
 		04A5FFF224B3394D00E40D2A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5FFF124B3394D00E40D2A /* SceneDelegate.swift */; };
@@ -36,6 +35,7 @@
 		04A5FFF924B3394F00E40D2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04A5FFF824B3394F00E40D2A /* Assets.xcassets */; };
 		04A5FFFC24B3394F00E40D2A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04A5FFFB24B3394F00E40D2A /* Preview Assets.xcassets */; };
 		04A5FFFF24B3394F00E40D2A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04A5FFFD24B3394F00E40D2A /* LaunchScreen.storyboard */; };
+		04BABE9B2510D73D00AF3B98 /* MacMosseguiPressTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BABE9A2510D73D00AF3B98 /* MacMosseguiPressTests.swift */; };
 		04C237E924BA0FB2005BA9D0 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C237E824BA0FB2005BA9D0 /* ActivityIndicator.swift */; };
 		04F6B35124D5C34A00A41C6C /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C237E824BA0FB2005BA9D0 /* ActivityIndicator.swift */; };
 		04F6B35C24D82F1C00A41C6C /* SettingsMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F6B35B24D82F1C00A41C6C /* SettingsMac.swift */; };
@@ -49,12 +49,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		04A5000624B3395000E40D2A /* PBXContainerItemProxy */ = {
+		04BABE9D2510D73D00AF3B98 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 04A5FFE424B3394D00E40D2A /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 04A5FFEB24B3394D00E40D2A;
-			remoteInfo = documentPicker;
+			remoteGlobalIDString = 04A1506024D1D1B300315C3F;
+			remoteInfo = MacMosseguiPress;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -75,7 +75,6 @@
 		04A1506F24D1D1B700315C3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04A1507024D1D1B700315C3F /* MacMosseguiPress.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacMosseguiPress.entitlements; sourceTree = "<group>"; };
 		04A5000024B3394F00E40D2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		04A5000524B3395000E40D2A /* documentPickerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = documentPickerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04A5000924B3395000E40D2A /* documentPickerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = documentPickerTests.swift; sourceTree = "<group>"; };
 		04A5000B24B3395000E40D2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04A5001424B47DE200E40D2A /* programa_tipic_nomes_body.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = programa_tipic_nomes_body.html; sourceTree = "<group>"; };
@@ -87,6 +86,11 @@
 		04A5FFF824B3394F00E40D2A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04A5FFFB24B3394F00E40D2A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		04A5FFFE24B3394F00E40D2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		04BABE8C2510CD1300AF3B98 /* MacMosseguiPressTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacMosseguiPressTests.swift; sourceTree = "<group>"; };
+		04BABE8E2510CD1300AF3B98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04BABE982510D73C00AF3B98 /* MacMosseguiPressTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacMosseguiPressTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		04BABE9A2510D73D00AF3B98 /* MacMosseguiPressTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacMosseguiPressTests.swift; sourceTree = "<group>"; };
+		04BABE9C2510D73D00AF3B98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04C237E824BA0FB2005BA9D0 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		04F6B35B24D82F1C00A41C6C /* SettingsMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMac.swift; sourceTree = "<group>"; };
 		04F6B36024D8355100A41C6C /* GeneralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralView.swift; sourceTree = "<group>"; };
@@ -105,19 +109,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		04A5000224B3395000E40D2A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		04A5FFE924B3394D00E40D2A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				0432DD0924C886C600C62CA1 /* SwiftSoup in Frameworks */,
 				04FCE33324CAE5D4004E8FED /* Ink in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04BABE952510D73C00AF3B98 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,6 +174,8 @@
 				04A5FFEE24B3394D00E40D2A /* documentPicker */,
 				04A5000824B3395000E40D2A /* documentPickerTests */,
 				04A1506224D1D1B300315C3F /* MacMosseguiPress */,
+				04BABE8B2510CD1300AF3B98 /* MacMosseguiPressTests */,
+				04BABE992510D73C00AF3B98 /* MacMosseguiPressTests */,
 				04A5FFED24B3394D00E40D2A /* Products */,
 				04A1508024D4362600315C3F /* Frameworks */,
 			);
@@ -179,8 +185,8 @@
 			isa = PBXGroup;
 			children = (
 				04A5FFEC24B3394D00E40D2A /* documentPicker.app */,
-				04A5000524B3395000E40D2A /* documentPickerTests.xctest */,
 				04A1506124D1D1B300315C3F /* MacMosseguiPress.app */,
+				04BABE982510D73C00AF3B98 /* MacMosseguiPressTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -219,6 +225,24 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		04BABE8B2510CD1300AF3B98 /* MacMosseguiPressTests */ = {
+			isa = PBXGroup;
+			children = (
+				04BABE8C2510CD1300AF3B98 /* MacMosseguiPressTests.swift */,
+				04BABE8E2510CD1300AF3B98 /* Info.plist */,
+			);
+			path = MacMosseguiPressTests;
+			sourceTree = "<group>";
+		};
+		04BABE992510D73C00AF3B98 /* MacMosseguiPressTests */ = {
+			isa = PBXGroup;
+			children = (
+				04BABE9A2510D73D00AF3B98 /* MacMosseguiPressTests.swift */,
+				04BABE9C2510D73D00AF3B98 /* Info.plist */,
+			);
+			path = MacMosseguiPressTests;
+			sourceTree = "<group>";
+		};
 		04F6B36224D8391D00A41C6C /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
@@ -252,24 +276,6 @@
 			productReference = 04A1506124D1D1B300315C3F /* MacMosseguiPress.app */;
 			productType = "com.apple.product-type.application";
 		};
-		04A5000424B3395000E40D2A /* documentPickerTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 04A5001124B3395000E40D2A /* Build configuration list for PBXNativeTarget "documentPickerTests" */;
-			buildPhases = (
-				04A5000124B3395000E40D2A /* Sources */,
-				04A5000224B3395000E40D2A /* Frameworks */,
-				04A5000324B3395000E40D2A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				04A5000724B3395000E40D2A /* PBXTargetDependency */,
-			);
-			name = documentPickerTests;
-			productName = documentPickerTests;
-			productReference = 04A5000524B3395000E40D2A /* documentPickerTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		04A5FFEB24B3394D00E40D2A /* documentPicker */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 04A5000E24B3395000E40D2A /* Build configuration list for PBXNativeTarget "documentPicker" */;
@@ -291,6 +297,24 @@
 			productReference = 04A5FFEC24B3394D00E40D2A /* documentPicker.app */;
 			productType = "com.apple.product-type.application";
 		};
+		04BABE972510D73C00AF3B98 /* MacMosseguiPressTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04BABE9F2510D73D00AF3B98 /* Build configuration list for PBXNativeTarget "MacMosseguiPressTests" */;
+			buildPhases = (
+				04BABE942510D73C00AF3B98 /* Sources */,
+				04BABE952510D73C00AF3B98 /* Frameworks */,
+				04BABE962510D73C00AF3B98 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04BABE9E2510D73D00AF3B98 /* PBXTargetDependency */,
+			);
+			name = MacMosseguiPressTests;
+			productName = MacMosseguiPressTests;
+			productReference = 04BABE982510D73C00AF3B98 /* MacMosseguiPressTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -307,12 +331,12 @@
 					04A1506024D1D1B300315C3F = {
 						CreatedOnToolsVersion = 11.6;
 					};
-					04A5000424B3395000E40D2A = {
-						CreatedOnToolsVersion = 11.5;
-						TestTargetID = 04A5FFEB24B3394D00E40D2A;
-					};
 					04A5FFEB24B3394D00E40D2A = {
 						CreatedOnToolsVersion = 11.5;
+					};
+					04BABE972510D73C00AF3B98 = {
+						CreatedOnToolsVersion = 11.6;
+						TestTargetID = 04A1506024D1D1B300315C3F;
 					};
 				};
 			};
@@ -335,8 +359,8 @@
 			projectRoot = "";
 			targets = (
 				04A5FFEB24B3394D00E40D2A /* documentPicker */,
-				04A5000424B3395000E40D2A /* documentPickerTests */,
 				04A1506024D1D1B300315C3F /* MacMosseguiPress */,
+				04BABE972510D73C00AF3B98 /* MacMosseguiPressTests */,
 			);
 		};
 /* End PBXProject section */
@@ -352,13 +376,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		04A5000324B3395000E40D2A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		04A5FFEA24B3394D00E40D2A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -367,6 +384,13 @@
 				04A5FFFF24B3394F00E40D2A /* LaunchScreen.storyboard in Resources */,
 				04A5FFFC24B3394F00E40D2A /* Preview Assets.xcassets in Resources */,
 				04A5FFF924B3394F00E40D2A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04BABE962510D73C00AF3B98 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,14 +417,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		04A5000124B3395000E40D2A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				04A5000A24B3395000E40D2A /* documentPickerTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		04A5FFE824B3394D00E40D2A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -422,13 +438,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		04BABE942510D73C00AF3B98 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04BABE9B2510D73D00AF3B98 /* MacMosseguiPressTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		04A5000724B3395000E40D2A /* PBXTargetDependency */ = {
+		04BABE9E2510D73D00AF3B98 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 04A5FFEB24B3394D00E40D2A /* documentPicker */;
-			targetProxy = 04A5000624B3395000E40D2A /* PBXContainerItemProxy */;
+			target = 04A1506024D1D1B300315C3F /* MacMosseguiPress */;
+			targetProxy = 04BABE9D2510D73D00AF3B98 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -551,6 +575,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -605,6 +630,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -657,47 +683,47 @@
 			};
 			name = Release;
 		};
-		04A5001224B3395000E40D2A /* Debug */ = {
+		04BABEA02510D73D00AF3B98 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 7V6773B2EX;
-				INFOPLIST_FILE = documentPickerTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				INFOPLIST_FILE = MacMosseguiPressTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = mac.documentPickerTests;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = mac.MacMosseguiPressTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/documentPicker.app/documentPicker";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MacMosseguiPress.app/Contents/MacOS/MacMosseguiPress";
 			};
 			name = Debug;
 		};
-		04A5001324B3395000E40D2A /* Release */ = {
+		04BABEA12510D73D00AF3B98 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 7V6773B2EX;
-				INFOPLIST_FILE = documentPickerTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				INFOPLIST_FILE = MacMosseguiPressTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = mac.documentPickerTests;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = mac.MacMosseguiPressTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/documentPicker.app/documentPicker";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MacMosseguiPress.app/Contents/MacOS/MacMosseguiPress";
 			};
 			name = Release;
 		};
@@ -722,20 +748,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		04A5001124B3395000E40D2A /* Build configuration list for PBXNativeTarget "documentPickerTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				04A5001224B3395000E40D2A /* Debug */,
-				04A5001324B3395000E40D2A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		04A5FFE724B3394D00E40D2A /* Build configuration list for PBXProject "documentPicker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				04A5000C24B3395000E40D2A /* Debug */,
 				04A5000D24B3395000E40D2A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04BABE9F2510D73D00AF3B98 /* Build configuration list for PBXNativeTarget "MacMosseguiPressTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04BABEA02510D73D00AF3B98 /* Debug */,
+				04BABEA12510D73D00AF3B98 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

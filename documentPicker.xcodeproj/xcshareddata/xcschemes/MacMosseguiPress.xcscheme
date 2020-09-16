@@ -28,6 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "04A5000424B3395000E40D2A"
+               BuildableName = "documentPickerTests.xctest"
+               BlueprintName = "documentPickerTests"
+               ReferencedContainer = "container:documentPicker.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "04BABE892510CD1300AF3B98"
+               BuildableName = "MacMosseguiPressTests.xctest"
+               BlueprintName = "MacMosseguiPressTests"
+               ReferencedContainer = "container:documentPicker.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
