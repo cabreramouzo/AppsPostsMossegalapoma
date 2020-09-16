@@ -20,6 +20,7 @@ struct ContentView: View {
     var mediaID: Int = -1
     @State var imageTitle:String = ""
     @State var imageAlternativeText: String = ""
+    @State var imageUploaded = false
     
     @State var ShowAlertImage = false
     @State var ShowAlertPost = false
@@ -91,6 +92,7 @@ struct ContentView: View {
                 if is_ok {
                     self.alertText = "Imatge carregada correctament!"
                     self.alertTitle = "✅ OK"
+                    self.imageUploaded = true
                 }
                 else {
                     self.alertText = "Hi ha hagut un error al pujar l'imatge a Wordpress"
@@ -270,7 +272,7 @@ struct ContentView: View {
                         })
                     }).alert(isPresented: $ShowAlertPost) {
                         Alert(title: Text(alertTitle), message: Text(alertText), dismissButton: .default(Text("Ok!")) {print("activity indicator")})
-                    }
+                    }.disabled(postTitle == "" || inputURL == nil || imageUploaded == false)
                 }
             }
             
