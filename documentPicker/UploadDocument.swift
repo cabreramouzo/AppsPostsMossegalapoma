@@ -55,7 +55,16 @@ func uploadPost(draft:Bool, title: String, documentURL:URL, audioURL:String, med
     let user = settings.user
     let psw = settings.password
     let credentials = user + ":" + psw
-
+    
+    //let code the categories into integer array
+    let cats = settings.cats
+    var catsIds = [Int]()
+    for cat in cats {
+        catsIds.append( Int(cat.id)! )
+    }
+    print("Categories array[]")
+    print(catsIds)
+    
     let token = credentials.data(using: String.Encoding.utf8)?.base64EncodedString()
     //Data is a byte buffer
     let decodedToken = Data(base64Encoded: token!)!
@@ -84,8 +93,9 @@ func uploadPost(draft:Bool, title: String, documentURL:URL, audioURL:String, med
             // Set HTTP Request Header
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.setValue("Basic " + token!, forHTTPHeaderField: "Authorization")
-            
-            //print(String(data: decodedToken, encoding: .utf8)!)
+            print("token")
+            print(String(data: decodedToken, encoding: .utf8)!)
+            print(String(token!))
             var status = "publish"
             if draft {
                 status = "draft"
@@ -95,13 +105,15 @@ func uploadPost(draft:Bool, title: String, documentURL:URL, audioURL:String, med
                 "audio_file": audioURL]
                 
             // Set HTTP Request Body
-            let json: [String: Any] = ["title": title,
+            let json: [String: Any] = [
+            "title": title,
             "content": html_content,
             "status": status,
             "comment_status" : "open",
             "author" : settings.authorId,
             "featured_media" : mediaID,
             "meta" : meta,
+            "categories" : catsIds,
             ]
             
             print("featured media ID")
@@ -110,12 +122,11 @@ func uploadPost(draft:Bool, title: String, documentURL:URL, audioURL:String, med
             let jsonData = try? JSONSerialization.data(withJSONObject: json)
             //request.httpBody = postString.data(using: String.Encoding.utf8);
             request.httpBody = jsonData
-
+            
+            
             // Perform HTTP Request
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-                
-                    
-                
+
                     // Check for Error
                     if let error = error {
                         print("Error took place \(error)")
@@ -125,7 +136,8 @@ func uploadPost(draft:Bool, title: String, documentURL:URL, audioURL:String, med
              
                     // Convert HTTP Response Data to a String
                     if let data = data, let dataString = String(data: data, encoding: .utf8) {
-                        //print("Response data string:\n \(dataString)")
+                        
+                        print("Response data string:\n \(dataString)")
                                       
                     }
                     if let httpResponse = response as? HTTPURLResponse {

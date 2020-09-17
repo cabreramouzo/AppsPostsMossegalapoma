@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		040BCAF224C054DB002F544A /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040BCAF124C054DB002F544A /* ImagePicker.swift */; };
 		040BCAF424C08DB8002F544A /* UploadFeaturedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040BCAF324C08DB8002F544A /* UploadFeaturedImage.swift */; };
+		041BFA1E251234DB00E79209 /* WordpressCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041BFA1D251234DB00E79209 /* WordpressCategory.swift */; };
 		042B90F224B73D3F00FE9043 /* UploadDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B90F124B73D3F00FE9043 /* UploadDocument.swift */; };
 		042B90F424B760A000FE9043 /* documentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B90F324B760A000FE9043 /* documentPicker.swift */; };
 		0432DD0924C886C600C62CA1 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 0432DD0824C886C600C62CA1 /* SwiftSoup */; };
@@ -61,6 +62,7 @@
 /* Begin PBXFileReference section */
 		040BCAF124C054DB002F544A /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		040BCAF324C08DB8002F544A /* UploadFeaturedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadFeaturedImage.swift; sourceTree = "<group>"; };
+		041BFA1D251234DB00E79209 /* WordpressCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordpressCategory.swift; sourceTree = "<group>"; };
 		042B90F124B73D3F00FE9043 /* UploadDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadDocument.swift; sourceTree = "<group>"; };
 		042B90F324B760A000FE9043 /* documentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = documentPicker.swift; sourceTree = "<group>"; };
 		0432DD0A24C8884800C62CA1 /* DocumentParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentParser.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 		04A1506224D1D1B300315C3F /* MacMosseguiPress */ = {
 			isa = PBXGroup;
 			children = (
+				041BFA1D251234DB00E79209 /* WordpressCategory.swift */,
 				04A1506324D1D1B300315C3F /* AppDelegate.swift */,
 				04F6B35B24D82F1C00A41C6C /* SettingsMac.swift */,
 				04F6B36224D8391D00A41C6C /* Preferences */,
@@ -404,6 +407,7 @@
 				04A1508524D44B4C00315C3F /* CheckURLExists.swift in Sources */,
 				04A1506624D1D1B300315C3F /* ContentView.swift in Sources */,
 				04A1507F24D435FD00315C3F /* BlocExtractor.swift in Sources */,
+				041BFA1E251234DB00E79209 /* WordpressCategory.swift in Sources */,
 				04A1506424D1D1B300315C3F /* AppDelegate.swift in Sources */,
 				04F6B35C24D82F1C00A41C6C /* SettingsMac.swift in Sources */,
 				04A1508324D4365200315C3F /* Post.swift in Sources */,

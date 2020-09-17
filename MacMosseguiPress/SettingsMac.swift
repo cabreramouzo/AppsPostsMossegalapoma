@@ -16,6 +16,15 @@ final class SettingsMac {
         
         self.defaults = defaults
         
+        let categories = [WordpressCategory(wordpressId: "28", name: "Apple", Postdefault: false),
+                          WordpressCategory(wordpressId: "24", name: "Podcast", Postdefault: true),
+                          WordpressCategory(wordpressId: "3", name: "Mac", Postdefault: false),
+                          WordpressCategory(wordpressId: "34", name: "iPhone", Postdefault: true),
+                          WordpressCategory(wordpressId: "12", name: "Opinió", Postdefault: false)]
+        
+        let encoder = JSONEncoder()
+        let c = try? encoder.encode(categories)
+        
         defaults.register(defaults: [
             "app.mac.wordpress.post.server" : "localhost/wp-json/wp/v2/posts",
             "app.mac.wordpress.media.server" : "localhost/wp-json/wp/v2/media",
@@ -23,6 +32,7 @@ final class SettingsMac {
             "app.mac.wordpress.author.id" : "1",
             "app.mac.user" : "macma",
             "app.mac.password" : "1234",
+            "app.mac.wordpress.categories" : c,
             "app.view.defaultIndexRadioButton" : 0,
             
         ])
@@ -89,6 +99,48 @@ final class SettingsMac {
         set {
             defaults.set(newValue, forKey: "app.view.defaultIndexRadioButton")
         }
+    }
+    
+//    var getCategories: [(String, String, Bool)] {
+//        get {
+//
+//            defaults.object(forKey: "app.mac.wordpress.categories") as! [(String, String, Bool)]
+//        }
+//    }
+    
+    // ("234", "Apple", true)
+//    var setCategoryTrue: (String, String, Bool) {
+//        get {
+//            //esta mal
+//            defaults.object(forKey: "app.mac.wordpress.categories") as! (String, String, Bool)
+//        }
+//        set {
+//            defaults.set(self.categories[newValue.0] = (newValue.1, newValue.2) , forKey: "app.mac.wordpress.categories")
+//        }
+//
+//    }
+    
+    var cats: [WordpressCategory] {
+        
+        get {
+            var catss: [WordpressCategory] = [WordpressCategory(wordpressId: "aaa", name: "aaa", Postdefault: true)]
+            if let savedCategories = defaults.object(forKey: "app.mac.wordpress.categories") as? Data {
+                let decoder = JSONDecoder()
+                if let loadedCategories = try? decoder.decode([WordpressCategory].self, from: savedCategories) {
+                    catss = loadedCategories
+                }
+            }
+            return catss
+        }
+        
+        set {
+            let encoder = JSONEncoder()
+            let a = newValue
+            if let encoded = try? encoder.encode(a) {
+                defaults.set(encoded, forKey: "app.mac.wordpress.categories")
+            }
+        }
+        
     }
     
     

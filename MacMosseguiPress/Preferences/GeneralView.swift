@@ -19,7 +19,13 @@ let GeneralViewController: () -> PreferencePane = {
         title: "General",
         toolbarIcon: NSImage(named: NSImage.preferencesGeneralName)!
     ) {
-        GeneralView(settings: SettingsMac())
+        GeneralView(settings: SettingsMac(), categories: [
+        WordpressCategory(wordpressId: "28", name: "Apple", Postdefault: true),
+        WordpressCategory(wordpressId: "24", name: "Podcast", Postdefault: false),
+        WordpressCategory(wordpressId: "3", name: "Mac", Postdefault: true),
+        WordpressCategory(wordpressId: "34", name: "iPhone", Postdefault: true),
+        WordpressCategory(wordpressId: "12", name: "Opinió", Postdefault: false)])
+
     }
 
     return Preferences.PaneHostingController(pane: paneView)
@@ -39,6 +45,28 @@ struct GeneralView: View {
     @State private var defaultIndexRadioButton:Int = 0
     
     private let contentWidth: Double = 600.0
+    
+    @State var categories:[WordpressCategory]
+    
+    //TODO como saber size a partir de settings?
+    @State private var toggles:[Bool] = [false, false, false, true, true]
+    
+    
+    func saveCategories() {
+        for i in self.toggles.indices {
+            categories[i].postDefault = self.toggles[i]
+        }
+        settings.cats = categories
+    }
+    
+    func loadCategories() {
+        categories = settings.cats
+        
+        for index in categories.indices {
+            toggles[index] = (categories[index].postDefault)
+        }
+        print("he rellenado los toggles")
+    }
     
     var body: some View {
         
@@ -102,6 +130,21 @@ struct GeneralView: View {
                 .frame(width: 120.0)
             }
             
+            Preferences.Section(title: "Categories per omisió:") {
+
+                HStack {
+                    ForEach (self.categories.indices) { i in
+                        HStack {
+                            Toggle(self.categories[i].name, isOn: self.$toggles[i])
+                        }
+                        
+                    }
+                    
+                }
+                
+            }
+            
+            
             Preferences.Section(title: "") {
                 Button(action: {
                     self.settings.postServer = self.urlPost
@@ -111,6 +154,11 @@ struct GeneralView: View {
                     self.settings.user = self.user
                     self.settings.password = self.password
                     self.settings.defaultIndexRadioButton = self.defaultIndexRadioButton
+                    self.saveCategories()
+                    print("save categories")
+                    print(self.categories)
+                    print(self.settings.cats)
+                    
                 }) {
                     Text("Aplicar canvis")
  
@@ -125,12 +173,13 @@ struct GeneralView: View {
             self.user = self.settings.user
             self.password = self.settings.password
             self.defaultIndexRadioButton = self.settings.defaultIndexRadioButton
+            self.loadCategories()
         }
     }
 }
 
 struct GeneralView_Previews: PreviewProvider {
     static var previews: some View {
-        GeneralView(settings: SettingsMac())
+        GeneralView(settings: SettingsMac(), categories: [WordpressCategory(wordpressId: "qqq", name: "qqq", Postdefault: true)] )
     }
 }
