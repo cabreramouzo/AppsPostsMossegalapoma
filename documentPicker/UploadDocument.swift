@@ -50,20 +50,14 @@ func getHTMLStringFromMdDocument(MdDocURL:URL, mediaAttributes:[String:String]) 
     
 }
 
-func uploadPost(draft:Bool, title: String, documentURL:URL, audioURL:String, mediaID:Int, completion: @escaping (Bool) -> Void) -> Void {
+func uploadPost(draft:Bool, title: String, documentURL:URL, audioURL:String, mediaID:Int, categories:[Int],  completion: @escaping (Bool) -> Void) -> Void {
     let settings: SettingsMac = SettingsMac()
     let user = settings.user
     let psw = settings.password
     let credentials = user + ":" + psw
     
-    //let code the categories into integer array
-    let cats = settings.cats
-    var catsIds = [Int]()
-    for cat in cats {
-        catsIds.append( Int(cat.id)! )
-    }
     print("Categories array[]")
-    print(catsIds)
+    print(categories)
     
     let token = credentials.data(using: String.Encoding.utf8)?.base64EncodedString()
     //Data is a byte buffer
@@ -113,7 +107,7 @@ func uploadPost(draft:Bool, title: String, documentURL:URL, audioURL:String, med
             "author" : settings.authorId,
             "featured_media" : mediaID,
             "meta" : meta,
-            "categories" : catsIds,
+            "categories" : categories,
             ]
             
             print("featured media ID")

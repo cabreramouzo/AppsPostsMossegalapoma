@@ -38,6 +38,18 @@ struct ContentView: View {
     @State private var showActivityIndicatorURLButton: Bool = false
     @State private var showActivityIndicatorPostButton: Bool = false
     
+    //categories toggles
+    @State private var catToggles = [Bool](repeating: true, count: 5)
+    
+    func loadCategories() {
+        let numCats = settings.categories.count
+        
+        for index in settings.categories.indices {
+            catToggles[index] = (settings.categories[index].postDefault)
+        }
+        
+    }
+    
     func pickFile() {
         let panel = NSOpenPanel()
         panel.prompt = "Seleccionar"
@@ -105,40 +117,42 @@ struct ContentView: View {
     
     var body: some View {
         Form {
-            
-            Section(header:Text("Títol del Post") ) {
-                HStack {
-                    Spacer()
-                    TextField("El més destacable de la WWDC20 - Programa 420", text: $postTitle)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    Spacer()
-                }
+            Group {
                 
-            }
-            Divider()
-            Section(header:Text("Arxiu Markdown (Guió)") ) {
-                HStack {
-                    Button("seleccionar arxiu", action:{
-                        self.pickFile()
-                    })
-                    if inputURL != nil {
-                        Text(inputURL!.path)
+                Section(header:Text("Títol del Post") ) {
+                    HStack {
+                        TextField("El més destacable de la WWDC20 - Programa 420", text: $postTitle)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                        Spacer()
                     }
                     
-                    
+                }
+                Divider()
+                Section(header:Text("Arxiu Markdown (Guió)") ) {
+                    HStack {
+                        Button("seleccionar arxiu", action:{
+                            self.pickFile()
+                        })
+                        if inputURL != nil {
+                            Text(inputURL!.path)
+                        }
+                        
+                        
+                    }
                 }
             }
+            
             Divider()
             Section(header:Text("Imatge principal"), footer: Text("Abans de publicar, puja la imatge.") ) {
                 VStack {
                     HStack {
                         TextField("Títol: Crisi de confiança", text: $imageTitle)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
                         Spacer()
                     }
                     HStack {
                         TextField("Text Alternatiu: Cel vermell amb núvols", text: $imageAlternativeText)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
                         Spacer()
                     }
                     Spacer()
@@ -189,13 +203,13 @@ struct ContentView: View {
                             }
                             
                             self.showActivityIndicatorURLButton = false
-                            })
+                        })
                         
-                        }).textFieldStyle(RoundedBorderTextFieldStyle())
-                        
-                        //.textCase(.lowercase) is beta for 11.0
-
-                        
+                    }).textFieldStyle(RoundedBorderTextFieldStyle())
+                    
+                    //.textCase(.lowercase) is beta for 11.0
+                    
+                    
                     
                     Button(action:{
                         self.showActivityIndicatorURLButton = true
@@ -256,7 +270,14 @@ struct ContentView: View {
                             self.draft = true
                         }
                         
-                        uploadPost(draft: self.draft, title: self.postTitle , documentURL: self.inputURL!, audioURL: self.mlpAudioURL, mediaID: self.mediaIDstate,  completion: { (is_ok) -> Void in
+                        var catsIds = [Int]()
+                        for index in self.settings.categories.indices {
+                            if self.catToggles[index] {
+                                catsIds.append( Int(self.settings.categories[index].id)! )
+                            }
+                        }
+                        
+                        uploadPost(draft: self.draft, title: self.postTitle , documentURL: self.inputURL!, audioURL: self.mlpAudioURL, mediaID: self.mediaIDstate, categories: catsIds,  completion: { (is_ok) -> Void in
                             print("es ok")
                             print(is_ok)
                             if is_ok {
@@ -275,12 +296,29 @@ struct ContentView: View {
                     }.disabled(postTitle == "" || inputURL == nil || imageUploaded == false)
                 }
             }
+            Group {
+                Divider()
+                Section(header: Text("Categories Post") ) {
+                    HStack {
+                        ForEach (settings.categories.indices) { i in
+                            HStack {
+                                Toggle(self.settings.categories[i].name, isOn: self.$catToggles[i])
+                            }
+                            
+                        }
+                        
+                    }
+                }
+                
+            }
             
-            
+            Divider()
             Text("Hello Mossegui!")
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
+            
         }.onAppear {
             self.selectorIndex = self.settings.defaultIndexRadioButton
+            self.loadCategories()
         }
         
     }
