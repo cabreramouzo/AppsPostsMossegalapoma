@@ -14,7 +14,7 @@ func checkURL(url:String, completion: @escaping(Bool) -> Void) -> Void {
     guard let url = URL(string: url) else { return }
 
     var request = URLRequest(url: url)
-    request.timeoutInterval = 20.0
+    request.timeoutInterval = 2.0
 
     let task = URLSession.shared.dataTask(with: request) { data, response, error in
         if let error = error {

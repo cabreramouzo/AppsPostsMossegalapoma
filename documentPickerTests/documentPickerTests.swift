@@ -8,7 +8,6 @@
 
 import XCTest
 @testable import documentPicker
-@testable import DocumentParser
 
 class documentPickerTests: XCTestCase {
 
@@ -23,10 +22,6 @@ class documentPickerTests: XCTestCase {
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testMdListstoHtml() throws {
-        DocumentParser.
     }
 
     func testPerformanceExample() throws {

@@ -9,20 +9,7 @@
 import Foundation
 import Ink
 
-func buildImagetag(mediaAttributes: [String:String] ) -> String {
-    let imgClass = "aligncenter size-full wp-image-" + mediaAttributes["id"]!
-    let imgAlt = mediaAttributes["alt"]!
-    let imgUrl = mediaAttributes["url"]!
-    
-    var result =  "<img class=\"" + imgClass
-    result += "\" " + "src=\"" + imgUrl
-    result += "\" " + "alt=\"" + imgAlt + "\" />"
-    print("tag imatge")
-    print(result)
-    return result
-    }
-
-func makePostFromGuioString(guioString: String, mediaAttributes: [String:String], arrayOfTags: [String]) -> Post {
+func makePostFromGuioString(guioString: String, arrayOfTags: [String]) -> Post {
 
     var p = Post()
     p.initDefaultHTMLSections()
@@ -30,8 +17,6 @@ func makePostFromGuioString(guioString: String, mediaAttributes: [String:String]
     for tag in tags{
         p.addSection(name: tag.key, markDownContent: tag.value)
     }
-    let imageTag = buildImagetag(mediaAttributes: mediaAttributes)
-    p.addSection(name: "imatge", HTMLContent: imageTag)
     return p
     
     
