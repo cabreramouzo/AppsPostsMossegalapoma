@@ -56,11 +56,11 @@ struct GeneralView: View {
         for i in self.toggles.indices {
             categories[i].postDefault = self.toggles[i]
         }
-        settings.cats = categories
+        settings.categories = categories
     }
     
     func loadCategories() {
-        categories = settings.cats
+        categories = settings.categories
         
         for index in categories.indices {
             toggles[index] = (categories[index].postDefault)
@@ -157,7 +157,7 @@ struct GeneralView: View {
                     self.saveCategories()
                     print("save categories")
                     print(self.categories)
-                    print(self.settings.cats)
+                    print(self.settings.categories)
                     
                 }) {
                     Text("Aplicar canvis")

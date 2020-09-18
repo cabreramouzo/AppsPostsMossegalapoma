@@ -101,36 +101,17 @@ final class SettingsMac {
         }
     }
     
-//    var getCategories: [(String, String, Bool)] {
-//        get {
-//
-//            defaults.object(forKey: "app.mac.wordpress.categories") as! [(String, String, Bool)]
-//        }
-//    }
-    
-    // ("234", "Apple", true)
-//    var setCategoryTrue: (String, String, Bool) {
-//        get {
-//            //esta mal
-//            defaults.object(forKey: "app.mac.wordpress.categories") as! (String, String, Bool)
-//        }
-//        set {
-//            defaults.set(self.categories[newValue.0] = (newValue.1, newValue.2) , forKey: "app.mac.wordpress.categories")
-//        }
-//
-//    }
-    
-    var cats: [WordpressCategory] {
+    var categories: [WordpressCategory] {
         
         get {
-            var catss: [WordpressCategory] = [WordpressCategory(wordpressId: "aaa", name: "aaa", Postdefault: true)]
+            var cats: [WordpressCategory] = [WordpressCategory(wordpressId: "aaa", name: "aaa", Postdefault: true)]
             if let savedCategories = defaults.object(forKey: "app.mac.wordpress.categories") as? Data {
                 let decoder = JSONDecoder()
                 if let loadedCategories = try? decoder.decode([WordpressCategory].self, from: savedCategories) {
-                    catss = loadedCategories
+                    cats = loadedCategories
                 }
             }
-            return catss
+            return cats
         }
         
         set {
