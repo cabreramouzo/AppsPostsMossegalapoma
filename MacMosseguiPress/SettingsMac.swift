@@ -16,6 +16,15 @@ final class SettingsMac {
         
         self.defaults = defaults
         
+        let categories = [WordpressCategory(wordpressId: "28", name: "Apple", Postdefault: false),
+                          WordpressCategory(wordpressId: "24", name: "Podcast", Postdefault: true),
+                          WordpressCategory(wordpressId: "3", name: "Mac", Postdefault: false),
+                          WordpressCategory(wordpressId: "34", name: "iPhone", Postdefault: true),
+                          WordpressCategory(wordpressId: "12", name: "Opinió", Postdefault: false)]
+        
+        let encoder = JSONEncoder()
+        let c = try? encoder.encode(categories)
+        
         defaults.register(defaults: [
             "app.mac.wordpress.post.server" : "localhost/wp-json/wp/v2/posts",
             "app.mac.wordpress.media.server" : "localhost/wp-json/wp/v2/media",
@@ -23,6 +32,7 @@ final class SettingsMac {
             "app.mac.wordpress.author.id" : "1",
             "app.mac.user" : "macma",
             "app.mac.password" : "1234",
+            "app.mac.wordpress.categories" : c,
             "app.view.defaultIndexRadioButton" : 0,
             
         ])
@@ -89,6 +99,29 @@ final class SettingsMac {
         set {
             defaults.set(newValue, forKey: "app.view.defaultIndexRadioButton")
         }
+    }
+    
+    var categories: [WordpressCategory] {
+        
+        get {
+            var cats: [WordpressCategory] = [WordpressCategory(wordpressId: "aaa", name: "aaa", Postdefault: true)]
+            if let savedCategories = defaults.object(forKey: "app.mac.wordpress.categories") as? Data {
+                let decoder = JSONDecoder()
+                if let loadedCategories = try? decoder.decode([WordpressCategory].self, from: savedCategories) {
+                    cats = loadedCategories
+                }
+            }
+            return cats
+        }
+        
+        set {
+            let encoder = JSONEncoder()
+            let a = newValue
+            if let encoded = try? encoder.encode(a) {
+                defaults.set(encoded, forKey: "app.mac.wordpress.categories")
+            }
+        }
+        
     }
     
     
