@@ -9,13 +9,25 @@
 /* Begin PBXBuildFile section */
 		040BCAF224C054DB002F544A /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040BCAF124C054DB002F544A /* ImagePicker.swift */; };
 		040BCAF424C08DB8002F544A /* UploadFeaturedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040BCAF324C08DB8002F544A /* UploadFeaturedImage.swift */; };
+		041BFA1E251234DB00E79209 /* WordpressCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041BFA1D251234DB00E79209 /* WordpressCategory.swift */; };
 		042B90F224B73D3F00FE9043 /* UploadDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B90F124B73D3F00FE9043 /* UploadDocument.swift */; };
 		042B90F424B760A000FE9043 /* documentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B90F324B760A000FE9043 /* documentPicker.swift */; };
 		0432DD0924C886C600C62CA1 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 0432DD0824C886C600C62CA1 /* SwiftSoup */; };
 		0432DD0B24C8884800C62CA1 /* DocumentParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0432DD0A24C8884800C62CA1 /* DocumentParser.swift */; };
 		0459721B24C8446B001C7222 /* BlocExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459721A24C8446B001C7222 /* BlocExtractor.swift */; };
 		04740C4D24C4C2E100F9C8D5 /* CheckURLExists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04740C4C24C4C2E100F9C8D5 /* CheckURLExists.swift */; };
-		04A5000A24B3395000E40D2A /* documentPickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5000924B3395000E40D2A /* documentPickerTests.swift */; };
+		04A1506424D1D1B300315C3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A1506324D1D1B300315C3F /* AppDelegate.swift */; };
+		04A1506624D1D1B300315C3F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A1506524D1D1B300315C3F /* ContentView.swift */; };
+		04A1506824D1D1B700315C3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04A1506724D1D1B700315C3F /* Assets.xcassets */; };
+		04A1506B24D1D1B700315C3F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04A1506A24D1D1B700315C3F /* Preview Assets.xcassets */; };
+		04A1506E24D1D1B700315C3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04A1506C24D1D1B700315C3F /* Main.storyboard */; };
+		04A1507B24D2E25000315C3F /* UploadFeaturedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040BCAF324C08DB8002F544A /* UploadFeaturedImage.swift */; };
+		04A1507E24D435E800315C3F /* UploadDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B90F124B73D3F00FE9043 /* UploadDocument.swift */; };
+		04A1507F24D435FD00315C3F /* BlocExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459721A24C8446B001C7222 /* BlocExtractor.swift */; };
+		04A1508224D4362600315C3F /* Ink in Frameworks */ = {isa = PBXBuildFile; productRef = 04A1508124D4362600315C3F /* Ink */; };
+		04A1508324D4365200315C3F /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FCE33624CAF4B2004E8FED /* Post.swift */; };
+		04A1508424D4366300315C3F /* DocumentParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0432DD0A24C8884800C62CA1 /* DocumentParser.swift */; };
+		04A1508524D44B4C00315C3F /* CheckURLExists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04740C4C24C4C2E100F9C8D5 /* CheckURLExists.swift */; };
 		04A5001524B47DE300E40D2A /* programa_tipic_nomes_body.html in Resources */ = {isa = PBXBuildFile; fileRef = 04A5001424B47DE200E40D2A /* programa_tipic_nomes_body.html */; };
 		04A5FFF024B3394D00E40D2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5FFEF24B3394D00E40D2A /* AppDelegate.swift */; };
 		04A5FFF224B3394D00E40D2A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5FFF124B3394D00E40D2A /* SceneDelegate.swift */; };
@@ -24,31 +36,47 @@
 		04A5FFF924B3394F00E40D2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04A5FFF824B3394F00E40D2A /* Assets.xcassets */; };
 		04A5FFFC24B3394F00E40D2A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04A5FFFB24B3394F00E40D2A /* Preview Assets.xcassets */; };
 		04A5FFFF24B3394F00E40D2A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04A5FFFD24B3394F00E40D2A /* LaunchScreen.storyboard */; };
+		04BABE9B2510D73D00AF3B98 /* MacMosseguiPressTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BABE9A2510D73D00AF3B98 /* MacMosseguiPressTests.swift */; };
 		04C237E924BA0FB2005BA9D0 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C237E824BA0FB2005BA9D0 /* ActivityIndicator.swift */; };
+		04F6B35124D5C34A00A41C6C /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C237E824BA0FB2005BA9D0 /* ActivityIndicator.swift */; };
+		04F6B35C24D82F1C00A41C6C /* SettingsMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F6B35B24D82F1C00A41C6C /* SettingsMac.swift */; };
+		04F6B35F24D834C000A41C6C /* Preferences in Frameworks */ = {isa = PBXBuildFile; productRef = 04F6B35E24D834C000A41C6C /* Preferences */; };
+		04F6B36124D8355100A41C6C /* GeneralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F6B36024D8355100A41C6C /* GeneralView.swift */; };
+		04F6B36424D83DD400A41C6C /* PreferencesStyle+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F6B36324D83DD400A41C6C /* PreferencesStyle+UserDefaults.swift */; };
 		04FCE33324CAE5D4004E8FED /* Ink in Frameworks */ = {isa = PBXBuildFile; productRef = 04FCE33224CAE5D4004E8FED /* Ink */; };
 		04FCE33724CAF4B2004E8FED /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FCE33624CAF4B2004E8FED /* Post.swift */; };
+		04FD19C824EAA8CD002B0F3D /* ImageURLRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD19C724EAA8CD002B0F3D /* ImageURLRetriever.swift */; };
+		04FD19C924EAA8CD002B0F3D /* ImageURLRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD19C724EAA8CD002B0F3D /* ImageURLRetriever.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		04A5000624B3395000E40D2A /* PBXContainerItemProxy */ = {
+		04BABE9D2510D73D00AF3B98 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 04A5FFE424B3394D00E40D2A /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 04A5FFEB24B3394D00E40D2A;
-			remoteInfo = documentPicker;
+			remoteGlobalIDString = 04A1506024D1D1B300315C3F;
+			remoteInfo = MacMosseguiPress;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		040BCAF124C054DB002F544A /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		040BCAF324C08DB8002F544A /* UploadFeaturedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadFeaturedImage.swift; sourceTree = "<group>"; };
+		041BFA1D251234DB00E79209 /* WordpressCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordpressCategory.swift; sourceTree = "<group>"; };
 		042B90F124B73D3F00FE9043 /* UploadDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadDocument.swift; sourceTree = "<group>"; };
 		042B90F324B760A000FE9043 /* documentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = documentPicker.swift; sourceTree = "<group>"; };
 		0432DD0A24C8884800C62CA1 /* DocumentParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentParser.swift; sourceTree = "<group>"; };
 		0459721A24C8446B001C7222 /* BlocExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlocExtractor.swift; sourceTree = "<group>"; };
 		04740C4C24C4C2E100F9C8D5 /* CheckURLExists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckURLExists.swift; sourceTree = "<group>"; };
+		04A1506124D1D1B300315C3F /* MacMosseguiPress.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacMosseguiPress.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		04A1506324D1D1B300315C3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		04A1506524D1D1B300315C3F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		04A1506724D1D1B700315C3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		04A1506A24D1D1B700315C3F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		04A1506D24D1D1B700315C3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		04A1506F24D1D1B700315C3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04A1507024D1D1B700315C3F /* MacMosseguiPress.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacMosseguiPress.entitlements; sourceTree = "<group>"; };
 		04A5000024B3394F00E40D2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		04A5000524B3395000E40D2A /* documentPickerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = documentPickerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04A5000924B3395000E40D2A /* documentPickerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = documentPickerTests.swift; sourceTree = "<group>"; };
 		04A5000B24B3395000E40D2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04A5001424B47DE200E40D2A /* programa_tipic_nomes_body.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = programa_tipic_nomes_body.html; sourceTree = "<group>"; };
@@ -60,15 +88,26 @@
 		04A5FFF824B3394F00E40D2A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04A5FFFB24B3394F00E40D2A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		04A5FFFE24B3394F00E40D2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		04BABE8C2510CD1300AF3B98 /* MacMosseguiPressTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacMosseguiPressTests.swift; sourceTree = "<group>"; };
+		04BABE8E2510CD1300AF3B98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04BABE982510D73C00AF3B98 /* MacMosseguiPressTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacMosseguiPressTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		04BABE9A2510D73D00AF3B98 /* MacMosseguiPressTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacMosseguiPressTests.swift; sourceTree = "<group>"; };
+		04BABE9C2510D73D00AF3B98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04C237E824BA0FB2005BA9D0 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		04F6B35B24D82F1C00A41C6C /* SettingsMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMac.swift; sourceTree = "<group>"; };
+		04F6B36024D8355100A41C6C /* GeneralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralView.swift; sourceTree = "<group>"; };
+		04F6B36324D83DD400A41C6C /* PreferencesStyle+UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PreferencesStyle+UserDefaults.swift"; sourceTree = "<group>"; };
 		04FCE33624CAF4B2004E8FED /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		04FD19C724EAA8CD002B0F3D /* ImageURLRetriever.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageURLRetriever.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		04A5000224B3395000E40D2A /* Frameworks */ = {
+		04A1505E24D1D1B300315C3F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04A1508224D4362600315C3F /* Ink in Frameworks */,
+				04F6B35F24D834C000A41C6C /* Preferences in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,9 +120,48 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		04BABE952510D73C00AF3B98 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04A1506224D1D1B300315C3F /* MacMosseguiPress */ = {
+			isa = PBXGroup;
+			children = (
+				041BFA1D251234DB00E79209 /* WordpressCategory.swift */,
+				04A1506324D1D1B300315C3F /* AppDelegate.swift */,
+				04F6B35B24D82F1C00A41C6C /* SettingsMac.swift */,
+				04F6B36224D8391D00A41C6C /* Preferences */,
+				04A1506524D1D1B300315C3F /* ContentView.swift */,
+				04A1506724D1D1B700315C3F /* Assets.xcassets */,
+				04A1506C24D1D1B700315C3F /* Main.storyboard */,
+				04A1506F24D1D1B700315C3F /* Info.plist */,
+				04A1507024D1D1B700315C3F /* MacMosseguiPress.entitlements */,
+				04A1506924D1D1B700315C3F /* Preview Content */,
+			);
+			path = MacMosseguiPress;
+			sourceTree = "<group>";
+		};
+		04A1506924D1D1B700315C3F /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				04A1506A24D1D1B700315C3F /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		04A1508024D4362600315C3F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		04A5000824B3395000E40D2A /* documentPickerTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -98,7 +176,11 @@
 			children = (
 				04A5FFEE24B3394D00E40D2A /* documentPicker */,
 				04A5000824B3395000E40D2A /* documentPickerTests */,
+				04A1506224D1D1B300315C3F /* MacMosseguiPress */,
+				04BABE8B2510CD1300AF3B98 /* MacMosseguiPressTests */,
+				04BABE992510D73C00AF3B98 /* MacMosseguiPressTests */,
 				04A5FFED24B3394D00E40D2A /* Products */,
+				04A1508024D4362600315C3F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -106,7 +188,8 @@
 			isa = PBXGroup;
 			children = (
 				04A5FFEC24B3394D00E40D2A /* documentPicker.app */,
-				04A5000524B3395000E40D2A /* documentPickerTests.xctest */,
+				04A1506124D1D1B300315C3F /* MacMosseguiPress.app */,
+				04BABE982510D73C00AF3B98 /* MacMosseguiPressTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -124,6 +207,7 @@
 				0459721A24C8446B001C7222 /* BlocExtractor.swift */,
 				0432DD0A24C8884800C62CA1 /* DocumentParser.swift */,
 				042B90F124B73D3F00FE9043 /* UploadDocument.swift */,
+				04FD19C724EAA8CD002B0F3D /* ImageURLRetriever.swift */,
 				04FCE33624CAF4B2004E8FED /* Post.swift */,
 				04740C4C24C4C2E100F9C8D5 /* CheckURLExists.swift */,
 				040BCAF324C08DB8002F544A /* UploadFeaturedImage.swift */,
@@ -144,26 +228,56 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		04BABE8B2510CD1300AF3B98 /* MacMosseguiPressTests */ = {
+			isa = PBXGroup;
+			children = (
+				04BABE8C2510CD1300AF3B98 /* MacMosseguiPressTests.swift */,
+				04BABE8E2510CD1300AF3B98 /* Info.plist */,
+			);
+			path = MacMosseguiPressTests;
+			sourceTree = "<group>";
+		};
+		04BABE992510D73C00AF3B98 /* MacMosseguiPressTests */ = {
+			isa = PBXGroup;
+			children = (
+				04BABE9A2510D73D00AF3B98 /* MacMosseguiPressTests.swift */,
+				04BABE9C2510D73D00AF3B98 /* Info.plist */,
+			);
+			path = MacMosseguiPressTests;
+			sourceTree = "<group>";
+		};
+		04F6B36224D8391D00A41C6C /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				04F6B36324D83DD400A41C6C /* PreferencesStyle+UserDefaults.swift */,
+				04F6B36024D8355100A41C6C /* GeneralView.swift */,
+			);
+			path = Preferences;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		04A5000424B3395000E40D2A /* documentPickerTests */ = {
+		04A1506024D1D1B300315C3F /* MacMosseguiPress */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 04A5001124B3395000E40D2A /* Build configuration list for PBXNativeTarget "documentPickerTests" */;
+			buildConfigurationList = 04A1507124D1D1B700315C3F /* Build configuration list for PBXNativeTarget "MacMosseguiPress" */;
 			buildPhases = (
-				04A5000124B3395000E40D2A /* Sources */,
-				04A5000224B3395000E40D2A /* Frameworks */,
-				04A5000324B3395000E40D2A /* Resources */,
+				04A1505D24D1D1B300315C3F /* Sources */,
+				04A1505E24D1D1B300315C3F /* Frameworks */,
+				04A1505F24D1D1B300315C3F /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				04A5000724B3395000E40D2A /* PBXTargetDependency */,
 			);
-			name = documentPickerTests;
-			productName = documentPickerTests;
-			productReference = 04A5000524B3395000E40D2A /* documentPickerTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
+			name = MacMosseguiPress;
+			packageProductDependencies = (
+				04A1508124D4362600315C3F /* Ink */,
+				04F6B35E24D834C000A41C6C /* Preferences */,
+			);
+			productName = MacMosseguiPress;
+			productReference = 04A1506124D1D1B300315C3F /* MacMosseguiPress.app */;
+			productType = "com.apple.product-type.application";
 		};
 		04A5FFEB24B3394D00E40D2A /* documentPicker */ = {
 			isa = PBXNativeTarget;
@@ -186,6 +300,24 @@
 			productReference = 04A5FFEC24B3394D00E40D2A /* documentPicker.app */;
 			productType = "com.apple.product-type.application";
 		};
+		04BABE972510D73C00AF3B98 /* MacMosseguiPressTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04BABE9F2510D73D00AF3B98 /* Build configuration list for PBXNativeTarget "MacMosseguiPressTests" */;
+			buildPhases = (
+				04BABE942510D73C00AF3B98 /* Sources */,
+				04BABE952510D73C00AF3B98 /* Frameworks */,
+				04BABE962510D73C00AF3B98 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04BABE9E2510D73D00AF3B98 /* PBXTargetDependency */,
+			);
+			name = MacMosseguiPressTests;
+			productName = MacMosseguiPressTests;
+			productReference = 04BABE982510D73C00AF3B98 /* MacMosseguiPressTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -195,16 +327,19 @@
 				KnownAssetTags = (
 					New,
 				);
-				LastSwiftUpdateCheck = 1150;
+				LastSwiftUpdateCheck = 1160;
 				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = MAC;
 				TargetAttributes = {
-					04A5000424B3395000E40D2A = {
-						CreatedOnToolsVersion = 11.5;
-						TestTargetID = 04A5FFEB24B3394D00E40D2A;
+					04A1506024D1D1B300315C3F = {
+						CreatedOnToolsVersion = 11.6;
 					};
 					04A5FFEB24B3394D00E40D2A = {
 						CreatedOnToolsVersion = 11.5;
+					};
+					04BABE972510D73C00AF3B98 = {
+						CreatedOnToolsVersion = 11.6;
+						TestTargetID = 04A1506024D1D1B300315C3F;
 					};
 				};
 			};
@@ -220,22 +355,27 @@
 			packageReferences = (
 				0432DD0724C886C600C62CA1 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 				04FCE33124CAE5D4004E8FED /* XCRemoteSwiftPackageReference "ink" */,
+				04F6B35D24D834C000A41C6C /* XCRemoteSwiftPackageReference "Preferences" */,
 			);
 			productRefGroup = 04A5FFED24B3394D00E40D2A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				04A5FFEB24B3394D00E40D2A /* documentPicker */,
-				04A5000424B3395000E40D2A /* documentPickerTests */,
+				04A1506024D1D1B300315C3F /* MacMosseguiPress */,
+				04BABE972510D73C00AF3B98 /* MacMosseguiPressTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		04A5000324B3395000E40D2A /* Resources */ = {
+		04A1505F24D1D1B300315C3F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04A1506E24D1D1B700315C3F /* Main.storyboard in Resources */,
+				04A1506B24D1D1B700315C3F /* Preview Assets.xcassets in Resources */,
+				04A1506824D1D1B700315C3F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,14 +390,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		04BABE962510D73C00AF3B98 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		04A5000124B3395000E40D2A /* Sources */ = {
+		04A1505D24D1D1B300315C3F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04A5000A24B3395000E40D2A /* documentPickerTests.swift in Sources */,
+				04A1508524D44B4C00315C3F /* CheckURLExists.swift in Sources */,
+				04A1506624D1D1B300315C3F /* ContentView.swift in Sources */,
+				04A1507F24D435FD00315C3F /* BlocExtractor.swift in Sources */,
+				041BFA1E251234DB00E79209 /* WordpressCategory.swift in Sources */,
+				04A1506424D1D1B300315C3F /* AppDelegate.swift in Sources */,
+				04F6B35C24D82F1C00A41C6C /* SettingsMac.swift in Sources */,
+				04A1508324D4365200315C3F /* Post.swift in Sources */,
+				04A1508424D4366300315C3F /* DocumentParser.swift in Sources */,
+				04F6B36424D83DD400A41C6C /* PreferencesStyle+UserDefaults.swift in Sources */,
+				04F6B36124D8355100A41C6C /* GeneralView.swift in Sources */,
+				04A1507B24D2E25000315C3F /* UploadFeaturedImage.swift in Sources */,
+				04F6B35124D5C34A00A41C6C /* ActivityIndicator.swift in Sources */,
+				04A1507E24D435E800315C3F /* UploadDocument.swift in Sources */,
+				04FD19C924EAA8CD002B0F3D /* ImageURLRetriever.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,21 +437,38 @@
 				04A5FFF224B3394D00E40D2A /* SceneDelegate.swift in Sources */,
 				04740C4D24C4C2E100F9C8D5 /* CheckURLExists.swift in Sources */,
 				04C237E924BA0FB2005BA9D0 /* ActivityIndicator.swift in Sources */,
+				04FD19C824EAA8CD002B0F3D /* ImageURLRetriever.swift in Sources */,
 				0432DD0B24C8884800C62CA1 /* DocumentParser.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04BABE942510D73C00AF3B98 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04BABE9B2510D73D00AF3B98 /* MacMosseguiPressTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		04A5000724B3395000E40D2A /* PBXTargetDependency */ = {
+		04BABE9E2510D73D00AF3B98 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 04A5FFEB24B3394D00E40D2A /* documentPicker */;
-			targetProxy = 04A5000624B3395000E40D2A /* PBXContainerItemProxy */;
+			target = 04A1506024D1D1B300315C3F /* MacMosseguiPress */;
+			targetProxy = 04BABE9D2510D73D00AF3B98 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		04A1506C24D1D1B700315C3F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04A1506D24D1D1B700315C3F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		04A5FFFD24B3394F00E40D2A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -303,6 +480,54 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		04A1507224D1D1B700315C3F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MacMosseguiPress/MacMosseguiPress.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"MacMosseguiPress/Preview Content\"";
+				DEVELOPMENT_TEAM = 7V6773B2EX;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = MacMosseguiPress/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = mac.MacMosseguiPress;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		04A1507324D1D1B700315C3F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MacMosseguiPress/MacMosseguiPress.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"MacMosseguiPress/Preview Content\"";
+				DEVELOPMENT_TEAM = 7V6773B2EX;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = MacMosseguiPress/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = mac.MacMosseguiPress;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		04A5000C24B3395000E40D2A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -353,7 +578,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -407,7 +633,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -421,11 +648,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"documentPicker/Preview Content\"";
 				DEVELOPMENT_TEAM = 7V6773B2EX;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = documentPicker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -446,6 +675,7 @@
 				DEVELOPMENT_TEAM = 7V6773B2EX;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = documentPicker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -457,67 +687,67 @@
 			};
 			name = Release;
 		};
-		04A5001224B3395000E40D2A /* Debug */ = {
+		04BABEA02510D73D00AF3B98 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 7V6773B2EX;
-				INFOPLIST_FILE = documentPickerTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				INFOPLIST_FILE = MacMosseguiPressTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = mac.documentPickerTests;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = mac.MacMosseguiPressTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/documentPicker.app/documentPicker";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MacMosseguiPress.app/Contents/MacOS/MacMosseguiPress";
 			};
 			name = Debug;
 		};
-		04A5001324B3395000E40D2A /* Release */ = {
+		04BABEA12510D73D00AF3B98 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 7V6773B2EX;
-				INFOPLIST_FILE = documentPickerTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				INFOPLIST_FILE = MacMosseguiPressTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = mac.documentPickerTests;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = mac.MacMosseguiPressTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/documentPicker.app/documentPicker";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MacMosseguiPress.app/Contents/MacOS/MacMosseguiPress";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		04A1507124D1D1B700315C3F /* Build configuration list for PBXNativeTarget "MacMosseguiPress" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04A1507224D1D1B700315C3F /* Debug */,
+				04A1507324D1D1B700315C3F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		04A5000E24B3395000E40D2A /* Build configuration list for PBXNativeTarget "documentPicker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				04A5000F24B3395000E40D2A /* Debug */,
 				04A5001024B3395000E40D2A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		04A5001124B3395000E40D2A /* Build configuration list for PBXNativeTarget "documentPickerTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				04A5001224B3395000E40D2A /* Debug */,
-				04A5001324B3395000E40D2A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -531,6 +761,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		04BABE9F2510D73D00AF3B98 /* Build configuration list for PBXNativeTarget "MacMosseguiPressTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04BABEA02510D73D00AF3B98 /* Debug */,
+				04BABEA12510D73D00AF3B98 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
@@ -540,6 +779,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 2.3.2;
+			};
+		};
+		04F6B35D24D834C000A41C6C /* XCRemoteSwiftPackageReference "Preferences" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/Preferences";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.1;
 			};
 		};
 		04FCE33124CAE5D4004E8FED /* XCRemoteSwiftPackageReference "ink" */ = {
@@ -557,6 +804,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0432DD0724C886C600C62CA1 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
 			productName = SwiftSoup;
+		};
+		04A1508124D4362600315C3F /* Ink */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04FCE33124CAE5D4004E8FED /* XCRemoteSwiftPackageReference "ink" */;
+			productName = Ink;
+		};
+		04F6B35E24D834C000A41C6C /* Preferences */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04F6B35D24D834C000A41C6C /* XCRemoteSwiftPackageReference "Preferences" */;
+			productName = Preferences;
 		};
 		04FCE33224CAE5D4004E8FED /* Ink */ = {
 			isa = XCSwiftPackageProductDependency;

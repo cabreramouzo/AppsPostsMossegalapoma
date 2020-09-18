@@ -7,14 +7,35 @@
 //
 
 import Foundation
-import SwiftSoup
+//import SwiftSoup
 
 import Ink
+
+func removeAllSpacesFromLists(inputString: String) -> String {
+    
+    do {
+        let range = NSRange(location: 0, length: inputString.utf16.count)
+        let regex = try NSRegularExpression(pattern: " *\\*")
+        if regex.firstMatch(in: inputString, options: [], range: range) != nil {
+
+            let result = regex.stringByReplacingMatches(in: inputString, options: [], range: range, withTemplate: "*")
+            
+            return String(result)
+
+        }
+        return inputString
+    }
+    catch let error {
+        print("invalid regex: \(error.localizedDescription)")
+
+    }
+    return inputString
+}
 
 func parseMarkdown(inputString: String) -> String {
     
     //remove '  *' because produces a bug into de parser nesting lists to first item
-    let inputStringWithoutSpacesInListItems = inputString.replacingOccurrences(of: "  *", with: "*")
+    let inputStringWithoutSpacesInListItems = removeAllSpacesFromLists(inputString: inputString)
     
     var mdparser = MarkdownParser()
     let modifier = Modifier(target: .paragraphs, closure: {html,markdown in
