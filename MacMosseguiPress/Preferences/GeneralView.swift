@@ -43,6 +43,7 @@ struct GeneralView: View {
     @State private var user:String = "macma"
     @State private var password:String = "1234"
     @State private var defaultIndexRadioButton:Int = 0
+    @State private var showPassword:Bool = false
     
     private let contentWidth: Double = 600.0
     
@@ -101,9 +102,25 @@ struct GeneralView: View {
                 TextField("Usuari:", text: self.$user)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .frame(width: 420.0)
-                SecureField("Contrassenya:", text: self.$password)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .frame(width: 420.0)
+                HStack {
+                    
+                    if self.showPassword {
+                        TextField("Contrassenya:", text: self.$password)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .frame(width: 390.0)
+                        Toggle("􀋭", isOn: self.$showPassword).toggleStyle(SwitchToggleStyle())
+                        
+                    }
+                    else {
+                        SecureField("Contrassenya:", text: self.$password)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .frame(width: 390.0)
+                        Toggle("􀋯", isOn: self.$showPassword).toggleStyle(SwitchToggleStyle())
+                    }
+                    
+
+                }
+                
 
             }
 

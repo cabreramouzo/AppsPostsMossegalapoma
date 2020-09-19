@@ -118,15 +118,16 @@ struct ContentView: View {
     var body: some View {
         Form {
             Group {
-                
+                Spacer()
                 Section(header:Text("Títol del Post") ) {
                     HStack {
                         TextField("El més destacable de la WWDC20 - Programa 420", text: $postTitle)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                         Spacer()
                     }
-                    
                 }
+                
+                
                 Divider()
                 Section(header:Text("Arxiu Markdown (Guió)") ) {
                     HStack {
@@ -249,55 +250,7 @@ struct ContentView: View {
                 }
             }
             Divider()
-            Section(header: Text("Estat Post de Wordpress") ) {
-                HStack {
-                    VStack {
-                        Picker("", selection: self.$selectorIndex) {
-                            
-                            Text("Publicació").tag(0)
-                            Text("Esborrany").tag(1)
-                            
-                        }
-                        .pickerStyle(RadioGroupPickerStyle())
-                        .padding()
-                    }
-                    Button("Pujar Post", action:{
-                        
-                        if self.selectorIndex == 0 {
-                            self.draft = false
-                        }
-                        else if self.selectorIndex == 1 {
-                            self.draft = true
-                        }
-                        
-                        var catsIds = [Int]()
-                        for index in self.settings.categories.indices {
-                            if self.catToggles[index] {
-                                catsIds.append( Int(self.settings.categories[index].id)! )
-                            }
-                        }
-                        
-                        uploadPost(draft: self.draft, title: self.postTitle , documentURL: self.inputURL!, audioURL: self.mlpAudioURL, mediaID: self.mediaIDstate, categories: catsIds,  completion: { (is_ok) -> Void in
-                            print("es ok")
-                            print(is_ok)
-                            if is_ok {
-                                self.alertText = "Arxiu carregat correctament!"
-                                self.alertTitle = "✅ OK"
-                            }
-                            else {
-                                self.alertText = "Hi ha hagut un error al pujar l'arxiu a Wordpress"
-                                self.alertTitle = "⚠️ Error!"
-                            }
-                            self.ShowAlertPost = true
-                            
-                        })
-                    }).alert(isPresented: $ShowAlertPost) {
-                        Alert(title: Text(alertTitle), message: Text(alertText), dismissButton: .default(Text("Ok!")) {print("activity indicator")})
-                    }.disabled(postTitle == "" || inputURL == nil || imageUploaded == false)
-                }
-            }
             Group {
-                Divider()
                 Section(header: Text("Categories Post") ) {
                     HStack {
                         ForEach (settings.categories.indices) { i in
@@ -310,8 +263,56 @@ struct ContentView: View {
                     }
                 }
                 
+                
+                Divider()
+                Section(header: Text("Estat Post de Wordpress") ) {
+                    HStack {
+                        VStack {
+                            Picker("", selection: self.$selectorIndex) {
+                                
+                                Text("Publicació").tag(0)
+                                Text("Esborrany").tag(1)
+                                
+                            }
+                            .pickerStyle(RadioGroupPickerStyle())
+                            .padding()
+                        }
+                        Button("Pujar Post", action:{
+                            
+                            if self.selectorIndex == 0 {
+                                self.draft = false
+                            }
+                            else if self.selectorIndex == 1 {
+                                self.draft = true
+                            }
+                            
+                            var catsIds = [Int]()
+                            for index in self.settings.categories.indices {
+                                if self.catToggles[index] {
+                                    catsIds.append( Int(self.settings.categories[index].id)! )
+                                }
+                            }
+                            
+                            uploadPost(draft: self.draft, title: self.postTitle , documentURL: self.inputURL!, audioURL: self.mlpAudioURL, mediaID: self.mediaIDstate, categories: catsIds,  completion: { (is_ok) -> Void in
+                                print("es ok")
+                                print(is_ok)
+                                if is_ok {
+                                    self.alertText = "Arxiu carregat correctament!"
+                                    self.alertTitle = "✅ OK"
+                                }
+                                else {
+                                    self.alertText = "Hi ha hagut un error al pujar l'arxiu a Wordpress"
+                                    self.alertTitle = "⚠️ Error!"
+                                }
+                                self.ShowAlertPost = true
+                                
+                            })
+                        }).alert(isPresented: $ShowAlertPost) {
+                            Alert(title: Text(alertTitle), message: Text(alertText), dismissButton: .default(Text("Ok!")) {print("activity indicator")})
+                        }.disabled(postTitle == "" || inputURL == nil || imageUploaded == false)
+                    }
+                }
             }
-            
             Divider()
             Text("Hello Mossegui!")
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
