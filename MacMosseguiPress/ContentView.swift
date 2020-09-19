@@ -280,39 +280,45 @@ struct ContentView: View {
                             .pickerStyle(RadioGroupPickerStyle())
                             .padding()
                         }
-                        Button("Pujar Post", action:{
-                            
-                            if self.selectorIndex == 0 {
-                                self.draft = false
-                            }
-                            else if self.selectorIndex == 1 {
-                                self.draft = true
-                            }
-                            
-                            var catsIds = [Int]()
-                            for index in self.settings.categories.indices {
-                                if self.catToggles[index] {
-                                    catsIds.append( Int(self.settings.categories[index].id)! )
-                                }
-                            }
-                            
-                            uploadPost(draft: self.draft, title: self.postTitle , documentURL: self.inputURL!, audioURL: self.mlpAudioURL, mediaID: self.mediaIDstate, categories: catsIds, isMM: self.isMM, completion: { (is_ok) -> Void in
-                                print("es ok")
-                                print(is_ok)
-                                if is_ok {
-                                    self.alertText = "Arxiu carregat correctament!"
-                                    self.alertTitle = "✅ OK"
-                                }
-                                else {
-                                    self.alertText = "Hi ha hagut un error al pujar l'arxiu a Wordpress"
-                                    self.alertTitle = "⚠️ Error!"
-                                }
-                                self.ShowAlertPost = true
+                        HStack {
+                            Spacer()
+                            Button("Pujar Post", action: {
                                 
-                            })
-                        }).alert(isPresented: $ShowAlertPost) {
-                            Alert(title: Text(alertTitle), message: Text(alertText), dismissButton: .default(Text("Ok!")) {print("activity indicator")})
-                        }.disabled(postTitle == "" || inputURL == nil || imageUploaded == false)
+                                if self.selectorIndex == 0 {
+                                    self.draft = false
+                                }
+                                else if self.selectorIndex == 1 {
+                                    self.draft = true
+                                }
+                                
+                                var catsIds = [Int]()
+                                for index in self.settings.categories.indices {
+                                    if self.catToggles[index] {
+                                        catsIds.append( Int(self.settings.categories[index].id)! )
+                                    }
+                                }
+                                
+                                uploadPost(draft: self.draft, title: self.postTitle , documentURL: self.inputURL!, audioURL: self.mlpAudioURL, mediaID: self.mediaIDstate, categories: catsIds, isMM: self.isMM, completion: { (is_ok) -> Void in
+                                    print("es ok")
+                                    print(is_ok)
+                                    if is_ok {
+                                        self.alertText = "Arxiu carregat correctament!"
+                                        self.alertTitle = "✅ OK"
+                                    }
+                                    else {
+                                        self.alertText = "Hi ha hagut un error al pujar l'arxiu a Wordpress"
+                                        self.alertTitle = "⚠️ Error!"
+                                    }
+                                    self.ShowAlertPost = true
+                                    
+                                })
+                            }).alert(isPresented: $ShowAlertPost) {
+                                Alert(title: Text(alertTitle), message: Text(alertText), dismissButton: .default(Text("Ok!")) {print("activity indicator")})
+                            }.disabled(postTitle == "" || inputURL == nil || imageUploaded == false)
+                            .padding()
+                            
+                        }
+                        
                     }
                 }
             }

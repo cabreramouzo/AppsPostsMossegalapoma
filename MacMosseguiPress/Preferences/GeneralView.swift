@@ -10,8 +10,8 @@ import SwiftUI
 import Preferences
 
 /**
-Function wrapping SwiftUI into `PreferencePane`, which is mimicking view controller's default construction syntax.
-*/
+ Function wrapping SwiftUI into `PreferencePane`, which is mimicking view controller's default construction syntax.
+ */
 let GeneralViewController: () -> PreferencePane = {
     /// Wrap your custom view into `Preferences.Pane`, while providing necessary toolbar info.
     let paneView = Preferences.Pane(
@@ -20,14 +20,14 @@ let GeneralViewController: () -> PreferencePane = {
         toolbarIcon: NSImage(named: NSImage.preferencesGeneralName)!
     ) {
         GeneralView(settings: SettingsMac(), categories: [
-        WordpressCategory(wordpressId: "28", name: "Apple", Postdefault: true),
-        WordpressCategory(wordpressId: "24", name: "Podcast", Postdefault: false),
-        WordpressCategory(wordpressId: "3", name: "Mac", Postdefault: true),
-        WordpressCategory(wordpressId: "34", name: "iPhone", Postdefault: true),
-        WordpressCategory(wordpressId: "12", name: "Opinió", Postdefault: false)])
-
+            WordpressCategory(wordpressId: "28", name: "Apple", Postdefault: true),
+            WordpressCategory(wordpressId: "24", name: "Podcast", Postdefault: false),
+            WordpressCategory(wordpressId: "3", name: "Mac", Postdefault: true),
+            WordpressCategory(wordpressId: "34", name: "iPhone", Postdefault: true),
+            WordpressCategory(wordpressId: "12", name: "Opinió", Postdefault: false)])
+        
     }
-
+    
     return Preferences.PaneHostingController(pane: paneView)
 }
 
@@ -74,48 +74,48 @@ struct GeneralView: View {
         Preferences.Container(contentWidth: contentWidth) {
             Preferences.Section(title: "URL Servidor Post:") {
                 TextField("https://mossegalapoma.cat/wp-json/wp/v2/posts", text: self.$urlPost)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .frame(width: 420.0)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .frame(width: 420.0)
                 Text("URL per penjar els posts sense '/' final")
-                .preferenceDescription()
-
+                    .preferenceDescription()
+                
             }
             Preferences.Section(title: "URL Servidor Media:") {
                 TextField("https://mossegalapoma.cat/wp-json/wp/v2/media", text: self.$urlMedia)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .frame(width: 420.0)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .frame(width: 420.0)
                 Text("URL per penjar la mèdia (foto entrada) sense '/' final")
                     .preferenceDescription()
-
+                
             }
             Preferences.Section(title: "URL Audio:") {
                 TextField("https://storagemossegui.com/mlpaudio/mlp4", text: self.$urlAudio)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .frame(width: 420.0)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .frame(width: 420.0)
                 Text("URL per penjar l'àudio")
                     .preferenceDescription()
-
+                
             }
             
             Preferences.Section(title: "Credencials d'aquesta App:") {
-               
-
+                
+                
                 TextField("Usuari:", text: self.$user)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .frame(width: 420.0)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .frame(width: 420.0)
                 HStack {
                     
                     if self.showPassword {
                         TextField("Contrassenya:", text: self.$password)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .frame(width: 420.0)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .frame(width: 420.0)
                         //Toggle("􀋭", isOn: self.$showPassword).toggleStyle(SwitchToggleStyle())
                         
                     }
                     else {
                         SecureField("Contrassenya:", text: self.$password)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .frame(width: 420.0)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .frame(width: 420.0)
                         //Toggle("􀋯", isOn: self.$showPassword).toggleStyle(SwitchToggleStyle())
                     }
                 }
@@ -125,9 +125,9 @@ struct GeneralView: View {
                     
                 }
                 
-
+                
             }
-
+            
             Preferences.Section(title: "Autor per defecte:") {
                 Picker("", selection: self.$authorId) {
                     Text("tomasmanz").tag("1")
@@ -135,8 +135,8 @@ struct GeneralView: View {
                     Text("macma").tag("18")
                     Text("wolffan").tag("5")
                 }
-                    .labelsHidden()
-                    .frame(width: 120.0)
+                .labelsHidden()
+                .frame(width: 120.0)
                 Text("S'usarà tant als posts com al mèdia")
                     .preferenceDescription()
             }
@@ -152,7 +152,7 @@ struct GeneralView: View {
             }
             
             Preferences.Section(title: "Categories per omisió:") {
-
+                
                 HStack {
                     ForEach (self.categories.indices) { i in
                         HStack {
@@ -167,24 +167,27 @@ struct GeneralView: View {
             
             
             Preferences.Section(title: "") {
-                Button(action: {
-                    self.settings.postServer = self.urlPost
-                    self.settings.mediaServer = self.urlMedia
-                    self.settings.audioUrl = self.urlAudio
-                    self.settings.authorId = self.authorId
-                    self.settings.user = self.user
-                    self.settings.password = self.password
-                    self.settings.defaultIndexRadioButton = self.defaultIndexRadioButton
-                    self.saveCategories()
-                    print("save categories")
-                    print(self.categories)
-                    print(self.settings.categories)
-                    
-                }) {
-                    Text("Aplicar canvis")
- 
+                HStack {
+                    Button(action: {
+                        self.settings.postServer = self.urlPost
+                        self.settings.mediaServer = self.urlMedia
+                        self.settings.audioUrl = self.urlAudio
+                        self.settings.authorId = self.authorId
+                        self.settings.user = self.user
+                        self.settings.password = self.password
+                        self.settings.defaultIndexRadioButton = self.defaultIndexRadioButton
+                        self.saveCategories()
+                        print("save categories")
+                        print(self.categories)
+                        print(self.settings.categories)
+                        
+                    }) {
+                        Text("Aplicar canvis")
+                        
+                    }.padding(.leading, 330)
                 }
-    
+                
+                
             }
         }.onAppear {
             self.urlPost = self.settings.postServer
