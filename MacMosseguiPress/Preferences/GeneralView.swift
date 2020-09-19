@@ -98,7 +98,8 @@ struct GeneralView: View {
             }
             
             Preferences.Section(title: "Credencials d'aquesta App:") {
-                
+               
+
                 TextField("Usuari:", text: self.$user)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .frame(width: 420.0)
@@ -107,18 +108,21 @@ struct GeneralView: View {
                     if self.showPassword {
                         TextField("Contrassenya:", text: self.$password)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .frame(width: 390.0)
-                        Toggle("􀋭", isOn: self.$showPassword).toggleStyle(SwitchToggleStyle())
+                        .frame(width: 420.0)
+                        //Toggle("􀋭", isOn: self.$showPassword).toggleStyle(SwitchToggleStyle())
                         
                     }
                     else {
                         SecureField("Contrassenya:", text: self.$password)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .frame(width: 390.0)
-                        Toggle("􀋯", isOn: self.$showPassword).toggleStyle(SwitchToggleStyle())
+                        .frame(width: 420.0)
+                        //Toggle("􀋯", isOn: self.$showPassword).toggleStyle(SwitchToggleStyle())
                     }
+                }
+                HStack {
+                    Toggle("􀋯", isOn: self.$showPassword).toggleStyle(SwitchToggleStyle())
+                    Text("􀋭")
                     
-
                 }
                 
 
