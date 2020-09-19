@@ -11,7 +11,7 @@ import Foundation
 import UIKit
 #endif
 
-func getHTMLStringFromMdDocument(MdDocURL:URL, mediaAttributes:[String:String]) -> String {
+func getHTMLStringFromMdDocument(MdDocURL:URL, isMM:Bool, mediaAttributes:[String:String]) -> String {
     
     //let path = htmlDocURL
     var fileContent: String = ""
@@ -28,9 +28,16 @@ func getHTMLStringFromMdDocument(MdDocURL:URL, mediaAttributes:[String:String]) 
             
             if fm.isReadableFile(atPath: MdDocPath) {
                 fileContent = try String(contentsOfFile: MdDocPath, encoding: .utf8)
-                let post = makePostFromGuioString(guioString: fileContent, mediaAttributes: mediaAttributes, arrayOfTags: ["%extracte%","%part1%","%part2%","%propostes%","%trukis%"])
+                var tags = [String]()
+                if isMM {
+                    tags = ["%extracte%", "%part1%"]
+                }
+                else {
+                    tags = ["%extracte%","%part1%","%part2%","%propostes%","%trukis%"]
+                }
+                let post = makePostFromGuioString(guioString: fileContent, mediaAttributes: mediaAttributes, arrayOfTags: tags )
                 
-                html = post.getPostHTML()
+                html = post.getPostHTML(isMM: isMM)
                 print (html)
             }
             else {
@@ -50,7 +57,7 @@ func getHTMLStringFromMdDocument(MdDocURL:URL, mediaAttributes:[String:String]) 
     
 }
 
-func uploadPost(draft:Bool, title: String, documentURL:URL, audioURL:String, mediaID:Int, categories:[Int],  completion: @escaping (Bool) -> Void) -> Void {
+func uploadPost(draft:Bool, title: String, documentURL:URL, audioURL:String, mediaID:Int, categories:[Int], isMM:Bool, completion: @escaping (Bool) -> Void) -> Void {
     let settings: SettingsMac = SettingsMac()
     let user = settings.user
     let psw = settings.password
@@ -71,7 +78,7 @@ func uploadPost(draft:Bool, title: String, documentURL:URL, audioURL:String, med
             print("retrieve image ok")
 
             //read html file
-            let html_content:String = getHTMLStringFromMdDocument(MdDocURL: documentURL, mediaAttributes: imgDict)
+            let html_content:String = getHTMLStringFromMdDocument(MdDocURL: documentURL, isMM: isMM, mediaAttributes: imgDict)
             print("HTML content:")
             print(html_content)
 

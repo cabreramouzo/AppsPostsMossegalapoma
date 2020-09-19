@@ -41,6 +41,8 @@ struct ContentView: View {
     //categories toggles
     @State private var catToggles = [Bool](repeating: true, count: 5)
     
+    @State private var isMM = false
+    
     func loadCategories() {
         let numCats = settings.categories.count
         
@@ -129,7 +131,8 @@ struct ContentView: View {
                 
                 
                 Divider()
-                Section(header:Text("Arxiu Markdown (Guió)") ) {
+                Section(header:Text("Arxiu Markdown (Guió)"), footer: Text("Si és Minuts Mosseguis nomès és té en compte l'extracte i la primera part.") ) {
+                    Toggle("Minuts Mosseguis", isOn: self.$isMM)
                     HStack {
                         Button("seleccionar arxiu", action:{
                             self.pickFile()
@@ -293,7 +296,7 @@ struct ContentView: View {
                                 }
                             }
                             
-                            uploadPost(draft: self.draft, title: self.postTitle , documentURL: self.inputURL!, audioURL: self.mlpAudioURL, mediaID: self.mediaIDstate, categories: catsIds,  completion: { (is_ok) -> Void in
+                            uploadPost(draft: self.draft, title: self.postTitle , documentURL: self.inputURL!, audioURL: self.mlpAudioURL, mediaID: self.mediaIDstate, categories: catsIds, isMM: self.isMM, completion: { (is_ok) -> Void in
                                 print("es ok")
                                 print(is_ok)
                                 if is_ok {

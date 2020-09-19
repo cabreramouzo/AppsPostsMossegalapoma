@@ -84,10 +84,16 @@ struct Post: Identifiable {
         return "sectionErrr"
     }
     
-    func getPostHTML() -> String {
+    func getPostHTML(isMM: Bool) -> String {
         
         var html:String = ""
-        let orderTags = ["upc", "imatge", "%extracte%", "hr", "%part1%", "hr", "afiliats", "hr", "%part2%", "hr", "%propostes%", "hr", "%trukis%"]
+        var orderTags = [String]()
+        if isMM {
+            orderTags = ["upc", "imatge", "%extracte%", "hr", "%part1%", "hr", "afiliats", "hr"]
+        }
+        else  {
+            orderTags = ["upc", "imatge", "%extracte%", "hr", "%part1%", "hr", "afiliats", "hr", "%part2%", "hr", "%propostes%", "hr", "%trukis%"]
+        }
         
         for sect in orderTags {
             html += self.getSectionContentInHTML(sectionName: sect)
