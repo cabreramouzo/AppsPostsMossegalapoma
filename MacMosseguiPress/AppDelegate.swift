@@ -24,7 +24,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Create the SwiftUI view that provides the window contents.
         let settings = SettingsMac()
         let contentView = ContentView(postTitle: "", mlpAudioURL: settings.audioUrl, imagePath: "", mediaIDstate: -1)
-        .frame(minWidth: 400, maxWidth: .infinity, minHeight: 500, maxHeight: .infinity)
+        .frame(minWidth: 400, maxWidth: .infinity, minHeight: 610, maxHeight: .infinity)
 
         // Create the window and set the content view. 
         window = NSWindow(
