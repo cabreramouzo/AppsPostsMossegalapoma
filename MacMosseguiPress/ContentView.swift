@@ -127,7 +127,7 @@ struct ContentView: View {
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                         Spacer()
                     }
-                }
+                }.padding(.top, 3)
                 
                 
                 Divider()
